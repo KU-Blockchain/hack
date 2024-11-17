@@ -16,7 +16,7 @@ import {
 import { ColorModeToggle } from "@/components/color-mode-toggle"
 
 export default async function Page() {
-  const pages = ['About', 'FAQs', 'Schedule', 'Partners'];
+  const pages = ['About', 'FAQs', 'Schedule', 'Sponsors'];
   return (
     <div>
     <Box textAlign="center" fontSize="xl" pt={{ base: "20vh", md: "30vh" }}>

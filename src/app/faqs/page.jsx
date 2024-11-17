@@ -5,7 +5,7 @@ export default function FAQs() {
   const faqs = [
     {
       value: "question1",
-      title: "What is the event about?",
+      title: "What is a hackathon?",
       text: "Our event is focused on fostering collaboration and innovation through engaging workshops, networking opportunities, and hands-on projects.",
     },
     {
@@ -15,13 +15,18 @@ export default function FAQs() {
     },
     {
       value: "question3",
-      title: "How can I register?",
+      title: "How does the application process work?",
       text: "You can register by clicking on the 'Apply Now' button on our homepage and filling out the required information.",
     },
     {
       value: "question4",
       title: "Is there a fee to participate?",
       text: "No, participation is completely free of charge.",
+    },
+    {
+      value: "question5",
+      title: "Will Mercury be in retrograde or will any other significantly destructive astrological events be going on during this time?",
+      text: "No, don\'t worry your laptop will work fine. And we will have outlets!",
     },
   ];
 
@@ -30,21 +35,27 @@ export default function FAQs() {
     <Navbar />
     <Box maxW="800px" mx="auto" py="8" px="4" textAlign="center" fontSize="xl" pt={{ base: "20vh", md: "30vh" }}>  
       {/* Page Heading */}
-      <Heading textAlign="center" mb="6" size="xl" letterSpacing="tight">
-        Frequently Asked Questions
+      <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
+          FREQUENTLY ASKED QUESTIONS
       </Heading>
 
       {/* FAQ Accordion */}
       <AccordionRoot multiple defaultValue={["question1"]}>
         {faqs.map((faq) => (
-          <AccordionItem key={faq.value} value={faq.value} mb={2}>
-            <AccordionItemTrigger>
-              <Heading size="md" textAlign="left">
+          <AccordionItem 
+            key={faq.value} 
+            value={faq.value} 
+            mb={2}
+          >
+            <AccordionItemTrigger
+              style={{ cursor: "pointer" }}
+            >
+              <Heading textAlign="left">
                 {faq.title}
               </Heading>
             </AccordionItemTrigger>
-            <AccordionItemContent mb={2}>
-              <Box mt="2" fontSize="md">
+            <AccordionItemContent fontSize="lg" mb={2}>
+              <Box mt="2">
                 {faq.text}
               </Box>
             </AccordionItemContent>
