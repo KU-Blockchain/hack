@@ -56,7 +56,7 @@ export default function FAQs() {
             </AccordionItemTrigger>
             <AccordionItemContent fontSize="lg" mb={2}>
               <Box mt="2">
-                {faq.text}
+                <Text>{faq.text}</Text>
               </Box>
             </AccordionItemContent>
           </AccordionItem>
