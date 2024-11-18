@@ -2,7 +2,6 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import Navbar from "@/components/navbar";
 import { VStack, HStack, Image, Card } from "@chakra-ui/react";
-//import { FaClock } from "react-icons/fa";
 
 const Schedule = () => {
   const scheduleItems = [
@@ -13,7 +12,6 @@ const Schedule = () => {
     { icon: "/icons/5.png", time: "5:00 PM - 5:30 PM", title: "Break & Judging Period" },
     { icon: "/icons/6.png", time: "5:30 PM - 6:00 PM", title: "Closing Ceremony" },
     { icon: "/icons/7.png", time: "7:00 PM - 9:00 PM", title: "Happy Hour" },
-  
   ];
 
   return (
@@ -24,7 +22,7 @@ const Schedule = () => {
           SCHEDULE
         </Heading>
         <Text>
-          Welcome to our event! We aim to create a fantastic experience for all participants.
+          We aim to create a fantastic experience for all participants.
         </Text>
 
         <VStack alignItems="center" spacing={4} align="stretch" p={5}>

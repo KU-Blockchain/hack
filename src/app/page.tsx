@@ -1,3 +1,5 @@
+"use client";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -12,14 +14,75 @@ import {
   Skeleton,
   VStack,
   Image,
+  DialogBody,
+  DialogCloseTrigger,
+  DialogActionTrigger,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogRoot,
+  DialogTitle,
+  DialogTrigger,
 } from "@chakra-ui/react"
-import { ColorModeToggle } from "@/components/color-mode-toggle"
 
-export default async function Page() {
+export default function Page() {
   const pages = ['About', 'FAQs', 'Schedule', 'Sponsors'];
+
   return (
     <div>
     <Box textAlign="center" fontSize="xl" pt={{ base: "20vh", md: "30vh" }}>
+
+    <DialogRoot placement="center" motionPreset="slide-in-bottom">
+      <DialogTrigger asChild>
+      <Button
+        bg="white"
+        // w="100%"
+        // h="100%"
+        p="0"
+        w="10" 
+        h="10" 
+        pos="absolute" 
+        top="4" 
+        right="4"
+      >
+        <Image
+          src="/kubi_logo_brown.png"
+          alt="KUBI Logo"
+          boxSize="90%"
+          objectFit={"contain"}
+        /> 
+      </Button>
+      </DialogTrigger>
+      <DialogContent boxShadow="xl" pos="fixed" zIndex="1300" top="50%" left="50%" transform="translate(-50%, -50%)">
+        <DialogHeader>
+          <DialogTitle>KU Blockchain Institute</DialogTitle>
+        </DialogHeader>
+        <DialogBody>
+          <HStack>
+          <Image
+            src="/kubi_logo_brown.png"
+            alt="KUBI Logo"
+            boxSize="30%"
+            objectFit={"contain"}
+            mr="3"
+          /> 
+          <p>
+            The Midwest Block-a-Thon is proudly presented by the KU Blockchain Institute, a student-run organization at the University of Kansas.
+          </p>
+          </HStack>
+        </DialogBody>
+        <DialogFooter>
+          <DialogActionTrigger asChild>
+            <Button variant="outline">Close</Button>
+          </DialogActionTrigger>
+          <Button
+            onClick={() => window.open('https://kublockchain.com')}
+          >Learn More</Button>
+        </DialogFooter>
+        <DialogCloseTrigger />
+      </DialogContent>
+    </DialogRoot>
+
       <VStack gap="8">
       <Image
         alt="chakra logo"
@@ -64,11 +127,6 @@ export default async function Page() {
       </HStack>
       </VStack>
 
-      <Box pos="absolute" top="4" right="4">
-      <ClientOnly fallback={<Skeleton w="10" h="10" rounded="md" />}>
-        <ColorModeToggle />
-      </ClientOnly>
-      </Box>
     </Box>
     </div>
   )

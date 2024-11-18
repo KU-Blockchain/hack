@@ -6,12 +6,12 @@ export default function FAQs() {
     {
       value: "question1",
       title: "What is a hackathon?",
-      text: "Our event is focused on fostering collaboration and innovation through engaging workshops, networking opportunities, and hands-on projects.",
+      text: "This is Major League Hacking's definition: Hacking refers to inventive problem-solving. Essentially, we like to think of hackathons as invention marathons, where people gather to collaborate on all types of software projects.",
     },
     {
       value: "question2",
       title: "Who can attend?",
-      text: "The event is open to everyone, whether you’re a student, professional, or just curious about the topic.",
+      text: "The event is open to everyone, whether you’re a student, professional, or just curious about blockchain!",
     },
     {
       value: "question3",
