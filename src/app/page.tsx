@@ -46,7 +46,7 @@ export default function Page() {
         /> 
       </Button>
       </DialogTrigger>
-      <DialogContent boxShadow="xl" pos="fixed" zIndex="1300" top="50%" left="50%" transform="translate(-50%, -50%)">
+      <DialogContent bg="white" boxShadow="xl" pos="fixed" zIndex="1300" top="50%" left="50%" transform="translate(-50%, -50%)">
         <DialogHeader>
           <DialogTitle>KU Blockchain Institute</DialogTitle>
         </DialogHeader>

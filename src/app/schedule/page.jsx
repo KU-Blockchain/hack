@@ -27,13 +27,13 @@ const Schedule = () => {
 
         <VStack alignItems="center" spacing={4} align="stretch" p={5}>
           {scheduleItems.map((item, index) => (
-            <Card.Root bg="0" width={{ base: "90vw", md: "70vw", lg: "40vw" }} key={index}>
+            <Card.Root color="dark" bg="0" width={{ base: "90vw", md: "70vw", lg: "40vw" }} key={index}>
               <Card.Body>
                 <HStack gap={5}>
                   <Image src={item.icon} alt={item.title} style={{ width: "50px", height: "50px" }} />
                   <Box>
-                    <Heading size="md">{item.title}</Heading>
-                    <Text>{item.time}</Text>
+                    <Heading color="dark" size="md">{item.title}</Heading>
+                    <Text color="dark">{item.time}</Text>
                   </Box>
                 </HStack>
               </Card.Body>
