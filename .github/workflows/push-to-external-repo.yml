@@ -2,7 +2,7 @@ name: (main) push to external repo
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   push-to-external-repo:
     runs-on: ubuntu-latest
@@ -15,5 +15,5 @@ jobs:
           deploy_key: ${{ secrets.SSH_DEPLOY_KEY }}
           publish_dir: .
           external_repository: micahborg/hack
-          publish_branch: main
+          publish_branch: master
           allow_empty_commit: true
