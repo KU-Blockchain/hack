@@ -1,5 +1,5 @@
 "use client"
-import { ChakraProvider, defaultSystem, defaultConfig, defineConfig, createSystem, defineRecipe } from "@chakra-ui/react"
+import { ChakraProvider, defaultConfig, defineConfig, createSystem, defineRecipe } from "@chakra-ui/react"
 import { ThemeProvider } from "next-themes"
 
 const accordionRecipe = defineRecipe({
