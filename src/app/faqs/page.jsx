@@ -62,7 +62,7 @@ export default function FAQs() {
         </Heading>
 
         {/* FAQ Accordion */}
-        <AccordionRoot multiple defaultValue={["question1"]}>
+        <AccordionRoot multiple defaultValue={["question2"]}>
           {faqs.map((faq) => (
             <AccordionItem key={faq.value} value={faq.value} mb={2}>
               <AccordionItemTrigger style={{ cursor: "pointer" }}>
