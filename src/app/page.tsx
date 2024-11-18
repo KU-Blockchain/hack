@@ -18,8 +18,10 @@ import {
   DialogTrigger,
 } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
+import Loading from "@/components/Loading";
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(true);
   const pages = ["About", "FAQs", "Schedule", "Sponsors"];
   const [gifSrc, setGifSrc] = useState("/logo.gif");
   useEffect(() => {
@@ -30,6 +32,21 @@ export default function Page() {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
   // The above code helps make sure the GIF logo loads in correctly and restarts only when the page reloads
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setIsLoading(false);
+    } else {
+      const handleLoad = () => {
+        setIsLoading(false);
+      };
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div>
@@ -77,7 +94,7 @@ export default function Page() {
                   mr="3"
                 />
                 <p>
-                  The Midwest Block-a-Thon is proudly presented by the KU
+                  The Midwest Block-a-Thon is brought to you by the KU
                   Blockchain Institute, a student-run organization at the
                   University of Kansas.
                 </p>
