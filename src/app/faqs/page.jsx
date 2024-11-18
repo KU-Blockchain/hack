@@ -16,7 +16,7 @@ export default function FAQs() {
     {
       value: "question3",
       title: "How does the application process work?",
-      text: "You can register by clicking on the 'Apply Now' button on our homepage and filling out the required information.",
+      text: "You can apply by clicking on the 'Apply Now' button on our homepage and filling out the required information.",
     },
     {
       value: "question4",
