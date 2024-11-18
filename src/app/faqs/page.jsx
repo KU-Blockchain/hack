@@ -37,6 +37,11 @@ export default function FAQs() {
         "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
       text: "No, Mercury will not be in retrograde! And we will have outlets, wifi, and anything else your tech might need!",
     },
+    {
+      value: "question6",
+      title: "What if I don't know anything about blockchain?",
+      text: "Building is the best way to learn! This event is totally open to those new to blockchain, and we will share a ton of resources with you ahead of time to make sure you know the best ways to start preparing.",
+    },
   ];
 
   return (

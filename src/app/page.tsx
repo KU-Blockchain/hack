@@ -118,6 +118,7 @@ export default function Page() {
             src={gifSrc}
             width={{ base: 350, md: 500 }}
           />
+
           <Heading size="2xl" letterSpacing="tight">
             Saturday, March 29th <br></br>11am - 5pm
           </Heading>
@@ -131,7 +132,7 @@ export default function Page() {
                   color="dark"
                   _hover={{ textDecoration: "none", color: "gray.500" }}
                   fontWeight="medium"
-                  fontSize="lg"
+                  fontSize="xl"
                 >
                   {page}
                 </Link>
@@ -152,7 +153,9 @@ export default function Page() {
           <HStack>
             {/* <Input variant="outline" placeholder="Enter Email" />
         <Button>Apply Now</Button> */}
-            <Button>Applications Opening Soon</Button>
+            <Heading size="xl" mb={4} color={"red"} fontWeight="bold">
+              APPLICATIONS OPENING SOON
+            </Heading>
           </HStack>
         </VStack>
       </Box>
