@@ -128,7 +128,7 @@ export default function Page() {
           />
 
           <Heading size="2xl" letterSpacing="tight">
-            Saturday, March 29th - Sunday, March 30th
+            March 29-30, 2025
           </Heading>
 
           <HStack>
