@@ -73,6 +73,9 @@ const Navbar = () => {
               py="4"
               boxShadow="sm"
               zIndex="10"
+              bgGradient="to-r" 
+              gradientFrom="orange.100" 
+              gradientTo="red.100"
             >
               <HStack mx={7}>
                 <Link href="/">
@@ -134,6 +137,9 @@ const Navbar = () => {
           py="4"
           boxShadow="sm"
           zIndex="10"
+          bgGradient="to-r" 
+          gradientFrom="orange.100" 
+          gradientTo="red.100"
         >
           <HStack spacing={4}>
             <Link href="/" mr={2} alignItems="center">

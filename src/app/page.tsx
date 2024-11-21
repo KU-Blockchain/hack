@@ -82,7 +82,7 @@ export default function Page() {
             transform="translate(-50%, -50%)"
           >
             <DialogHeader>
-              <DialogTitle>KU Blockchain Institute</DialogTitle>
+              <DialogTitle>Made with 🔥 by the KU Blockchain Institute</DialogTitle>
             </DialogHeader>
             <DialogBody>
               <HStack>
@@ -128,7 +128,7 @@ export default function Page() {
           />
 
           <Heading size="2xl" letterSpacing="tight">
-            Saturday, March 29th <br></br>11am - 5pm
+            Saturday, March 29th - Sunday, March 30th
           </Heading>
 
           <HStack>
@@ -161,7 +161,17 @@ export default function Page() {
           <HStack>
             {/* <Input variant="outline" placeholder="Enter Email" />
             <Button>Apply Now</Button> */}
-            <Button>Applications Opening Soon</Button>
+            <Button
+              bgGradient="to-r" 
+              gradientFrom="orange.100" 
+              gradientTo="red.100"
+              color="dark"
+              fontWeight="bold" 
+              fontStyle="italic"
+              _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
+            >
+              PRE-REGISTER NOW
+            </Button>
           </HStack>
         </VStack>
       </Box>

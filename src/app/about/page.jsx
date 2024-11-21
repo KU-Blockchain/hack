@@ -37,10 +37,10 @@ const About = () => {
           ABOUT
         </Heading>
         <Text textAlign={"left"}>
-          The Midwest Block-a-Thon is a 6-hour blockchain-focused hackathon
+          The Midwest Block-a-Thon is a 20-hour blockchain-focused hackathon
           hosted at the University of Kansas aimed at fostering innovation and
           collaboration among students of all ages in the surrounding region.
-          This hackathon hopes to provide over 300 hackers with hands-on
+          This hackathon hopes to provide over 200 hackers with hands-on
           experience in web3 development, mentorship from industry experts, and
           a chance to win big prizes.
         </Text>

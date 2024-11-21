@@ -1,5 +1,5 @@
 "use client";
-import { Box, Heading, Text } from "@chakra-ui/react";
+import { Box, Heading, Text, Stack } from "@chakra-ui/react";
 import Navbar from "@/components/navbar";
 import { VStack, HStack, Image, Card } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
@@ -7,23 +7,45 @@ import Loading from "@/components/Loading";
 
 const Schedule = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const scheduleItems = [
+  const dayOneItems = [
+    { 
+      icon: "/icons/7.png", 
+      time: "4:00 PM - 6:00 PM", 
+      title: "Team Formation Happy Hour" 
+    },
     {
       icon: "/icons/1.png",
       time: "9:30 AM - 10:40 AM",
       title: "Registration Period",
     },
     {
-      icon: "/icons/2.png",
-      time: "10:00 AM - 10:40 PM",
-      title: "Catered Brunch",
-    },
-    {
       icon: "/icons/3.png",
       time: "10:40 AM - 11:00 AM",
       title: "Opening Ceremony",
     },
-    { icon: "/icons/4.png", time: "11:00 AM - 5:00 PM", title: "Hacking" },
+    { 
+      icon: "/icons/4.png", 
+      time: "7:00 PM", 
+      title: "Hacking Begins" 
+    },
+  ];
+
+  const dayTwoItems = [
+    {
+      icon: "/icons/1.png",
+      time: "12:00 AM",
+      title: "Late Night Snack",
+    },
+    {
+      icon: "/icons/2.png",
+      time: "8:00 AM",
+      title: "Catered Breakfast",
+    },
+    {
+      icon: "/icons/2.png",
+      time: "12:00 PM",
+      title: "Catered Lunch",
+    },
     {
       icon: "/icons/5.png",
       time: "5:00 PM - 5:30 PM",
@@ -32,9 +54,8 @@ const Schedule = () => {
     {
       icon: "/icons/6.png",
       time: "5:30 PM - 6:00 PM",
-      title: "Closing Ceremony",
+      title: "Awards + Closing Ceremony",
     },
-    { icon: "/icons/7.png", time: "7:00 PM - 9:00 PM", title: "Happy Hour" },
   ];
 
   useEffect(() => {
@@ -58,7 +79,7 @@ const Schedule = () => {
       <Box
         maxW="800px"
         mx="auto"
-        py="8"
+        py="3"
         px="4"
         textAlign="center"
         fontSize="xl"
@@ -70,34 +91,80 @@ const Schedule = () => {
         <Text>
           We aim to create a fantastic experience for all participants.
         </Text>
-
-        <VStack alignItems="center" spacing={4} align="stretch" p={5}>
-          {scheduleItems.map((item, index) => (
-            <Card.Root
-              color="dark"
-              bg="0"
-              width={{ base: "90vw", md: "70vw", lg: "40vw" }}
-              key={index}
-            >
-              <Card.Body>
-                <HStack gap={5}>
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    style={{ width: "50px", height: "50px" }}
-                  />
-                  <Box>
-                    <Heading color="dark" size="md">
-                      {item.title}
-                    </Heading>
-                    <Text color="dark">{item.time}</Text>
-                  </Box>
-                </HStack>
-              </Card.Body>
-            </Card.Root>
-          ))}
-        </VStack>
       </Box>
+      <Stack 
+          justify="center" 
+          direction={{ base: "column", md : "row" }}
+        >
+          <VStack alignItems="center" spacing={4} align="stretch" p={5}>
+            <Heading size="2xl" fontWeight="bold">
+              DAY 1
+            </Heading>
+            {dayOneItems.map((item, index) => (
+              <Card.Root
+                color="dark"
+                bg="0"
+                width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                key={index}
+              >
+                <Card.Body
+                  _hover={{ 
+                    borderColor: "transparent",
+                    borderWidth: "4px"
+                  }}
+                >
+                  <HStack gap={5}>
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      style={{ width: "60px", height: "60px" }}
+                    />
+                    <Box>
+                      <Heading color="dark" size="md">
+                        {item.title}
+                      </Heading>
+                      <Text color="dark">{item.time}</Text>
+                    </Box>
+                  </HStack>
+                </Card.Body>
+              </Card.Root>
+            ))}
+          </VStack>
+          <VStack alignItems="center" spacing={4} align="stretch" p={5}>
+            <Heading size="2xl" fontWeight="bold">
+              DAY 2
+            </Heading>
+            {dayTwoItems.map((item, index) => (
+              <Card.Root
+                color="dark"
+                bg="0"
+                width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                key={index}
+              >
+                <Card.Body
+                  _hover={{ 
+                    borderColor: "transparent",
+                    borderWidth: "4px"
+                  }}
+                >
+                  <HStack gap={5}>
+                    <Image
+                      src={item.icon}
+                      alt={item.title}
+                      style={{ width: "60px", height: "60px" }}
+                    />
+                    <Box>
+                      <Heading color="dark" size="md">
+                        {item.title}
+                      </Heading>
+                      <Text color="dark">{item.time}</Text>
+                    </Box>
+                  </HStack>
+                </Card.Body>
+              </Card.Root>
+            ))}
+          </VStack>
+        </Stack>
     </div>
   );
 };

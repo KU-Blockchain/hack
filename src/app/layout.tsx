@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Provider from "./provider";
 
 export const metadata: Metadata = {
-  title: "Midwest Block-a-Thon",
-  description: "A 6-hour hackathon presented by the KU Blockchain Institute",
+  title: "The Midwest Block-a-Thon",
+  description: "A 20-hour hackathon presented by the KU Blockchain Institute",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
