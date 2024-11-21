@@ -2,6 +2,11 @@
 import {
   Box,
   Button,
+  NativeSelectField,
+  NativeSelectRoot,
+  Stack,
+  Fieldset,
+  Input,
   HStack,
   Heading,
   Link,
@@ -17,6 +22,8 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@chakra-ui/react";
+import { Field } from "@/components/ui/field";
+import { Alert } from "@/components/ui/alert";
 import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
 
@@ -24,6 +31,53 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const pages = ["About", "FAQs", "Schedule", "Sponsors"];
   const [gifSrc, setGifSrc] = useState("/logo.gif");
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  interface FormData {
+    email: string;
+  }
+
+  interface ApiResponse {
+    message?: string;
+  }
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    setIsSubmitting(true);
+    e.preventDefault();
+    console.log(firstName, email);
+
+    try {
+      const response = await fetch('/api/sheets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email } as FormData),
+      });
+
+      const result: ApiResponse = await response.json();
+
+      if (response.ok) {
+        setIsSubmitting(false);
+        setMessage('Successfully subscribed!');
+        setFirstName('');
+        setEmail('');
+      } else {
+        setIsSubmitting(false);
+        setMessage(result.message || 'Failed to subscribe.');
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error('Error:', error);
+      setMessage('An error occurred while subscribing.');
+    }
+  };
+
+
+
   useEffect(() => {
     const handleLoad = () => {
       setGifSrc(`/logo.gif?timestamp=${Date.now()}`);
@@ -55,8 +109,6 @@ export default function Page() {
           <DialogTrigger asChild>
             <Button
               bg="white"
-              // w="100%"
-              // h="100%"
               p="0"
               w="10"
               h="10"
@@ -157,22 +209,92 @@ export default function Page() {
               </HStack>
             ))}
           </HStack>
+          <Button
+                bgGradient="to-r" 
+                gradientFrom="orange.100" 
+                gradientTo="red.100"
+                color="dark"
+                fontWeight="bold" 
+                fontStyle="italic"
+                _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
+              >
+                PRE-REGISTRATION COMING SOON
+              </Button>
 
-          <HStack>
-            {/* <Input variant="outline" placeholder="Enter Email" />
-            <Button>Apply Now</Button> */}
-            <Button
-              bgGradient="to-r" 
-              gradientFrom="orange.100" 
-              gradientTo="red.100"
-              color="dark"
-              fontWeight="bold" 
-              fontStyle="italic"
-              _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
+          {/* <DialogRoot placement="center" motionPreset="slide-in-bottom">
+            <DialogTrigger asChild>
+              <Button
+                bgGradient="to-r" 
+                gradientFrom="orange.100" 
+                gradientTo="red.100"
+                color="dark"
+                fontWeight="bold" 
+                fontStyle="italic"
+                _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
+              >
+                PRE-REGISTER NOW
+              </Button>
+            </DialogTrigger>
+            <DialogContent
+              bg="white"
+              boxShadow="xl"
+              pos="fixed"
+              zIndex="1300"
+              top="50%"
+              left="50%"
+              transform="translate(-50%, -50%)"
             >
-              PRE-REGISTER NOW
-            </Button>
-          </HStack>
+              <DialogHeader>
+                <DialogTitle>Pre-Register</DialogTitle>
+              </DialogHeader>
+              <form onSubmit={handleSubmit}>
+                <Fieldset.Root size="lg">
+                <DialogBody>
+                  <Stack>
+                    <Fieldset.Legend>Be the first to know when applications come out!</Fieldset.Legend>
+                    <Fieldset.HelperText>
+                      
+                    </Fieldset.HelperText>
+                  </Stack>
+
+                  <Fieldset.Content>
+                    <Field label="Email address" required>
+                      <Input name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    </Field>
+                  </Fieldset.Content>
+              </DialogBody>
+              <DialogFooter>
+                {message && (
+                    <Box
+                      
+                      w="100%"
+                      //pr={5}
+                    >
+                      <Alert 
+                      status="info"
+                      >
+                          {message}
+                      </Alert>
+                    </Box>
+                )}
+                <Button 
+                  type="submit" 
+                  //alignSelf="flex-start"
+                >
+                  Submit
+                </Button>
+                <DialogActionTrigger asChild>
+                  <Button 
+                    variant="outline"
+                    color="dark"
+                  >Close</Button>
+                </DialogActionTrigger>
+              </DialogFooter>
+              </Fieldset.Root>
+              </form>
+              <DialogCloseTrigger />
+            </DialogContent>
+          </DialogRoot> */}
         </VStack>
       </Box>
     </div>
