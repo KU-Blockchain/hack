@@ -31,50 +31,50 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const pages = ["About", "FAQs", "Schedule", "Sponsors"];
   const [gifSrc, setGifSrc] = useState("/logo.gif");
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [firstName, setFirstName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [message, setMessage] = useState('');
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  interface FormData {
-    email: string;
-  }
+  // interface FormData {
+  //   email: string;
+  // }
 
-  interface ApiResponse {
-    message?: string;
-  }
+  // interface ApiResponse {
+  //   message?: string;
+  // }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-    setIsSubmitting(true);
-    e.preventDefault();
-    console.log(firstName, email);
+  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  //   setIsSubmitting(true);
+  //   e.preventDefault();
+  //   console.log(firstName, email);
 
-    try {
-      const response = await fetch('/api/sheets', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email } as FormData),
-      });
+  //   try {
+  //     const response = await fetch('/api/sheets', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ email } as FormData),
+  //     });
 
-      const result: ApiResponse = await response.json();
+  //     const result: ApiResponse = await response.json();
 
-      if (response.ok) {
-        setIsSubmitting(false);
-        setMessage('Successfully subscribed!');
-        setFirstName('');
-        setEmail('');
-      } else {
-        setIsSubmitting(false);
-        setMessage(result.message || 'Failed to subscribe.');
-      }
-    } catch (error) {
-      setIsSubmitting(false);
-      console.error('Error:', error);
-      setMessage('An error occurred while subscribing.');
-    }
-  };
+  //     if (response.ok) {
+  //       setIsSubmitting(false);
+  //       setMessage('Successfully subscribed!');
+  //       setFirstName('');
+  //       setEmail('');
+  //     } else {
+  //       setIsSubmitting(false);
+  //       setMessage(result.message || 'Failed to subscribe.');
+  //     }
+  //   } catch (error) {
+  //     setIsSubmitting(false);
+  //     console.error('Error:', error);
+  //     setMessage('An error occurred while subscribing.');
+  //   }
+  // };
 
 
 
