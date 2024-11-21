@@ -50,7 +50,7 @@ export default function Page() {
 
   return (
     <div>
-      <Box textAlign="center" fontSize="xl" pt={{ base: "20vh", md: "30vh" }}>
+      <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
         <DialogRoot placement="center" motionPreset="slide-in-bottom">
           <DialogTrigger asChild>
             <Button
@@ -102,9 +102,16 @@ export default function Page() {
             </DialogBody>
             <DialogFooter>
               <DialogActionTrigger asChild>
-                <Button variant="outline">Close</Button>
+                <Button 
+                  variant="outline"
+                  color="dark"
+                >Close</Button>
               </DialogActionTrigger>
-              <Button onClick={() => window.open("https://kublockchain.com")}>
+              <Button 
+                onClick={() => window.open("https://kublockchain.com")}
+                bg="dark"
+                color="white"
+              >
                 Learn More
               </Button>
             </DialogFooter>
@@ -112,12 +119,12 @@ export default function Page() {
           </DialogContent>
         </DialogRoot>
 
-        <VStack gap="8">
+        <VStack gap="7">
           <Image
             alt="chakra logo"
             src={gifSrc}
-            width={{ base: 350, md: 520 }}
-            my={-85}
+            width={{ base: 360, md: 520 }}
+            my={{ base: -70, md: -85 }}
           />
 
           <Heading size="2xl" letterSpacing="tight">

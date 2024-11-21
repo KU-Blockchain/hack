@@ -58,7 +58,9 @@ const Navbar = () => {
   return (
     <>
       {isMobile ? (
-        <MenuRoot>
+        <MenuRoot
+          unstyled={true}
+        >
           <MenuTrigger asChild>
             <Box
               as="nav"
@@ -69,7 +71,7 @@ const Navbar = () => {
               width="75vw"
               borderRadius="full"
               py="4"
-              boxShadow="lg"
+              boxShadow="md"
               zIndex="10"
             >
               <HStack mx={7}>
@@ -84,6 +86,7 @@ const Navbar = () => {
                 <Text fontSize="2xl" mr={1}>
                   {pageName}
                 </Text>
+                <Spacer />
                 <Icon fontSize="xl">
                   <FaChevronDown />
                 </Icon>
@@ -99,17 +102,19 @@ const Navbar = () => {
             width="75vw"
             borderRadius="lg"
             py="1"
-            boxShadow="xl"
+            boxShadow="md"
             zIndex="10"
             bg="limestone"
+            data-highlighted="0"
           >
             {pages.map((page) => (
-              <MenuItem key={page} onClick={() => setPageName(page)}>
+              <MenuItem key={page} m={2} textAlign="center" onClick={() => setPageName(page)}>
                 <Link
                   href={`/${page.toLowerCase()}`}
                   color="dark"
                   _hover={{ textDecoration: "none", color: "gray.400" }}
                   fontSize="lg"
+                  textAlign="center"
                 >
                   {page}
                 </Link>

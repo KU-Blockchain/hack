@@ -23,7 +23,7 @@ const config = defineConfig({
   theme: {
     tokens: {
       colors: {
-        limestone: { DEFAULT: { value: "#d7d2cb" } },
+        limestone: { DEFAULT: { value: "#f3eeea" } },
         yellow: { DEFAULT: { value: "#e5a024" } },
         red: { DEFAULT: { value: "#cf4327" } },
         dark: { DEFAULT: { value: "#3b301b" } },
