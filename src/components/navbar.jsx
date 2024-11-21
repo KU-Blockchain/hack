@@ -71,7 +71,7 @@ const Navbar = () => {
               width="75vw"
               borderRadius="full"
               py="4"
-              boxShadow="md"
+              boxShadow="sm"
               zIndex="10"
             >
               <HStack mx={7}>
@@ -132,7 +132,7 @@ const Navbar = () => {
           borderRadius="full"
           px="10"
           py="4"
-          boxShadow="lg"
+          boxShadow="sm"
           zIndex="10"
         >
           <HStack spacing={4}>
