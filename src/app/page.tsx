@@ -2,11 +2,11 @@
 import {
   Box,
   Button,
-  // NativeSelectField,
-  // NativeSelectRoot,
-  // Stack,
-  // Fieldset,
-  // Input,
+  Spinner,
+  Center,
+  Stack,
+  Fieldset,
+  Input,
   HStack,
   Heading,
   Link,
@@ -22,8 +22,9 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@chakra-ui/react";
-// import { Field } from "@/components/ui/field";
+import { Field } from "@/components/ui/field";
 // import { Alert } from "@/components/ui/alert";
+import { Toaster, toaster } from "@/components/ui/toaster"
 import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
 
@@ -31,50 +32,62 @@ export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
   const pages = ["About", "FAQs", "Schedule", "Sponsors"];
   const [gifSrc, setGifSrc] = useState("/logo.gif");
-  // const [firstName, setFirstName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [message, setMessage] = useState('');
-  // const [isSubmitting, setIsSubmitting] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // interface FormData {
-  //   email: string;
-  // }
+  interface FormData {
+    email: string;
+  }
 
-  // interface ApiResponse {
-  //   message?: string;
-  // }
+  interface ApiResponse {
+    message?: string;
+  }
 
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
-  //   setIsSubmitting(true);
-  //   e.preventDefault();
-  //   console.log(firstName, email);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+    setIsSubmitting(true);
+    e.preventDefault();
+    console.log(firstName, email);
 
-  //   try {
-  //     const response = await fetch('/api/sheets', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ email } as FormData),
-  //     });
+    try {
+      const response = await fetch('/api/sheets', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email } as FormData),
+      });
 
-  //     const result: ApiResponse = await response.json();
+      const result: ApiResponse = await response.json();
 
-  //     if (response.ok) {
-  //       setIsSubmitting(false);
-  //       setMessage('Successfully subscribed!');
-  //       setFirstName('');
-  //       setEmail('');
-  //     } else {
-  //       setIsSubmitting(false);
-  //       setMessage(result.message || 'Failed to subscribe.');
-  //     }
-  //   } catch (error) {
-  //     setIsSubmitting(false);
-  //     console.error('Error:', error);
-  //     setMessage('An error occurred while subscribing.');
-  //   }
-  // };
+      if (response.ok) {
+        setIsSubmitting(false);
+        setMessage('Successfully joined the waitlist!');
+        toaster.create({
+          description: "Successfully joined the waitlist!",
+          type: "success",
+        });
+        setFirstName('');
+        setEmail('');
+      } else {
+        setIsSubmitting(false);
+        setMessage(result.message || 'Failed to subscribe.');
+        toaster.create({
+          description: result.message,
+          type: "error",
+        });
+      }
+    } catch (error) {
+      setIsSubmitting(false);
+      console.error('Error:', error);
+      setMessage('An error occurred while subscribing.');
+      toaster.create({
+        description: "An error occurred while subscribing.",
+        type: "error",
+      });
+    }
+  };
 
 
 
@@ -180,7 +193,7 @@ export default function Page() {
           />
 
           <Heading size="2xl" letterSpacing="tight">
-            March 29-30, 2025
+            March 29-30, 2025 <br></br> University of Kansas
           </Heading>
 
           <HStack>
@@ -209,7 +222,7 @@ export default function Page() {
               </HStack>
             ))}
           </HStack>
-          <Button
+          {/* <Button
                 bgGradient="to-r" 
                 gradientFrom="orange.100" 
                 gradientTo="red.100"
@@ -219,9 +232,9 @@ export default function Page() {
                 _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
               >
                 PRE-REGISTRATION COMING SOON
-              </Button>
+              </Button> */}
 
-          {/* <DialogRoot placement="center" motionPreset="slide-in-bottom">
+          <DialogRoot placement="center" motionPreset="slide-in-bottom">
             <DialogTrigger asChild>
               <Button
                 bgGradient="to-r" 
@@ -232,7 +245,7 @@ export default function Page() {
                 fontStyle="italic"
                 _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
               >
-                PRE-REGISTER NOW
+                JOIN THE WAITLIST
               </Button>
             </DialogTrigger>
             <DialogContent
@@ -245,7 +258,7 @@ export default function Page() {
               transform="translate(-50%, -50%)"
             >
               <DialogHeader>
-                <DialogTitle>Pre-Register</DialogTitle>
+                <DialogTitle>Join the Midwest Block-a-Thon Waitlist</DialogTitle>
               </DialogHeader>
               <form onSubmit={handleSubmit}>
                 <Fieldset.Root size="lg">
@@ -263,20 +276,9 @@ export default function Page() {
                     </Field>
                   </Fieldset.Content>
               </DialogBody>
-              <DialogFooter>
-                {message && (
-                    <Box
-                      
-                      w="100%"
-                      //pr={5}
-                    >
-                      <Alert 
-                      status="info"
-                      >
-                          {message}
-                      </Alert>
-                    </Box>
-                )}
+              <DialogFooter
+                mt={-2}
+              >
                 <Button 
                   type="submit" 
                   //alignSelf="flex-start"
@@ -293,10 +295,18 @@ export default function Page() {
               </Fieldset.Root>
               </form>
               <DialogCloseTrigger />
+              {isSubmitting && (
+                <Box pos="absolute" inset="0" bg="bg/80">
+                  <Center h="full">
+                    <Spinner size="lg" borderWidth="4px" />
+                  </Center>
+                </Box>
+              )}
             </DialogContent>
-          </DialogRoot> */}
+          </DialogRoot>
         </VStack>
       </Box>
+      <Toaster />
     </div>
   );
 }

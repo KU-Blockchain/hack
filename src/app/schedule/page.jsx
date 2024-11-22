@@ -15,12 +15,12 @@ const Schedule = () => {
     },
     {
       icon: "/icons/1.png",
-      time: "9:30 AM - 10:40 AM",
+      time: "5:00 PM - 6:30 PM",
       title: "Registration Period",
     },
     {
       icon: "/icons/3.png",
-      time: "10:40 AM - 11:00 AM",
+      time: "6:30 PM",
       title: "Opening Ceremony",
     },
     { 
@@ -32,7 +32,7 @@ const Schedule = () => {
 
   const dayTwoItems = [
     {
-      icon: "/icons/1.png",
+      icon: "/icons/2.png",
       time: "12:00 AM",
       title: "Late Night Snack",
     },
@@ -48,12 +48,12 @@ const Schedule = () => {
     },
     {
       icon: "/icons/5.png",
-      time: "5:00 PM - 5:30 PM",
+      time: "3:00 PM - 4:00 PM",
       title: "Break & Judging Period",
     },
     {
       icon: "/icons/6.png",
-      time: "5:30 PM - 6:00 PM",
+      time: "4:00 PM",
       title: "Awards + Closing Ceremony",
     },
   ];

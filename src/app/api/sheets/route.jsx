@@ -26,7 +26,7 @@ export async function POST(request) {
 
     for (const row of checkEmail.data.values) {
       if (row[0] === email) {
-        return NextResponse.json({ message: 'Email already subscribed' }, { status: 400 });
+        return NextResponse.json({ message: 'Email already joined' }, { status: 400 });
       }
     }
 
@@ -39,9 +39,9 @@ export async function POST(request) {
       },
     });
     if (response.status == '200') {
-      return NextResponse.json({ message: 'Successfully subscribed!' });
+      return NextResponse.json({ message: 'Successfully joined!' });
     }
-    return NextResponse.json({ message: 'Failed to add email to mailing list' }, { status: 500 });
+    return NextResponse.json({ message: 'Failed to add email to the waitlist' }, { status: 500 });
   } catch (error) {
     console.error('Error adding email to Google Sheet:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
