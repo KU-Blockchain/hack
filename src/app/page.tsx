@@ -34,7 +34,7 @@ export default function Page() {
   const [gifSrc, setGifSrc] = useState("/logo.gif");
   const [firstName, setFirstName] = useState('');
   const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  //const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   interface FormData {
@@ -63,7 +63,7 @@ export default function Page() {
 
       if (response.ok) {
         setIsSubmitting(false);
-        setMessage('Successfully joined the waitlist!');
+        //setMessage('Successfully joined the waitlist!');
         toaster.create({
           description: "Successfully joined the waitlist!",
           type: "success",
@@ -72,7 +72,7 @@ export default function Page() {
         setEmail('');
       } else {
         setIsSubmitting(false);
-        setMessage(result.message || 'Failed to subscribe.');
+        //setMessage(result.message || 'Failed to subscribe.');
         toaster.create({
           description: result.message,
           type: "error",
@@ -81,7 +81,7 @@ export default function Page() {
     } catch (error) {
       setIsSubmitting(false);
       console.error('Error:', error);
-      setMessage('An error occurred while subscribing.');
+      //setMessage('An error occurred while subscribing.');
       toaster.create({
         description: "An error occurred while subscribing.",
         type: "error",
