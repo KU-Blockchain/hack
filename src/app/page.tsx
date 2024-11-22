@@ -264,7 +264,7 @@ export default function Page() {
                 <Fieldset.Root size="lg">
                 <DialogBody>
                   <Stack>
-                    <Fieldset.Legend>Be the first to know when applications come out!</Fieldset.Legend>
+                    <Fieldset.Legend color="dark">Be the first to know when applications come out!</Fieldset.Legend>
                     <Fieldset.HelperText>
                       
                     </Fieldset.HelperText>
@@ -281,6 +281,7 @@ export default function Page() {
               >
                 <Button 
                   bg="dark"
+                  color="white"
                   type="submit" 
                   //alignSelf="flex-start"
                 >
