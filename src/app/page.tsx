@@ -280,6 +280,7 @@ export default function Page() {
                 mt={-2}
               >
                 <Button 
+                  bg="dark"
                   type="submit" 
                   //alignSelf="flex-start"
                 >
