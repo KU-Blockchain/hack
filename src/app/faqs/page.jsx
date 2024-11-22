@@ -24,7 +24,7 @@ export default function FAQs() {
     {
       value: "question3",
       title: "How does the application process work?",
-      text: "Once applications open, you'll find them by clicking the 'Apply Now' button on our homepage and filling out the required information. For now, please down our waitlist so you can be the first to know when applications open!",
+      text: "Once applications open, you'll find them by clicking the 'Apply Now' button on our homepage and filling out the required information. For now, please join our waitlist so you can be the first to know when applications open!",
     },
     {
       value: "question4",
