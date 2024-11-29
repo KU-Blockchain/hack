@@ -234,7 +234,7 @@ export default function Page() {
                 PRE-REGISTRATION COMING SOON
               </Button> */}
 
-          <DialogRoot placement="center" motionPreset="slide-in-bottom">
+          <DialogRoot placement="center" motionPreset="slide-in-bottom" id="waitlist">
             <DialogTrigger asChild>
               <Button
                 bgGradient="to-r" 
@@ -279,6 +279,12 @@ export default function Page() {
               <DialogFooter
                 mt={-2}
               >
+                <DialogActionTrigger asChild>
+                  <Button 
+                    variant="outline"
+                    color="dark"
+                  >Close</Button>
+                </DialogActionTrigger>
                 <Button 
                   bg="dark"
                   color="white"
@@ -287,18 +293,12 @@ export default function Page() {
                 >
                   Submit
                 </Button>
-                <DialogActionTrigger asChild>
-                  <Button 
-                    variant="outline"
-                    color="dark"
-                  >Close</Button>
-                </DialogActionTrigger>
               </DialogFooter>
               </Fieldset.Root>
               </form>
               <DialogCloseTrigger />
               {isSubmitting && (
-                <Box pos="absolute" inset="0" bg="bg/80">
+                <Box pos="absolute" inset="0" bg="rgba(255, 255, 255, 0.8)">
                   <Center h="full">
                     <Spinner size="lg" borderWidth="4px" />
                   </Center>

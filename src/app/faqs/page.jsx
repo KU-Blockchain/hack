@@ -35,7 +35,7 @@ export default function FAQs() {
       value: "question5",
       title:
         "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
-      text: "No, Mercury will not be in retrograde! And we will have outlets, wifi, and anything else your tech might need!",
+      text: "Mercury is slated to be in retrograde March 14 to April 6, but do not fear! We will have outlets, wifi, and anything else your tech might need to ensure no disruptive events occur during your hacking!",
     },
     {
       value: "question6",

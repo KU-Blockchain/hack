@@ -10,23 +10,33 @@ const Schedule = () => {
   const dayOneItems = [
     { 
       icon: "/icons/7.png", 
-      time: "4:00 PM - 6:00 PM", 
-      title: "Team Formation Happy Hour" 
+      time: "1:00 PM - 3:00 PM", 
+      title: "Team Formation Social" 
+    },
+    { 
+      icon: "/icons/7.png", 
+      time: "3:00 PM - 5:00 PM", 
+      title: "Sponsor EXPO and Workshops" 
     },
     {
       icon: "/icons/1.png",
-      time: "5:00 PM - 6:30 PM",
+      time: "3:00 PM - 5:15 PM",
       title: "Registration Period",
     },
     {
       icon: "/icons/3.png",
-      time: "6:30 PM",
+      time: "5:30 PM",
       title: "Opening Ceremony",
     },
     { 
       icon: "/icons/4.png", 
-      time: "7:00 PM", 
+      time: "6:00 PM", 
       title: "Hacking Begins" 
+    },
+    { 
+      icon: "/icons/4.png", 
+      time: "11:00 PM", 
+      title: "Mini-Event" 
     },
   ];
 
@@ -35,6 +45,11 @@ const Schedule = () => {
       icon: "/icons/2.png",
       time: "12:00 AM",
       title: "Late Night Snack",
+    },
+    {
+      icon: "/icons/2.png",
+      time: "6:00 AM",
+      title: "Zen Morning Yoga",
     },
     {
       icon: "/icons/2.png",
@@ -47,13 +62,18 @@ const Schedule = () => {
       title: "Catered Lunch",
     },
     {
+      icon: "/icons/2.png",
+      time: "2:00 PM",
+      title: "Project Submission Hard Deadline",
+    },
+    {
       icon: "/icons/5.png",
-      time: "3:00 PM - 4:00 PM",
-      title: "Break & Judging Period",
+      time: "2:00 PM - 3:00 PM",
+      title: "Live Demos with Sponsor Tracks",
     },
     {
       icon: "/icons/6.png",
-      time: "4:00 PM",
+      time: "3:30 PM",
       title: "Awards + Closing Ceremony",
     },
   ];
@@ -102,28 +122,30 @@ const Schedule = () => {
             </Heading>
             {dayOneItems.map((item, index) => (
               <Card.Root
+                cursor="default"
                 color="dark"
                 bg="0"
-                width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                //width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                width={{ base: "82vw", md: "40vw", lg: "25vw" }}
+                _hover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "md",
+                }}
+                transition="transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out"
                 key={index}
               >
-                <Card.Body
-                  _hover={{ 
-                    borderColor: "transparent",
-                    borderWidth: "4px"
-                  }}
-                >
-                  <HStack gap={5}>
-                    <Image
+                <Card.Body>
+                  <HStack gap={5} alignSelf="center">
+                    {/* <Image
                       src={item.icon}
                       alt={item.title}
                       style={{ width: "60px", height: "60px" }}
-                    />
+                    /> */}
                     <Box>
-                      <Heading color="dark" size="md">
+                      <Heading textAlign="center" color="dark" size="md">
                         {item.title}
                       </Heading>
-                      <Text color="dark">{item.time}</Text>
+                      <Text textAlign="center" color="dark">{item.time}</Text>
                     </Box>
                   </HStack>
                 </Card.Body>
@@ -136,28 +158,30 @@ const Schedule = () => {
             </Heading>
             {dayTwoItems.map((item, index) => (
               <Card.Root
+                cursor="default"
                 color="dark"
                 bg="0"
-                width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                //width={{ base: "90vw", md: "35vw", lg: "29vw" }}
+                width={{ base: "82vw", md: "40vw", lg: "25vw" }}
+                _hover={{
+                  transform: "scale(1.05)",
+                  boxShadow: "md",
+                }}
+                transition="transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out"
                 key={index}
               >
-                <Card.Body
-                  _hover={{ 
-                    borderColor: "transparent",
-                    borderWidth: "4px"
-                  }}
-                >
-                  <HStack gap={5}>
-                    <Image
+                <Card.Body>
+                  <HStack gap={5} alignSelf="center">
+                    {/* <Image
                       src={item.icon}
                       alt={item.title}
                       style={{ width: "60px", height: "60px" }}
-                    />
+                    /> */}
                     <Box>
-                      <Heading color="dark" size="md">
+                      <Heading textAlign="center" color="dark" size="md">
                         {item.title}
                       </Heading>
-                      <Text color="dark">{item.time}</Text>
+                      <Text textAlign="center" color="dark">{item.time}</Text>
                     </Box>
                   </HStack>
                 </Card.Body>
