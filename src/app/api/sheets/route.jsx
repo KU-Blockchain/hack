@@ -25,7 +25,7 @@ export async function POST(request) {
     });
 
     for (const row of checkEmail.data.values) {
-      if (row[0] === email) {
+      if (row[0] === email.toLowerCase()) {
         return NextResponse.json({ message: 'Email already joined' }, { status: 400 });
       }
     }
