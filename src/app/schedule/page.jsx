@@ -131,7 +131,7 @@ const Schedule = () => {
                 color="dark"
                 bg="0"
                 //width={{ base: "90vw", md: "35vw", lg: "29vw" }}
-                width={{ base: "82vw", md: "40vw", lg: "25vw" }}
+                width={{ base: "85vw", md: "40vw", lg: "25vw" }}
                 _hover={{
                   transform: "scale(1.05)",
                   boxShadow: "md",
@@ -167,7 +167,7 @@ const Schedule = () => {
                 color="dark"
                 bg="0"
                 //width={{ base: "90vw", md: "35vw", lg: "29vw" }}
-                width={{ base: "82vw", md: "40vw", lg: "25vw" }}
+                width={{ base: "85vw", md: "40vw", lg: "25vw" }}
                 _hover={{
                   transform: "scale(1.05)",
                   boxShadow: "md",

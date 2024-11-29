@@ -58,9 +58,7 @@ const Navbar = () => {
   return (
     <>
       {isMobile ? (
-        <MenuRoot
-          unstyled={true}
-        >
+        <MenuRoot unstyled={true}>
           <MenuTrigger asChild>
             <Box
               as="nav"
@@ -73,17 +71,13 @@ const Navbar = () => {
               py="4"
               boxShadow="sm"
               zIndex="10"
-              bgGradient="to-r" 
-              gradientFrom="orange.100" 
+              bgGradient="to-r"
+              gradientFrom="orange.100"
               gradientTo="red.100"
             >
               <HStack mx={7}>
                 <Link href="/">
-                  <Image
-                    src="/icon_small.png"
-                    alt="Icon"
-                    width="50px"
-                  />
+                  <Image src="/icon_small.png" alt="Icon" width="50px" />
                 </Link>
                 <Spacer />
                 <Text fontSize="2xl" mr={1}>
@@ -111,9 +105,16 @@ const Navbar = () => {
             data-highlighted="0"
           >
             {pages.map((page) => (
-              <MenuItem key={page} m={2} textAlign="center" onClick={() => setPageName(page)}>
+              <MenuItem
+                key={page}
+                m={2}
+                textAlign="center"
+                onClick={() => {
+                  setPageName(page);
+                  window.location.href = `/${page.toLowerCase()}`;
+                }}
+              >
                 <Link
-                  href={`/${page.toLowerCase()}`}
                   color="dark"
                   _hover={{ textDecoration: "none", color: "gray.400" }}
                   fontSize="lg"
@@ -137,17 +138,13 @@ const Navbar = () => {
           py="4"
           boxShadow="sm"
           zIndex="10"
-          bgGradient="to-r" 
-          gradientFrom="orange.100" 
+          bgGradient="to-r"
+          gradientFrom="orange.100"
           gradientTo="red.100"
         >
           <HStack spacing={4}>
             <Link href="/" mr={2} alignItems="center">
-              <Image
-                src="/icon_small.png"
-                alt="Icon"
-                width="50px"
-              />
+              <Image src="/icon_small.png" alt="Icon" width={{ base: "40px", md: "40px", lg: "50px" }} />
             </Link>
 
             {/* Navigation Links */}
@@ -159,6 +156,7 @@ const Navbar = () => {
                   color="dark"
                   _hover={{ textDecoration: "none", color: "gray.400" }}
                   fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                  onClick={() => setPageName(page)}
                 >
                   {page}
                 </Link>
