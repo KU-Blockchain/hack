@@ -1,2 +1,3 @@
 User-agent: *
-Disallow: /pitch
+Disallow: /pitch_deck
+Disallow: /sponsor_info
