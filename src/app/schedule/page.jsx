@@ -114,7 +114,7 @@ const Schedule = () => {
           SCHEDULE
         </Heading>
         <Text>
-          We aim to create a fantastic experience for all participants.
+          Our schedule is subject to change while we finalize our locations and partnerships.
         </Text>
       </Box>
       <Stack 
