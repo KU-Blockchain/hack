@@ -24,16 +24,16 @@ import {
 } from "@chakra-ui/react";
 import { Field } from "@/components/ui/field";
 // import { Alert } from "@/components/ui/alert";
-import { Toaster, toaster } from "@/components/ui/toaster"
+import { Toaster, toaster } from "@/components/ui/toaster";
 import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
 
 export default function Page() {
   const [isLoading, setIsLoading] = useState(true);
-  const pages = ["About", "FAQs", "Schedule", "Sponsors"];
+  const pages = ["About", "FAQs", "Schedule"];
   const [gifSrc, setGifSrc] = useState("/logo.gif");
-  const [firstName, setFirstName] = useState('');
-  const [email, setEmail] = useState('');
+  const [firstName, setFirstName] = useState("");
+  const [email, setEmail] = useState("");
   //const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -45,16 +45,18 @@ export default function Page() {
     message?: string;
   }
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>): Promise<void> => {
+  const handleSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ): Promise<void> => {
     setIsSubmitting(true);
     e.preventDefault();
     console.log(firstName, email);
 
     try {
-      const response = await fetch('/api/sheets', {
-        method: 'POST',
+      const response = await fetch("/api/sheets", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ email } as FormData),
       });
@@ -68,8 +70,8 @@ export default function Page() {
           description: "Successfully joined the waitlist!",
           type: "success",
         });
-        setFirstName('');
-        setEmail('');
+        setFirstName("");
+        setEmail("");
       } else {
         setIsSubmitting(false);
         //setMessage(result.message || 'Failed to subscribe.');
@@ -80,7 +82,7 @@ export default function Page() {
       }
     } catch (error) {
       setIsSubmitting(false);
-      console.error('Error:', error);
+      console.error("Error:", error);
       //setMessage('An error occurred while subscribing.');
       toaster.create({
         description: "An error occurred while subscribing.",
@@ -88,8 +90,6 @@ export default function Page() {
       });
     }
   };
-
-
 
   useEffect(() => {
     const handleLoad = () => {
@@ -147,7 +147,9 @@ export default function Page() {
             transform="translate(-50%, -50%)"
           >
             <DialogHeader>
-              <DialogTitle>Made with 🔥 by the KU Blockchain Institute</DialogTitle>
+              <DialogTitle>
+                Made with 🔥 by the KU Blockchain Institute
+              </DialogTitle>
             </DialogHeader>
             <DialogBody>
               <HStack>
@@ -167,12 +169,11 @@ export default function Page() {
             </DialogBody>
             <DialogFooter>
               <DialogActionTrigger asChild>
-                <Button 
-                  variant="outline"
-                  color="dark"
-                >Close</Button>
+                <Button variant="outline" color="dark">
+                  Close
+                </Button>
               </DialogActionTrigger>
-              <Button 
+              <Button
                 onClick={() => window.open("https://kublockchain.com")}
                 bg="dark"
                 color="white"
@@ -234,16 +235,25 @@ export default function Page() {
                 PRE-REGISTRATION COMING SOON
               </Button> */}
 
-          <DialogRoot placement="center" motionPreset="slide-in-bottom" id="waitlist">
+          <DialogRoot
+            placement="center"
+            motionPreset="slide-in-bottom"
+            id="waitlist"
+          >
             <DialogTrigger asChild>
               <Button
-                bgGradient="to-r" 
-                gradientFrom="orange.100" 
+                bgGradient="to-r"
+                gradientFrom="orange.100"
                 gradientTo="red.100"
                 color="dark"
-                fontWeight="bold" 
+                fontWeight="bold"
                 fontStyle="italic"
-                _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
+                _hover={{
+                  bgGradient: "to-r",
+                  gradientFrom: "orange.200",
+                  gradientTo: "red.200",
+                  borderRadius: "full",
+                }}
               >
                 JOIN THE WAITLIST
               </Button>
@@ -258,43 +268,47 @@ export default function Page() {
               transform="translate(-50%, -50%)"
             >
               <DialogHeader>
-                <DialogTitle>Join the Midwest Block-a-Thon Waitlist</DialogTitle>
+                <DialogTitle>
+                  Join the Midwest Block-a-Thon Waitlist
+                </DialogTitle>
               </DialogHeader>
               <form onSubmit={handleSubmit}>
                 <Fieldset.Root size="lg">
-                <DialogBody>
-                  <Stack>
-                    <Fieldset.Legend color="dark">Be the first to know when applications come out!</Fieldset.Legend>
-                    <Fieldset.HelperText>
-                      
-                    </Fieldset.HelperText>
-                  </Stack>
+                  <DialogBody>
+                    <Stack>
+                      <Fieldset.Legend color="dark">
+                        Be the first to know when applications come out!
+                      </Fieldset.Legend>
+                      <Fieldset.HelperText></Fieldset.HelperText>
+                    </Stack>
 
-                  <Fieldset.Content>
-                    <Field label="Email address" required>
-                      <Input name="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </Field>
-                  </Fieldset.Content>
-              </DialogBody>
-              <DialogFooter
-                mt={-2}
-              >
-                <DialogActionTrigger asChild>
-                  <Button 
-                    variant="outline"
-                    color="dark"
-                  >Close</Button>
-                </DialogActionTrigger>
-                <Button 
-                  bg="dark"
-                  color="white"
-                  type="submit" 
-                  //alignSelf="flex-start"
-                >
-                  Submit
-                </Button>
-              </DialogFooter>
-              </Fieldset.Root>
+                    <Fieldset.Content>
+                      <Field label="Email address" required>
+                        <Input
+                          name="email"
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </Field>
+                    </Fieldset.Content>
+                  </DialogBody>
+                  <DialogFooter mt={-2}>
+                    <DialogActionTrigger asChild>
+                      <Button variant="outline" color="dark">
+                        Close
+                      </Button>
+                    </DialogActionTrigger>
+                    <Button
+                      bg="dark"
+                      color="white"
+                      type="submit"
+                      //alignSelf="flex-start"
+                    >
+                      Submit
+                    </Button>
+                  </DialogFooter>
+                </Fieldset.Root>
               </form>
               <DialogCloseTrigger />
               {isSubmitting && (
