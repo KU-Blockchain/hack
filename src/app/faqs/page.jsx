@@ -42,6 +42,11 @@ export default function FAQs() {
       title: "What if I don't know anything about blockchain?",
       text: "Building is the best way to learn! This event is totally open to those new to blockchain, and we will share a ton of resources with you ahead of time to make sure you know the best ways to start preparing.",
     },
+    {
+      value: "question7",
+      title: "Will there be places for me to sleep?",
+      text: "We will have at least one room as a dedicated quiet, sleeping space. We do recommend that you bring your own sleeping bag if you plan to stay overnight.",
+    },
   ];
 
   return (

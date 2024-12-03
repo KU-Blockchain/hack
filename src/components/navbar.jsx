@@ -20,7 +20,7 @@ import { FaChevronDown } from "react-icons/fa6";
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const pages = ["About", "FAQs", "Schedule", "Sponsors"];
+  const pages = ["About", "FAQs", "Schedule"];
   const [pageName, setPageName] = useState("Home");
   const path = usePathname();
 
@@ -41,9 +41,9 @@ const Navbar = () => {
         case "/schedule":
           setPageName("Schedule");
           break;
-        case "/sponsors":
-          setPageName("Sponsors");
-          break;
+        // case "/sponsors":
+        //   setPageName("Sponsors");
+        //   break;
         default:
           setPageName("Home");
       }
@@ -52,7 +52,7 @@ const Navbar = () => {
 
   // Avoid rendering until the client is ready
   if (!isReady) {
-    return null; 
+    return null;
   }
 
   return (
@@ -144,7 +144,11 @@ const Navbar = () => {
         >
           <HStack spacing={4}>
             <Link href="/" mr={2} alignItems="center">
-              <Image src="/icon_small.png" alt="Icon" width={{ base: "40px", md: "40px", lg: "50px" }} />
+              <Image
+                src="/icon_small.png"
+                alt="Icon"
+                width={{ base: "40px", md: "40px", lg: "50px" }}
+              />
             </Link>
 
             {/* Navigation Links */}
