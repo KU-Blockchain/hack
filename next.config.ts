@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/pitch_deck',
-        destination: 'https://drive.google.com/file/d/1XbCJU2JZWGG0IoPcVB5_EieFHwrlbIYS/view',
+        destination: 'https://drive.google.com/file/d/1fa9-AcEG87KAztrUdX1aTKR4lPwEj-gU/view?usp=sharing',
         permanent: false, // Use true for permanent (308) redirect
       },
       {
