@@ -104,8 +104,16 @@ const ScheduleViewer = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <Button onClick={() => setQuery("")}>Clear</Button>
-          {/* <Button>Add to Calendar</Button> */}
+          <Button 
+            onClick={() => setQuery("")}
+            bg="dark"
+            color="white"
+          >Clear</Button>
+          {/* <Button
+            onClick={() => setQuery("")}
+            bg="dark"
+            color="white"
+          >Add to Calendar</Button> */}
         </HStack>
 
         {/* Category Buttons */}
