@@ -14,7 +14,7 @@ interface ScheduleItem {
 }
 
 export async function GET() {
-  let returnData: ScheduleItem[] = [];
+  const returnData: ScheduleItem[] = [];
 
   const auth = new google.auth.GoogleAuth({
     credentials: {
