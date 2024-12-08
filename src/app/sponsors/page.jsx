@@ -1,6 +1,6 @@
 "use client";
 import { Box, Heading, Text, Link } from "@chakra-ui/react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
 

@@ -7,7 +7,7 @@ import {
   AccordionItemContent,
   Text,
 } from "@chakra-ui/react";
-import Navbar from "@/components/navbar";
+import Navbar from "@/components/Navbar";
 
 export default function FAQs() {
   const faqs = [

@@ -15,7 +15,7 @@ import {
   Spacer,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import { FaChevronDown } from "react-icons/fa6";
+import { FaChevronDown, FaChevronLeft } from "react-icons/fa6";
 
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering

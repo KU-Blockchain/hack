@@ -20,7 +20,7 @@ export async function POST(request) {
  
   try {
     const checkEmail = await sheets.spreadsheets.values.get({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId: process.env.GOOGLE_MAILING_LIST_SHEET_ID,
       range: 'Sheet1!A:A',
     });
 
@@ -31,7 +31,7 @@ export async function POST(request) {
     }
 
     const response = await sheets.spreadsheets.values.append({
-      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      spreadsheetId: process.env.GOOGLE_MAILING_LIST_SHEET_ID,
       range: 'Sheet1!A:A',
       valueInputOption: 'RAW',
       resource: {
