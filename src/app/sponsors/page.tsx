@@ -1,28 +1,18 @@
-"use client";
 import { Box, Heading, Text, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SPONSORS | The Midwest Block-Thon",
+  description: "Learn about the sponsors of the Midwest Block-a-Thon.",
+};
 
 const Sponsors = () => {
-  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    if (document.readyState === "complete") {
-      setIsLoading(false);
-    } else {
-      const handleLoad = () => {
-        setIsLoading(false);
-      };
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
-  }, []);
-  if (isLoading) {
-    return <Loading />;
-  }
   return (
     <div>
+      <Loading />
       <Navbar />
       <Box
         maxW="800px"

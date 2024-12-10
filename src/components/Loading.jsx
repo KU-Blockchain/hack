@@ -1,8 +1,13 @@
 "use client";
-
+import { useLoading } from "@/utils/useLoading";
 import { Box, Image } from "@chakra-ui/react";
 
 const Loading = () => {
+  const isLoading = useLoading();
+
+  if (!isLoading) {
+    return null;
+  }
   return (
     <Box
       display="flex"

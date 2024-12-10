@@ -1,30 +1,23 @@
-"use client";
 import { Box, Heading, Text, Image, List } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
-import { LuCheckCircle, LuCircleDashed } from "react-icons/lu";
 import Loading from "@/components/Loading";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "ABOUT | The Midwest Block-a-Thon",
+  description: "Learn more about the Midwest Block-a-Thon",
+  openGraph: {
+    title: "ABOUT | The Midwest Block-a-Thon",
+    description: "Learn more about the Midwest Block-a-Thon, a 20-hour hackathon hosted by the KU Blockchain Institute.",
+    url: "https://hack.kublockchain.com/about",
+    type: "website",
+  },
+};
 
 const About = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    if (document.readyState === "complete") {
-      setIsLoading(false);
-    } else {
-      const handleLoad = () => {
-        setIsLoading(false);
-      };
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
-  }, []);
-
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
-    <div>
+    <>
+      <Loading />
       <Navbar />
       <Box
         maxW="800px"
@@ -52,13 +45,13 @@ const About = () => {
           with hands-on experience in web3 development, mentorship from industry
           experts, and a chance to win big prizes.
         </Text>
-        <List.Root spacing={3} textAlign="left" mx={2} my={4}>
+        <List.Root textAlign="left" mx={2} my={4}>
           <List.Item mx={2} my={4}>
             The Block-a-Thon will be hosted at the{" "}
             <Box as="span" fontWeight="bold">
               University of Kansas
             </Box>
-            , where students will be welcome to stay overnight to hack.
+            , where hackers will be welcome to stay overnight to hack.
           </List.Item>
           <List.Item mx={2} my={4}>
             Meals and snacks will be provided throughout the event, and dietary
@@ -73,7 +66,7 @@ const About = () => {
           </List.Item>
         </List.Root>
       </Box>
-    </div>
+    </>
   );
 };
 

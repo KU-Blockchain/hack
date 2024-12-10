@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { ChakraProvider, defaultConfig, defineConfig, createSystem, defineRecipe } from "@chakra-ui/react"
 import { ThemeProvider } from "next-themes"
 

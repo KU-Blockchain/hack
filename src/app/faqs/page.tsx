@@ -7,15 +7,23 @@ import {
   AccordionItemContent,
   Text,
 } from "@chakra-ui/react";
+import { Metadata } from "next";
 import Navbar from "@/components/Navbar";
+import Loading from "@/components/Loading";
+
+export const metadata: Metadata = {
+  title: "FAQs | The Midwest Block-Thon",
+  description: "Frequently asked questions about the Midwest Block-a-Thon.",
+  openGraph: {
+    title: "FAQs | The Midwest Block-a-Thon",
+    description: "Frequently asked questions about the Midwest Block-a-Thon, a 20-hour hackathon hosted by the KU Blockchain Institute.",
+    url: "https://hack.kublockchain.com/faqs",
+    type: "website",
+  },
+};
 
 export default function FAQs() {
   const faqs = [
-    // {
-    //   value: "question1",
-    //   title: "What is a hackathon?",
-    //   text: "This is Major League Hacking's definition: Hacking refers to inventive problem-solving. Essentially, we like to think of hackathons as invention marathons, where people gather to collaborate on all types of software projects.",
-    // },
     {
       value: "question2",
       title: "Who can attend?",
@@ -50,7 +58,8 @@ export default function FAQs() {
   ];
 
   return (
-    <div>
+    <>
+      <Loading />
       <Navbar />
       <Box
         maxW="800px"
@@ -82,6 +91,6 @@ export default function FAQs() {
           ))}
         </AccordionRoot>
       </Box>
-    </div>
+    </>
   );
 }

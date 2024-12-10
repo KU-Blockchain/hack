@@ -1,30 +1,25 @@
-"use client";
-import { Box, Heading, Text, Stack } from "@chakra-ui/react";
+import { Box, Heading, Text } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
-import { useState, useEffect } from "react";
 import Loading from "@/components/Loading";
 import Schedule from "@/components/Schedule";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SCHEDULE | The Midwest Block-Thon",
+  description: "View the schedule for the Midwest Block-a-Thon.",
+  openGraph: {
+    title: "SCHEDULE | The Midwest Block-a-Thon",
+    description: "View the schedule for the Midwest Block-a-Thon, a 20-hour hackathon hosted by the KU Blockchain Institute.",
+    url: "https://hack.kublockchain.com/schedule",
+    type: "website",
+  },
+};
 
 const SchedulePage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (document.readyState === "complete") {
-      setIsLoading(false);
-    } else {
-      const handleLoad = () => {
-        setIsLoading(false);
-      };
-      window.addEventListener("load", handleLoad);
-      return () => window.removeEventListener("load", handleLoad);
-    }
-  }, []);
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
+    <>
     <div>
+      <Loading />
       <Navbar />
       <Box
         maxW="800px"
@@ -44,6 +39,7 @@ const SchedulePage = () => {
         <Schedule />
       </Box>
     </div>
+    </>
   );
 };
 
