@@ -70,7 +70,7 @@ const Navbar = () => {
               borderRadius="full"
               py="4"
               boxShadow="sm"
-              zIndex="10"
+              zIndex="10" // higher values appearing on top of lower values
               bgGradient="to-r"
               gradientFrom="orange.100"
               gradientTo="red.100"
