@@ -1,13 +1,27 @@
 "use client";
-import { useLoading } from "@/utils/useLoading";
+import { useEffect, useState } from "react";
 import { Box, Image } from "@chakra-ui/react";
 
 const Loading = () => {
-  const isLoading = useLoading();
+  const [isLoading, setIsLoading] = useState(true);
+  //const isLoading = useLoading();
+
+  useEffect(() => {
+    if (document.readyState === "complete") {
+      setIsLoading(false);
+    } else {
+      const handleLoad = () => {
+        setIsLoading(false);
+      };
+      window.addEventListener("load", handleLoad);
+      return () => window.removeEventListener("load", handleLoad);
+    }
+  }, []);
 
   if (!isLoading) {
     return null;
   }
+
   return (
     <Box
       display="flex"
@@ -15,10 +29,11 @@ const Loading = () => {
       justifyContent="center"
       zIndex="1000"
       height="100vh"
-      width="100vw"
+      width="100%"
       bg="limestone"
+      pos="absolute"
     >
-      <Image src="/loading.gif" alt="Loading..." />
+      <Image overflow="hidden" src="/loading.gif" alt="Loading..." />
     </Box>
   );
 };

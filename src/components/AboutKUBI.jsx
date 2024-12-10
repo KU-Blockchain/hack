@@ -40,7 +40,7 @@ const AboutKUBI = () => {
             bg="white"
             boxShadow="xl"
             pos="fixed"
-            zIndex="1300"
+            zIndex="100"
             top="50%"
             left="50%"
             transform="translate(-50%, -50%)"
