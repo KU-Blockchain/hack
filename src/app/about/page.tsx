@@ -67,7 +67,7 @@ const About = () => {
           <List.Item mx={2} my={4}>
             Questions? Contact us at{" "}
             <Box as="span" fontWeight="bold">
-              <Link href="mailto:hack@kublockchain.com">
+              <Link color="dark" href="mailto:hack@kublockchain.com">
                 hack@kublockchain.com
               </Link>
             </Box>
