@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Image, List } from "@chakra-ui/react";
+import { Box, Heading, Text, Image, List, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 import { Metadata } from "next";
@@ -37,7 +37,7 @@ const About = () => {
         <Text textAlign={"left"} mx={2} my={4}>
           The Midwest Block-a-Thon is a 20-hour blockchain-focused hackathon
           hosted at the University of Kansas aimed at fostering innovation and
-          collaboration among students of all ages in the surrounding region.
+          collaboration among hackers of all ages in the surrounding region.
           This hackathon plans to bring in{" "}
           <Box as="span" fontWeight="bold">
             200 hackers and community members
@@ -63,6 +63,15 @@ const About = () => {
             <Box as="span" fontWeight="bold">
               community track.
             </Box>
+          </List.Item>
+          <List.Item mx={2} my={4}>
+            Questions? Contact us at{" "}
+            <Box as="span" fontWeight="bold">
+              <Link href="mailto:hack@kublockchain.com">
+                hack@kublockchain.com
+              </Link>
+            </Box>
+            .
           </List.Item>
         </List.Root>
       </Box>

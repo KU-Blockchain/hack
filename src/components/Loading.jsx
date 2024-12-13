@@ -4,7 +4,6 @@ import { Box, Image } from "@chakra-ui/react";
 
 const Loading = () => {
   const [isLoading, setIsLoading] = useState(true);
-  //const isLoading = useLoading();
 
   useEffect(() => {
     if (document.readyState === "complete") {

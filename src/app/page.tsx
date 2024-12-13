@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   description: "A 20-hour hackathon presented by the KU Blockchain Institute",
   keywords: "blockchain, The Midwest Block-a-Thon, hackathon, KU Blockchain Institute, University of Kansas, Web3, programming, technology event",
   robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1.0",
   openGraph: {
     title: "The Midwest Block-a-Thon",
     description: "Join the 20-hour hackathon hosted by the KU Blockchain Institute and make an impact on the web3 community.",
