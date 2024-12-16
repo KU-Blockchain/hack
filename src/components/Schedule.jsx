@@ -40,6 +40,7 @@ const ScheduleViewer = () => {
   const [filteredSchedule, setFilteredSchedule] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(-1);
+  const calendarLink = ""; // TODO: ADD INVITE TO BLOCKATHON CALENDAR
 
   useEffect(() => {
     // Fetch schedule data from API
@@ -110,11 +111,13 @@ const ScheduleViewer = () => {
             bg="dark"
             color="white"
           >Clear</Button>
-          {/* <Button
-            onClick={() => setQuery("")}
+          {calendarLink && (
+          <Button
+            onClick={() => window.open(calendarLink, "_blank")}
             bg="dark"
             color="white"
-          >Add to Calendar</Button> */}
+          >Add All To Calendar</Button>
+          )}
         </HStack>
 
         {/* Category Buttons */}
@@ -189,7 +192,7 @@ const ScheduleViewer = () => {
                           <HStack>
                             <Box w="45%">
                               <HStack mb={1}>
-                                <Icon><FaLocationDot color="dark" /></Icon>
+                                <Icon><FaRegCalendar color="dark" /></Icon>
                                 <Text>{formatDate(item.full_date)}</Text>
                               </HStack>
                               <HStack mb={1}>
@@ -197,8 +200,12 @@ const ScheduleViewer = () => {
                                 <Text>{item.start_time} - {item.end_time}</Text>
                               </HStack>
                               <HStack>
-                                <Icon><FaRegCalendar color="dark" /></Icon>
-                                <Text>{item.location}</Text>
+                                <Icon><FaLocationDot color="dark" /></Icon>
+                                {item.maps_link ? (
+                                  <Text as={Link} href={item.maps_link} target="_blank">{item.location}</Text>
+                                ) : (
+                                  <Text>{item.location}</Text>
+                                )}
                               </HStack>
                             </Box>
                             {/* <Text fontWeight="bold">Description:</Text> */}
@@ -223,7 +230,19 @@ const ScheduleViewer = () => {
                             >Close</Button>
                           </DialogCloseTrigger>
                           {(item.calendar_link != null) ? (
-                            <Button variant="outline">Add Event to Calendar</Button>
+                            <Button 
+                              variant="outline"
+                              color="dark"
+                              bgGradient="to-r"
+                              gradientFrom="orange.100"
+                              gradientTo="red.100"
+                              _hover={{
+                                bgGradient: "to-r",
+                                gradientFrom: "orange.200",
+                                gradientTo: "red.200",
+                              }}
+                              onClick={() => window.open(item.calendar_link, "_blank")}
+                            >Add Event to Calendar</Button>
                           ) : null}
                         </DialogFooter>
                       </DialogContent>

@@ -10,6 +10,7 @@ interface ScheduleItem {
   end_time: string;
   location: string;
   tags: string[];
+  maps_link: string;
   calendar_link: string;
 }
 
@@ -29,7 +30,7 @@ export async function GET() {
   try {
     const schedule = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SCHEDULE_SHEET_ID,
-      range: 'Sheet1!A:I',
+      range: 'Sheet1!A:J',
     });
 
     if (!schedule.data.values) {
@@ -47,7 +48,8 @@ export async function GET() {
       end_time: row[5],
       location: row[6],
       tags: row[7].split(', '),
-      calendar_link: row[8],
+      maps_link: row[8],
+      calendar_link: row[9],
       };
 
       if (item.display === 'TRUE') {
