@@ -202,7 +202,7 @@ const ScheduleViewer = () => {
                               <HStack>
                                 <Icon><FaLocationDot color="dark" /></Icon>
                                 {item.maps_link ? (
-                                  <Text as={Link} href={item.maps_link} target="_blank">{item.location}</Text>
+                                  <Text color="dark" as={Link} href={item.maps_link} target="_blank">{item.location}</Text>
                                 ) : (
                                   <Text>{item.location}</Text>
                                 )}
