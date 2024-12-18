@@ -68,7 +68,7 @@ export default function FAQs() {
         px="4"
         textAlign="center"
         fontSize="xl"
-        pt={{ base: "20vh", md: "30vh" }}
+        pt={{ base: "20vh", md: "25vh" }}
       >
         {/* Page Heading */}
         <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">

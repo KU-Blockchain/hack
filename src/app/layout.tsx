@@ -1,5 +1,6 @@
 import Provider from "../utils/provider";
-
+// core styles shared by all of react-notion-x (required)
+import 'react-notion-x/src/styles.css'
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
