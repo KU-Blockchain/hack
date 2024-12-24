@@ -8,7 +8,18 @@ import {
 import Navbar from '@/components/Navbar'
 import Loading from '@/components/Loading'
 import { Box, Heading } from '@chakra-ui/react'
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "HACKERDOC | The Midwest Block-Thon",
+  description: "View the HackerDoc for the Midwest Block-a-Thon.",
+  openGraph: {
+    title: "HACKERDOC | The Midwest Block-a-Thon",
+    description: "View the HackerDoc for the Midwest Block-a-Thon, a 20-hour hackathon hosted by the KU Blockchain Institute.",
+    url: "https://hack.kublockchain.com/hackerdoc",
+    type: "website",
+  },
+};
 
 // TEST WITH hackerdoc/067dd719a912471ea9a3ac10710e7fdf
 // real hackerdoc: 151dd445c69b80098be5f78f9a6b5ae2
