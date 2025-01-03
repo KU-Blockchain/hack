@@ -24,15 +24,10 @@ export const metadata: Metadata = {
 // TEST WITH hackerdoc/067dd719a912471ea9a3ac10710e7fdf
 // real hackerdoc: 151dd445c69b80098be5f78f9a6b5ae2
 
-interface PageProps {
-  params: {
-    pageId: string; // dynamic parameter
-  };
-}
 
-async function Page({ params }: PageProps) {
+async function Page({ params }: { params: Promise<{ pageId: string }> }) {
   // asynchronous access of `params.id`.
-  const { pageId } = await params;
+  const pageId = (await params).pageId;
   const recordMap = await notion.getPage(pageId);
 
   return (
@@ -40,12 +35,6 @@ async function Page({ params }: PageProps) {
       <Loading />
       <Navbar />
       <Box
-        //maxW="800px"
-        //mx="auto"
-        //py="8"
-        //px="4"
-        //textAlign="center"
-        //fontSize="xl"
         pt={{ base: "20vh", md: "25vh" }}
       >
         <Heading textAlign="center" size="3xl" mb={4} fontWeight="bold" fontStyle="italic">

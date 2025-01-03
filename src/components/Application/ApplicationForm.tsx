@@ -98,7 +98,7 @@ const ApplicationForm = () => {
 
   //#region UploadResume
   const UploadResume = () => {
-    const [files, setFiles] = React.useState([]);
+    const [files, setFiles] = React.useState<File[]>([]);
 
     useEffect(() => {
       if (files.length === 0) return;
@@ -111,7 +111,7 @@ const ApplicationForm = () => {
       <FileUploadRoot 
         gap="1"
         accept=".pdf"
-        onFileAccept={(files) => setFiles(files)}
+        onFileAccept={({ files }) => setFiles(files)}
       >
         <InputGroup
           w="full"
