@@ -34,9 +34,12 @@ const Sponsors = () => {
           APPLICATION
         </Heading>
         <Text mb={10} textAlign={"left"}>
-          The Midwest Block-a-Thon will be made possible by the generous support
-          of our sponsors. We are grateful for contributions and commitment to
-          fostering innovation in the blockchain space.
+          Thank you for your interest in participating at The Midwest Block-a-Thon. 
+          We've put together a great weekend including technical workshops, 
+          fun mini-events, free food and swag, and a chance to win awesome prizes.
+          <br />
+          <br />
+          Please complete all fields marked with an asterisk (*). Applications are reviewed and accepted on a rolling basis.
         </Text>
         <ApplicationForm />
       </Box>
