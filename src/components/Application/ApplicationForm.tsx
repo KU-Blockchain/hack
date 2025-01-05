@@ -10,8 +10,6 @@ import {
   TimelineTitle,
 } from "@/components/ui/timeline"
 import { Radio, RadioGroup } from "@/components/ui/radio"
-import { CloseButton } from "@/components/ui/close-button"
-import { InputGroup } from "@/components/ui/input-group"
 import {
   RadioCardItem,
   RadioCardLabel,
@@ -26,16 +24,9 @@ import {
   NativeSelectField,
   NativeSelectRoot,
 } from "@/components/ui/native-select"
-import {
-  FileInput,
-  FileUploadClearTrigger,
-  FileUploadLabel,
-  FileUploadRoot,
-} from "@/components/ui/file-upload"
-import { HiUpload } from "react-icons/hi"
-import { LuFileUp } from "react-icons/lu"
 import countries from "./countries.json"
 import { Checkbox } from "@/components/ui/checkbox"
+import UploadResume from "./UploadResume"
 
 // const floatingStyles = defineStyle({
 //   pos: "absolute",
@@ -96,48 +87,6 @@ const ApplicationForm = () => {
       </RadioGroup>
     )
   }
-
-  //#region UploadResume
-  const UploadResume = () => {
-    const [files, setFiles] = React.useState<File[]>([]);
-
-    useEffect(() => {
-      if (files.length === 0) return;
-      console.log("Files", files);
-      setResume(files);
-      setFiles(files);
-    }, [files]);
-
-    return (
-      <FileUploadRoot 
-        gap="1"
-        accept=".pdf"
-        onFileAccept={({ files }) => setFiles(files)}
-      >
-        <InputGroup
-          w="full"
-          startElement={<LuFileUp />}
-          endElement={
-            <FileUploadClearTrigger asChild>
-              <CloseButton
-                me="-1"
-                size="xs"
-                variant="plain"
-                focusVisibleRing="inside"
-                focusRingWidth="2px"
-                pointerEvents="auto"
-                color="fg.subtle"
-              />
-            </FileUploadClearTrigger>
-          }
-        >
-          <FileInput 
-            _hover={{ cursor: "pointer" }} 
-          />
-        </InputGroup>
-      </FileUploadRoot>
-    )
-  };
   
   // #region SelectEducationLevel
   const SelectEducationLevel = () => {
@@ -178,8 +127,8 @@ const ApplicationForm = () => {
                 cursor: "pointer",
               }}
               _checked={{
-                color: "dark",       // Text color when selected
-                boxShadow: "md",       // Optional shadow effect
+                color: "dark",
+                boxShadow: "sm",
                 border: "2px solid black"
               }}
             />
@@ -295,7 +244,7 @@ const ApplicationForm = () => {
               <Input name="portfolio" type="url" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field label="Resume" helperText="Upload your resume. PDFs only.">
-              <UploadResume />
+              <UploadResume setResume={setResume} />
             </Field>
             <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Experiance Level</Fieldset.Legend>
             <Field label="What's your prior level of blockchain experience?" helperText="We welcome all levels of experience!" required>
