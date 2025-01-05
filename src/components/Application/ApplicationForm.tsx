@@ -87,6 +87,7 @@ const ApplicationForm = () => {
               key={item.value}
               value={item.value}
               _hover={{ cursor: "pointer" }}
+              colorPalette="black"
             >
               {item.title}
             </Radio>
@@ -176,6 +177,11 @@ const ApplicationForm = () => {
               _hover={{
                 cursor: "pointer",
               }}
+              _checked={{
+                color: "dark",       // Text color when selected
+                boxShadow: "md",       // Optional shadow effect
+                border: "2px solid black"
+              }}
             />
           ))}
         </Stack>
@@ -201,8 +207,8 @@ const ApplicationForm = () => {
   return (
     <Stack direction="row">
       {!isMobile &&
-      <Box w="25%" mt={40} position="sticky" top={72} h="100vh" overflowY="auto">
-        <TimelineRoot size="md">
+      <Box pl={2} w="25%" mt={40} position="sticky" top={72} h="100vh" overflowY="auto">
+        <TimelineRoot py={2} size="md">
           <TimelineItem h={20}>
         <TimelineConnector>
           <FaUserCircle />
@@ -247,17 +253,18 @@ const ApplicationForm = () => {
           <Fieldset.Content>
             <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Personal Details</Fieldset.Legend>
             <Field required label="First Name">
-              <Input name="first-name" />
+              <Input name="first-name" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field required label="Last Name">
-              <Input name="last-name" />
+              <Input name="last-name" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field required label="Email address">
-              <Input placeholder="me@example.com" name="email" type="email" />
+              <Input placeholder="me@example.com" name="email" type="email" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field label="Country of Residence" required>
               <NativeSelectRoot>
                 <NativeSelectField
+                  _focus={{ border: "2px solid black" }}
                   name="country"
                   items={countries}
                   placeholder="Select a country"
@@ -267,6 +274,7 @@ const ApplicationForm = () => {
             <Field label="T-Shirt Size" required>
               <NativeSelectRoot>
                 <NativeSelectField
+                  _focus={{ border: "2px solid black" }}
                   name="t-shirt"
                   items={[
                     "XS",
@@ -281,10 +289,10 @@ const ApplicationForm = () => {
               </NativeSelectRoot>
             </Field>
             <Field label="Linkedin URL">
-              <Input name="linkedin" type="url" />
+              <Input name="linkedin" type="url" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field label="Portfolio URL" helperText="If you have one, share your portfolio! Can be a personal website, GitHub, resume link, etc.">
-              <Input name="portfolio" type="url" />
+              <Input name="portfolio" type="url" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field label="Resume" helperText="Upload your resume. PDFs only.">
               <UploadResume />
@@ -300,11 +308,12 @@ const ApplicationForm = () => {
               <>
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">High School Application</Fieldset.Legend>
               <Field label="Which High School do you attend?" required>
-                <Input name="high-school" />
+                <Input name="high-school" _focus={{ border: "2px solid black" }}/>
               </Field>
               <Field label="What grade are you in?" required>
                 <NativeSelectRoot>
                   <NativeSelectField
+                    _focus={{ border: "2px solid black" }}
                     name="grade"
                     items={[
                       "Freshman",
@@ -318,21 +327,22 @@ const ApplicationForm = () => {
               </Field>
                 <Field label="What is your Date of Birth?" helperText="To ensure we comply by the MLH Code of Conduct for extra accommodations." required>
                 <Input 
-                name="dob" 
-                type="date" 
-                onChange={(e) => {
-                  const age = new Date().getFullYear() - new Date(e.target.value).getFullYear();
-                  setIsUnder18(age < 18);
-                }}
+                  _focus={{ border: "2px solid black" }}
+                  name="dob" 
+                  type="date" 
+                  onChange={(e) => {
+                    const age = new Date().getFullYear() - new Date(e.target.value).getFullYear();
+                    setIsUnder18(age < 18);
+                  }}
                 />
                 </Field>
               {isUnder18 && (
                 <>
                 <Field label="Please share the first and last name of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required> 
-                  <Input name="chaperone" />
+                  <Input name="chaperone" _focus={{ border: "2px solid black" }} />
                 </Field>
                 <Field label="Please share the email address of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required>
-                  <Input name="chaperone-email" type="email" />
+                  <Input name="chaperone-email" type="email" _focus={{ border: "2px solid black" }} />
                 </Field>
                 </>
               )}
@@ -342,11 +352,12 @@ const ApplicationForm = () => {
               <>
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">University Application</Fieldset.Legend>
               <Field label="Which University do you attend?" required>
-                <Input name="university" />
+                <Input name="university" _focus={{ border: "2px solid black" }} />
               </Field>
               <Field label="Year in School" required>
                 <NativeSelectRoot>
                   <NativeSelectField
+                    _focus={{ border: "2px solid black" }}
                     name="year"
                     items={[
                       "Freshman",
@@ -362,10 +373,10 @@ const ApplicationForm = () => {
                 </NativeSelectRoot>
               </Field>
               <Field label="Field of study (majors, minors, certificates, etc.)" required>
-                <Input name="study" />
+                <Input name="study" _focus={{ border: "2px solid black" }} />
               </Field>
               <Field label="What is your expected graduation year?" required>
-                <Input name="graduation" type="number" />
+                <Input name="graduation" type="number" _focus={{ border: "2px solid black" }} />
               </Field>
               </>
             )}
@@ -373,33 +384,33 @@ const ApplicationForm = () => {
               <>
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Community Application</Fieldset.Legend>
               <Field label="Company / Association" helperText="The name of any company you're most associated with or work for. Use 'freelancer' or 'Self-Employed' if those are more suitable." required>
-                <Input name="company" />
+                <Input name="company" _focus={{ border: "2px solid black" }} />
               </Field>
               <Field label="What is your current role or field of work?" required>
-                <Input name="field" />
+                <Input name="field" _focus={{ border: "2px solid black" }} />
               </Field>
               </>
             )}
             <Field label="Why are you interested in participating in the Midwest Block-a-Thon?" required>
-              <Textarea name="reason" />
+              <Textarea name="reason" _focus={{ border: "2px solid black" }} />
             </Field>
             <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Code of Conduct and Safety</Fieldset.Legend>
             <Field label="Please list any dietary restrictions.">
-              <Textarea name="dietary" />
+              <Textarea name="dietary" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field label="We want to ensure this event as safe, comfortable, and inclusive for everyone. Are there any additional accommodations we can provide that would make this event more accessible for you?">
-              <Textarea name="accommodations" />
+              <Textarea name="accommodations" _focus={{ border: "2px solid black" }} />
             </Field>
             <Field 
-              label={<Text>Have you read and agreed to the <Link href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md" target="_blank" rel="noopener noreferrer">MLH Code of Conduct<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>?</Text>}
+              label={<Text>Have you read and agreed to the <Link color="dark" href="https://github.com/MLH/mlh-policies/blob/main/code-of-conduct.md" target="_blank" rel="noopener noreferrer">MLH Code of Conduct<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>?</Text>}
               required
             >
-              <CheckboxGroup name="code-of-conduct" form="application">
+              <CheckboxGroup color="dark" name="code-of-conduct" form="application">
                 <Checkbox value="yes">Yes</Checkbox>
               </CheckboxGroup>
             </Field>
             <Field 
-              label={<Text>I authorize you to share my application information with Major League Hacking for event administration, ranking, and MLH administration in-line with the <Link href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">MLH Privacy Policy<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>.</Text>}
+              label={<Text>I authorize you to share my application information with Major League Hacking for event administration, ranking, and MLH administration in-line with the <Link color="dark" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">MLH Privacy Policy<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>.</Text>}
               required
             >
               <CheckboxGroup name="mlh-privacy-policy" form="application">
@@ -407,7 +418,7 @@ const ApplicationForm = () => {
               </CheckboxGroup>
             </Field>
             <Field
-              label={<Text>I further agree to the terms of both the MLH Contest <Link href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md" target="_blank" rel="noopener noreferrer">Terms and Conditions<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link> and the <Link href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">MLH Privacy Policy<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>.</Text>}
+              label={<Text>I further agree to the terms of both the MLH Contest <Link color="dark" href="https://github.com/MLH/mlh-policies/blob/main/contest-terms.md" target="_blank" rel="noopener noreferrer">Terms and Conditions<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link> and the <Link color="dark" href="https://github.com/MLH/mlh-policies/blob/main/privacy-policy.md" target="_blank" rel="noopener noreferrer">MLH Privacy Policy<IconButton ml="-2" bg="0" color="dark" size="2xs"><FaLink /></IconButton></Link>.</Text>}
               required
             >
               <CheckboxGroup name="terms-conditions" form="application">
@@ -418,10 +429,10 @@ const ApplicationForm = () => {
               label={<Text>I authorize MLH to send me occasional emails about relevant events, career opportunities, and community announcements.</Text>}
               required
             >
-              <RadioGroup name="email-opt-in" form="application"> 
+              <RadioGroup defaultValue="yes" name="email-opt-in" form="application"> 
                 <Stack gap={3} align="stretch" direction="column">
-                  <Radio value="yes">Yes</Radio>
-                  <Radio value="no">No</Radio>
+                  <Radio value="yes" _hover={{ cursor: "pointer" }}>Yes</Radio>
+                  <Radio value="no" _hover={{ cursor: "pointer" }}>No</Radio>
                 </Stack>
               </RadioGroup>
             </Field>
