@@ -1,7 +1,5 @@
 "use client";
 import { signIn } from "next-auth/react"
-// import { getServerSession } from "next-auth/next"
-// import { OPTIONS } from "../../app/api/auth/[...nextauth]/route"
 import { 
   Button,
   Stack,

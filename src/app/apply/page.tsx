@@ -4,7 +4,7 @@ import Loading from "@/components/Loading";
 import SignIn from "@/components/Application/SignIn";
 import ApplicationForm from "@/components/Application/ApplicationForm";
 import { Metadata } from "next";
-import { OPTIONS } from "../api/auth/[...nextauth]/route";
+import OPTIONS from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 
 export const metadata: Metadata = {

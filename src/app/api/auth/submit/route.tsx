@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/app/api-reference
 import { NextRequest, NextResponse } from 'next/server';
-import { OPTIONS } from "../[...nextauth]/route";
+import OPTIONS from "../[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import { google } from 'googleapis';
 
