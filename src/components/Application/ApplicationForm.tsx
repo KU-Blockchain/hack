@@ -175,8 +175,8 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
       body: formData
     });
     const data = await response.json();
-    console.log("Response data", data.message);
-    setIsSubmitting(false);
+    //console.log("Response data", data.message);
+    //setIsSubmitting(false);
     if (response.ok) {
       window.location.reload();
     } else {

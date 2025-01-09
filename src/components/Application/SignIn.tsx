@@ -18,24 +18,33 @@ import { FaDiscord, FaGithub, FaGoogle, FaWandMagicSparkles } from "react-icons/
 
 
 export default function SignIn() {
-  const [email, setEmail] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   
   return (
     <Stack>
-      <Button bg="dark" onClick={() => signIn("github", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
+      <Button disabled={loading} bg="dark" onClick={async () => {
+        setLoading(true);
+        await signIn("github", { callbackUrl: '/apply' });//.finally(() => setLoading(false));
+      }}>
         <HStack>
           <FaGithub color="white" />
           <Text color="white">Sign in with GitHub</Text>
         </HStack>
       </Button>
-      <Button bg="dark" onClick={() => signIn("discord", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
+      <Button disabled={loading} bg="dark" onClick={() => {
+        setLoading(true);
+        signIn("discord", { callbackUrl: '/apply' });//.finally(() => setLoading(false));
+      }}>
         <HStack>
           <FaDiscord color="white" />
           <Text color="white">Sign in with Discord</Text>
         </HStack>
       </Button>
-      <Button bg="dark" onClick={() => signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
+      <Button disabled={loading} bg="dark" onClick={() => {
+        setLoading(true);
+        signIn("google", { callbackUrl: '/apply' });//.finally(() => setLoading(false));
+      }}>
         <HStack>
           <FaGoogle color="white" />
           <Text color="white">Sign in with Google</Text>
@@ -49,22 +58,20 @@ export default function SignIn() {
       <form onSubmit={(e) => { 
         e.preventDefault(); 
         setLoading(true);
-        signIn("email", { email: email }).finally(() => setLoading(false)); 
+        if (!email) return alert("Please enter an email address.");
+        signIn("email", { email: email });//.finally(() => setLoading(false)); 
       }}>
         <Stack>
           <Box pos="relative" w="full">
             <Input _focus={{ border: "2px solid black" }} type="email" onChange={(e) => setEmail(e.target.value)} className="peer" placeholder="" />
             <Field css={floatingStyles} label="Email" />
           </Box>
-          {loading ? (<Button loading width="100%" type="submit" bg="dark"></Button>
-          ) : (
-          <Button width="100%" type="submit" bg="dark">
+          <Button disabled={loading} width="100%" type="submit" bg="dark">
             <HStack justify="center">
               <FaWandMagicSparkles color="white" />
               <Text color="white">Send Magic Link</Text>
             </HStack>
           </Button>
-          )}
         </Stack>
       </form>
     </Stack>
