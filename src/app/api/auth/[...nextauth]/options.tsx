@@ -27,7 +27,8 @@ const OPTIONS: NextAuthOptions = {
           access_type: "offline",
           response_type: "code"
         }
-      }
+      },
+      allowDangerousEmailAccountLinking: true,
     }),
     EmailProvider({
       server: {
@@ -43,13 +44,11 @@ const OPTIONS: NextAuthOptions = {
   ],
   pages: {
     signIn: "/apply",
+    error: "/apply",
     //signOut: "/apply",
   },
   secret: process.env.NEXTAUTH_SECRET,
+  adapter: FirestoreAdapter(firestore),
 };
-
-if (OPTIONS.providers.some(provider => provider.id === 'email')) {
-  OPTIONS.adapter = FirestoreAdapter(firestore);
-}
 
 export default OPTIONS;
