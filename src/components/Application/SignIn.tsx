@@ -23,19 +23,19 @@ export default function SignIn() {
   
   return (
     <Stack>
-      <Button bg="dark" onClick={() => signIn("github", { callbackUrl: 'http://localhost:3000/apply' })}>
+      <Button bg="dark" onClick={() => signIn("github", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
         <HStack>
           <FaGithub color="white" />
           <Text color="white">Sign in with GitHub</Text>
         </HStack>
       </Button>
-      <Button bg="dark" onClick={() => signIn("discord", { callbackUrl: 'http://localhost:3000/apply' })}>
+      <Button bg="dark" onClick={() => signIn("discord", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
         <HStack>
           <FaDiscord color="white" />
           <Text color="white">Sign in with Discord</Text>
         </HStack>
       </Button>
-      <Button bg="dark" onClick={() => signIn("google", { callbackUrl: 'http://localhost:3000/apply' })}>
+      <Button bg="dark" onClick={() => signIn("google", { callbackUrl: `${process.env.NEXTAUTH_URL}/apply` })}>
         <HStack>
           <FaGoogle color="white" />
           <Text color="white">Sign in with Google</Text>
