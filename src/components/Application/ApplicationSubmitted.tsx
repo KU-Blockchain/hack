@@ -48,7 +48,7 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
         <Text color="dark">
           <br />
           We'll let you know via email and here when your application status changes,<br />which may take up to two weeks.
-          In the meantime, check out our <Link href="/schedule">schedule</Link>!
+          In the meantime, check out our <Link color="dark" href="/schedule">schedule</Link>!
         </Text>
         </>
       )}

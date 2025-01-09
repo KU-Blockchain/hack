@@ -127,8 +127,8 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
               }}
               _checked={{
                 color: "dark",
-                boxShadow: "sm",
-                border: "2px solid black"
+                boxShadow: "xs",
+                border: "1px solid black"
               }}
             />
           ))}
