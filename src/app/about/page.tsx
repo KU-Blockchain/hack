@@ -1,3 +1,9 @@
+import {
+  AccordionRoot,
+  AccordionItem,
+  AccordionItemTrigger,
+  AccordionItemContent,
+} from "@chakra-ui/react";
 import { Box, Heading, Text, Image, List, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
@@ -15,6 +21,40 @@ export const metadata: Metadata = {
 };
 
 const About = () => {
+  const faqs = [
+    {
+      value: "question2",
+      title: "Who can attend?",
+      text: "The event is open to everyone, whether you’re a student, professional, or just curious about blockchain!",
+    },
+    {
+      value: "question3",
+      title: "How does the application process work?",
+      text: "Once applications open, you'll find them by clicking the 'Apply Now' button on our homepage and filling out the required information. For now, please join our waitlist so you can be the first to know when applications open!",
+    },
+    {
+      value: "question4",
+      title: "Is there a fee to participate?",
+      text: "No, participation is completely free of charge, and meals will be provided.",
+    },
+    {
+      value: "question5",
+      title:
+        "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
+      text: "Mercury is slated to be in retrograde March 14 to April 6, but do not fear! We will have outlets, wifi, and anything else your tech might need to ensure no disruptive events occur during your hacking!",
+    },
+    {
+      value: "question6",
+      title: "What if I don't know anything about blockchain?",
+      text: "Building is the best way to learn! This event is totally open to those new to blockchain, and we will share a ton of resources with you ahead of time to make sure you know the best ways to start preparing.",
+    },
+    {
+      value: "question7",
+      title: "Will there be places for me to sleep?",
+      text: "We will have at least one room as a dedicated quiet, sleeping space. We do recommend that you bring your own sleeping bag if you plan to stay overnight.",
+    },
+  ];
+
   return (
     <>
       <Loading />
@@ -28,8 +68,8 @@ const About = () => {
         fontSize="xl"
         pt={{ base: "20vh", md: "25vh" }}
       >
-        <Box display="flex" justifyContent="center" mb={4}>
-          <Image src="/ready_to_build.gif" alt="Ready to Build" />
+        <Box display="flex" justifyContent="center" mb={2}>
+          <Image width="70%" align="center" src="/ready_to_build.gif" alt="Ready to Build" />
         </Box>
         <Heading size="4xl" my={6} mx={2} fontWeight="bold" fontStyle="italic">
           ABOUT
@@ -57,23 +97,36 @@ const About = () => {
             Meals and snacks will be provided throughout the event, and dietary
             restrictions will be accommodated.
           </List.Item>
-          <List.Item mx={2} my={4}>
-            This event is primarily focused on students, but community members
-            are welcome to attend as volunteers, mentors, or compete on the{" "}
-            <Box as="span" fontWeight="bold">
-              community track.
-            </Box>
-          </List.Item>
-          <List.Item mx={2} my={4}>
-            Questions? Contact us at{" "}
-            <Box as="span" fontWeight="bold">
-              <Link color="dark" href="mailto:hack@kublockchain.com">
-                hack@kublockchain.com
-              </Link>
-            </Box>
-            .
-          </List.Item>
         </List.Root>
+        {/* Page Heading */}
+        <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
+          FREQUENTLY ASKED QUESTIONS
+        </Heading>
+
+        {/* FAQ Accordion */}
+        <AccordionRoot multiple defaultValue={["question2"]}>
+          {faqs.map((faq) => (
+            <AccordionItem key={faq.value} value={faq.value} mb={2}>
+              <AccordionItemTrigger style={{ cursor: "pointer" }}>
+                <Heading textAlign="left">{faq.title}</Heading>
+              </AccordionItemTrigger>
+              <AccordionItemContent fontSize="lg" mb={2}>
+                <Box mt="2">
+                  <Text textAlign="left">{faq.text}</Text>
+                </Box>
+              </AccordionItemContent>
+            </AccordionItem>
+          ))}
+        </AccordionRoot>
+        <Text mt={6}>
+          Questions? Contact us at{" "}
+          <Box as="span" fontWeight="bold">
+            <Link color="dark" href="mailto:hack@kublockchain.com">
+              hack@kublockchain.com
+            </Link>
+          </Box>
+          .
+        </Text>
       </Box>
     </>
   );

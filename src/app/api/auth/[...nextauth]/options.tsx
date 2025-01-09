@@ -6,11 +6,13 @@ import EmailProvider from 'next-auth/providers/email';
 import { FirestoreAdapter } from "@next-auth/firebase-adapter"
 import { firestore } from "@/utils/firestore"
 
+const isDev = process.env.NEXTAUTH_URL?.includes("localhost");
+
 const OPTIONS: NextAuthOptions = {
   providers: [
     GitHubProvider({
-      clientId: process.env.NEXTAUTH_GITHUB_ID_DEV as string,
-      clientSecret: process.env.NEXTAUTH_GITHUB_SECRET_DEV as string,
+      clientId: isDev ? process.env.NEXTAUTH_GITHUB_ID_DEV as string : process.env.NEXTAUTH_GITHUB_ID_PROD as string,
+      clientSecret: isDev ? process.env.NEXTAUTH_GITHUB_SECRET_DEV as string : process.env.NEXTAUTH_GITHUB_SECRET_PROD as string,
     }),
     DiscordProvider({
       clientId: process.env.NEXTAUTH_DISCORD_ID as string,
@@ -43,7 +45,11 @@ const OPTIONS: NextAuthOptions = {
     signIn: "/apply",
     //signOut: "/apply",
   },
-  adapter: FirestoreAdapter(firestore),
+  secret: process.env.NEXTAUTH_SECRET,
 };
+
+if (OPTIONS.providers.some(provider => provider.id === 'email')) {
+  OPTIONS.adapter = FirestoreAdapter(firestore);
+}
 
 export default OPTIONS;

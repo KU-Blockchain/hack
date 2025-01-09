@@ -1,7 +1,6 @@
 "use client";
 import { signIn } from "next-auth/react"
 import { 
-  Button,
   Stack,
   Input,
   Box,
@@ -11,6 +10,7 @@ import {
   Separator,
   Spacer,
 } from "@chakra-ui/react"
+import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { defineStyle } from "@chakra-ui/react"
 import { useState } from "react";
@@ -19,6 +19,7 @@ import { FaDiscord, FaGithub, FaGoogle, FaWandMagicSparkles } from "react-icons/
 
 export default function SignIn() {
   const [email, setEmail] = useState("")
+  const [loading, setLoading] = useState(false)
   
   return (
     <Stack>
@@ -45,18 +46,25 @@ export default function SignIn() {
         <Text color="dark" flexShrink="0">or</Text>
         <Separator />
       </HStack>
-      <form onSubmit={(e) => { e.preventDefault(); signIn("email", { email: email }); }}>
+      <form onSubmit={(e) => { 
+        e.preventDefault(); 
+        setLoading(true);
+        signIn("email", { email: email }).finally(() => setLoading(false)); 
+      }}>
         <Stack>
           <Box pos="relative" w="full">
             <Input _focus={{ border: "2px solid black" }} type="email" onChange={(e) => setEmail(e.target.value)} className="peer" placeholder="" />
             <Field css={floatingStyles} label="Email" />
           </Box>
+          {loading ? (<Button loading width="100%" type="submit" bg="dark"></Button>
+          ) : (
           <Button width="100%" type="submit" bg="dark">
             <HStack justify="center">
               <FaWandMagicSparkles color="white" />
               <Text color="white">Send Magic Link</Text>
             </HStack>
           </Button>
+          )}
         </Stack>
       </form>
     </Stack>

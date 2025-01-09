@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth/next";
 import { google } from 'googleapis';
 
 type ChaperoneInfo = {
-  chaperone: string;
+  chaperone_name: string;
   chaperone_email: string;
 };
 
@@ -15,10 +15,9 @@ type EducationBase = {
 
 type EducationLevel<T extends EducationBase> = T; // generics to make education levels reusable
 
-interface HighSchool extends EducationBase, ChaperoneInfo {
+interface HighSchool extends EducationBase {
   name: string;
   year: string;
-  dob: string;
 }
 
 interface College extends EducationBase {
@@ -48,7 +47,8 @@ interface ApplicationForm {
     college: EducationLevel<College>;
     community: EducationLevel<Community>;
   };
-  reason: string;
+  age: string;
+  chaperone: ChaperoneInfo;
   dietary: string;
   accommodations: string;
   code_of_conduct: string;
@@ -85,7 +85,7 @@ export async function GET(request: NextRequest) {
   if (checkUser.data.values && email) {
     for (const row of checkUser.data.values) {
       if (row[0] === email.toLowerCase()) {
-        return NextResponse.json({ joined: true }, { status: 400 });
+        return NextResponse.json({ joined: true }, { status: 200 });
       }
     }
   }
@@ -116,9 +116,6 @@ export async function POST(request: NextRequest) {
       high_school: {
         name: formData.get('high_school_name') as string,
         year: formData.get('high_school_year') as string,
-        dob: formData.get('high_school_dob') as string,
-        chaperone: formData.get('high_school_chaperone') as string,
-        chaperone_email: formData.get('high_school_chaperone_email') as string,
       },
       college: {
         name: formData.get('university') as string,
@@ -131,7 +128,11 @@ export async function POST(request: NextRequest) {
         field: formData.get('field') as string,
       },
     },
-    reason: formData.get('reason') as string,
+    age: formData.get('age') as string,
+    chaperone: {
+      chaperone_name: formData.get('chaperone-name') as string,
+      chaperone_email: formData.get('chaperone-email') as string,
+    },
     dietary: formData.get('dietary') as string,
     accommodations: formData.get('accommodations') as string,
     code_of_conduct: formData.get('code-of-conduct') as string,
@@ -184,7 +185,9 @@ export async function POST(request: NextRequest) {
           applicationForm.education_level.college.graduation,
           applicationForm.education_level.community.company,
           applicationForm.education_level.community.field,
-          applicationForm.reason,
+          applicationForm.age,
+          applicationForm.chaperone.chaperone_name,
+          applicationForm.chaperone.chaperone_email,
           applicationForm.dietary,
           applicationForm.accommodations,
           applicationForm.code_of_conduct,
@@ -198,5 +201,5 @@ export async function POST(request: NextRequest) {
 
   console.log(response);
 
-  return NextResponse.json({ message: 'Hello' }, { status: 200 });
+  return NextResponse.json({ message: 'Application submitted' }, { status: 200 });
 }

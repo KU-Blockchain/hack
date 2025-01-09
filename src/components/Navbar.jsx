@@ -20,7 +20,8 @@ import { FaChevronDown, FaChevronLeft } from "react-icons/fa6";
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const pages = ["About", "FAQs", "Schedule", "HackerDoc"];
+  const MobilePages = ["About", "Apply", "Schedule", "HackerDoc", "Sponsors"];
+  const DesktopPages = ["About", "Schedule", "HackerDoc", "Sponsors"];
   const [pageName, setPageName] = useState("Home");
   const path = usePathname();
 
@@ -35,8 +36,11 @@ const Navbar = () => {
         case "/about":
           setPageName("About");
           break;
-        case "/faqs":
-          setPageName("FAQs");
+        // case "/faqs":
+        //   setPageName("FAQs");
+        //   break;
+        case "/apply":
+          setPageName("Apply");
           break;
         case "/schedule":
           setPageName("Schedule");
@@ -44,9 +48,9 @@ const Navbar = () => {
         case "/hackerdoc":
           setPageName("HackerDoc");
           break;
-        // case "/sponsors":
-        //   setPageName("Sponsors");
-        //   break;
+        case "/sponsors":
+          setPageName("Sponsors");
+          break;
         default:
           setPageName("Home");
       }
@@ -107,7 +111,7 @@ const Navbar = () => {
             bg="limestone"
             data-highlighted="0"
           >
-            {pages.map((page) => (
+            {MobilePages.map((page) => (
               <MenuItem
                 key={page}
                 m={2}
@@ -177,7 +181,7 @@ const Navbar = () => {
               </Link>
 
               {/* Navigation Links */}
-              {pages.map((page, index) => (
+              {DesktopPages.map((page, index) => (
                 <HStack key={page} spacing={5}>
                   {/* Page Name */}
                   <Link
@@ -191,7 +195,7 @@ const Navbar = () => {
                   </Link>
 
                   {/* Vertical Separator */}
-                  {index < pages.length - 1 && (
+                  {index < DesktopPages.length - 1 && (
                     <Box
                       as="span"
                       height="25px"

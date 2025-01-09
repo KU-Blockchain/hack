@@ -32,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "FAQs", "Schedule", "HackerDoc"];
+  const pages = ["About", "Schedule", "HackerDoc", "Sponsors"];
 
   return (
     <>

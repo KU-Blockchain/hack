@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import { Box, useBreakpointValue, Fieldset, Input, Stack, Textarea, Badge, Link, Text, CheckboxGroup, IconButton, Icon, Spinner } from "@chakra-ui/react"
+import { Box, VStack, useBreakpointValue, Fieldset, Input, Stack, Textarea, Badge, Link, Text, CheckboxGroup, IconButton, Icon, Spinner } from "@chakra-ui/react"
 import {
   TimelineConnector,
   TimelineContent,
@@ -25,6 +25,7 @@ import countries from "./countries.json"
 import { Checkbox } from "@/components/ui/checkbox"
 import UploadResume from "./UploadResume"
 import Loading from "@/components/Loading"
+import ApplicationSubmitted from "./ApplicationSubmitted"
 
 // #region ApplicationForm
 interface ApplicationFormProps {
@@ -140,6 +141,13 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     setIsSubmitting(true);
     e.preventDefault();
+
+    if (isSubmitted === true) {
+      alert("You have already submitted an application. If you need to make changes, please contact us at hack@kublockchain.com.");
+      setIsSubmitting(false);
+      window.location.reload();
+    }
+
     const formData = new FormData(e.target as HTMLFormElement);
     formData.append("email", applicantEmail);
 
@@ -169,6 +177,12 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
     const data = await response.json();
     console.log("Response data", data.message);
     setIsSubmitting(false);
+    if (response.ok) {
+      window.location.reload();
+    } else {
+      alert("There was an error submitting your application. Please try again.");
+      window.location.reload();
+    }
   }
 
   return (
@@ -177,12 +191,12 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
     {isSubmitted ? (
       <>
         {isSubmitting ? (
-          <Spinner size="xl" />
+          <VStack mt={20} align="center">
+            <Spinner size="lg" color="dark" />
+            <Text color="dark">Loading...</Text>
+          </VStack>
         ) : (
-          <Text color="dark">
-          Your Application has been submitted!<br />
-          <Link href="/api/auth/signout" color="blue.500">Sign out</Link>
-          </Text>
+          <ApplicationSubmitted applicantEmail={applicantEmail} />
         )}
       </>
     ) : (
@@ -236,7 +250,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
           <form onSubmit={handleSubmit} name="application" id="application">
           <Fieldset.Root size="lg">
             <Fieldset.Content>
-              <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Personal Details: {applicantName} (<Link href="/api/auth/signout" color="blue.500">Sign out</Link>)</Fieldset.Legend>
+              <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Personal Details - {applicantName} (<Link href="/api/auth/signout" color="blue.500">Sign out</Link>)</Fieldset.Legend>
               <Field required label="First Name">
                 <Input name="first-name" _focus={{ border: "2px solid black" }} />
               </Field>
@@ -279,7 +293,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
               <Field label="Portfolio URL" helperText="If you have one, share your portfolio! Can be a personal website, GitHub, resume link, etc.">
                 <Input name="portfolio" type="url" _focus={{ border: "2px solid black" }} />
               </Field>
-              <Field label="Resume" helperText={<Text>PDFs only. Resumes are hashed and pinned using IPFS for storage. <Link color="dark" href="https://docs.pinata.cloud/web3/ipfs-101/what-is-ipfs" target="_blank" rel="noopener noreferrer">What does this mean?</Link></Text>}>
+              <Field label="Resume" helperText={<Text>PDFs only. Resumes are hashed and pinned using IPFS. <Link color="dark" href="https://docs.pinata.cloud/web3/ipfs-101/what-is-ipfs" target="_blank" rel="noopener noreferrer">What does this mean?</Link></Text>}>
                 <UploadResume setResume={setResume} />
               </Field>
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Experiance Level</Fieldset.Legend>
@@ -310,27 +324,6 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                     />
                   </NativeSelectRoot>
                 </Field>
-                  <Field label="What is your Date of Birth?" helperText="To ensure we comply by the MLH Code of Conduct for extra accommodations." required>
-                  <Input 
-                    _focus={{ border: "2px solid black" }}
-                    name="dob" 
-                    type="date" 
-                    onChange={(e) => {
-                      const age = new Date().getFullYear() - new Date(e.target.value).getFullYear();
-                      setIsUnder18(age < 18);
-                    }}
-                  />
-                  </Field>
-                {isUnder18 && (
-                  <>
-                  <Field label="Please share the first and last name of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required> 
-                    <Input name="chaperone" _focus={{ border: "2px solid black" }} />
-                  </Field>
-                  <Field label="Please share the email address of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required>
-                    <Input name="chaperone-email" type="email" _focus={{ border: "2px solid black" }} />
-                  </Field>
-                  </>
-                )}
                 </>
               )}
               {isUniversityApplication && (
@@ -361,14 +354,29 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                   <Input name="study" _focus={{ border: "2px solid black" }} />
                 </Field>
                 <Field label="What is your expected graduation year?" required>
-                  <Input name="graduation" type="number" _focus={{ border: "2px solid black" }} />
+                  <NativeSelectRoot>
+                    <NativeSelectField
+                      _focus={{ border: "2px solid black" }}
+                      name="year"
+                      items={[
+                        "2025",
+                        "2026",
+                        "2027",
+                        "2028",
+                        "2029",
+                        "2030",
+                        "2031 and beyond",
+                      ]}
+                      placeholder="Select a year"
+                    />
+                  </NativeSelectRoot>
                 </Field>
                 </>
               )}
               {isCommunityApplication && (
                 <>
                 <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Community Application</Fieldset.Legend>
-                <Field label="Company / Association" helperText="The name of any company you're most associated with or work for. Use 'freelancer' or 'Self-Employed' if those are more suitable." required>
+                <Field label="Company / Association" helperText={<Text>The name of any company you're most associated with or work for. Use 'Freelancer' or 'Self-Employed' if those are more suitable.</Text>} required>
                   <Input name="company" _focus={{ border: "2px solid black" }} />
                 </Field>
                 <Field label="What is your current role or field of work?" required>
@@ -376,9 +384,27 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                 </Field>
                 </>
               )}
-              <Field label="Why are you interested in participating in the Midwest Block-a-Thon?" required>
-                <Textarea name="reason" _focus={{ border: "2px solid black" }} />
+              <Field label="What is your age?" helperText={<Text>To ensure we comply with our <Link color="dark" href="https://policy.ku.edu/university-ceremonies-and-special-events/minors-on-campus" target="_blank" rel="noopener noreferrer">University Policy</Link> for extra accommodations.</Text>} required>
+                <Input 
+                  name="age" 
+                  type="number" 
+                  _focus={{ border: "2px solid black" }} 
+                  onChange={(e) => {
+                    const age = e.target.value;
+                    setIsUnder18(Number(age) < 18);
+                  }}
+                />
               </Field>
+              {isUnder18 && (
+                <>
+                <Field label="Please share the first and last name of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required> 
+                  <Input name="chaperone-name" _focus={{ border: "2px solid black" }} />
+                </Field>
+                <Field label="Please share the email address of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required>
+                  <Input name="chaperone-email" type="email" _focus={{ border: "2px solid black" }} />
+                </Field>
+                </>
+              )}
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Code of Conduct and Safety</Fieldset.Legend>
               <Field label="Please list any dietary restrictions.">
                 <Textarea name="dietary" _focus={{ border: "2px solid black" }} />
