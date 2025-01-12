@@ -58,8 +58,12 @@ export default function SignIn() {
       <form onSubmit={(e) => { 
         e.preventDefault(); 
         setLoading(true);
-        if (!email) return alert("Please enter an email address.");
-        signIn("email", { email: email });//.finally(() => setLoading(false)); 
+        if (!email) {
+          alert("Please enter an email address.");
+          setLoading(false);
+          return;
+        }
+        signIn("email", { email: email, callbackUrl: '/apply' });//.finally(() => setLoading(false)); 
       }}>
         <Stack>
           <Box pos="relative" w="full">

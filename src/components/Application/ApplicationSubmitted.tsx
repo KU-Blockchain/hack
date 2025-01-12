@@ -36,14 +36,14 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
 
   return (
     <Box justifyContent={"center"} alignItems={"center"} textAlign={"center"} p={4}>
-      {status === "Admitted" || status === "Emailed" ? (
+      {status === "Admitted" || status === "Emailed-Admitted" ? (
         <Text fontWeight="bold" fontSize="3xl">🎉 {firstName}, you're in! 🎉</Text>
-      ) : status === "Denied" ? (
-        <Text>{firstName}, we're sorry, but your application has been rejected.</Text>
+      ) : status === "Denied" || status === "Emailed-Denied" ? (
+        <Text>{firstName}, we're sorry, but your application has been rejected. Please reach out to hack@kublockchain.com if you'd like an explanation.</Text>
       ) : (
         <>
-        <Box width="70%" p={4} m="auto">
-          <Alert size="lg" status="success" title={`${firstName}, your application has been submitted!`} />
+        <Box width={{base: "100%", md: "70%"}} p={4} m="auto">
+          <Alert colorScheme="light" size="lg" status="success" title={`${firstName}, your application has been submitted!`} />
         </Box>
         <Text color="dark">
           <br />

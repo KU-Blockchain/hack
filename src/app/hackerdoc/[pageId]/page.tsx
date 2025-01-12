@@ -36,6 +36,8 @@ async function Page({ params }: { params: Promise<{ pageId: string }> }) {
       <Navbar />
       <Box
         pt={{ base: "20vh", md: "25vh" }}
+        mx={{ base: "0", md: "0", lg: "5vw" }}
+        pb={10}
       >
         <Heading textAlign="center" size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
           HACKERDOC

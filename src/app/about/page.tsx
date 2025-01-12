@@ -43,11 +43,11 @@ const About = () => {
         "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
       text: "Mercury is slated to be in retrograde March 14 to April 6, but do not fear! We will have outlets, wifi, and anything else your tech might need to ensure no disruptive events occur during your hacking!",
     },
-    {
-      value: "question6",
-      title: "What if I don't know anything about blockchain?",
-      text: "Building is the best way to learn! This event is totally open to those new to blockchain, and we will share a ton of resources with you ahead of time to make sure you know the best ways to start preparing.",
-    },
+    // {
+    //   value: "question6",
+    //   title: "What if I don't know anything about blockchain?",
+    //   text: "Building is the best way to learn! This event is totally open to those new to blockchain, and we will share a ton of resources with you ahead of time to make sure you know the best ways to start preparing.",
+    // },
     {
       value: "question7",
       title: "Will there be places for me to sleep?",
@@ -74,7 +74,7 @@ const About = () => {
         <Heading size="4xl" my={6} mx={2} fontWeight="bold" fontStyle="italic">
           ABOUT
         </Heading>
-        <Text textAlign={"left"} mx={2} my={4}>
+        <Text textAlign={"left"} my={4}>
           The Midwest Block-a-Thon is a 20-hour blockchain-focused hackathon
           hosted at the University of Kansas aimed at fostering innovation and
           collaboration among hackers of all ages in the surrounding region.
@@ -86,14 +86,14 @@ const About = () => {
           experts, and a chance to win big prizes.
         </Text>
         <List.Root textAlign="left" mx={2} my={4}>
-          <List.Item mx={2} my={4}>
+          <List.Item my={4}>
             The Block-a-Thon will be hosted at the{" "}
             <Box as="span" fontWeight="bold">
               University of Kansas
             </Box>
             , where hackers will be welcome to stay overnight to hack.
           </List.Item>
-          <List.Item mx={2} my={4}>
+          <List.Item my={4}>
             Meals and snacks will be provided throughout the event, and dietary
             restrictions will be accommodated.
           </List.Item>
@@ -104,7 +104,23 @@ const About = () => {
         </Heading>
 
         {/* FAQ Accordion */}
-        <AccordionRoot multiple defaultValue={["question2"]}>
+        <AccordionRoot multiple defaultValue={["question1"]}>
+          <AccordionItem value="question1" mb={2}>
+            <AccordionItemTrigger style={{ cursor: "pointer" }}>
+              <Heading textAlign="left">What if I don't know anything about blockchain?</Heading>
+            </AccordionItemTrigger>
+            <AccordionItemContent fontSize="lg" mb={2}>
+              <Box mt="2">
+                <Text textAlign="left" color="dark">
+                  Building is the best way to learn! This event is totally open to those new to blockchain, 
+                  and we will share a ton of resources with you ahead of time to make sure you know the best 
+                  ways to start preparing.<br />
+                  <br />
+                  Please check out a few of our recommended resources <Link href="/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2#178dd445c69b8038aa1ed972fcd1a54e" color="dark">here🔗</Link>!
+                </Text>
+              </Box>
+            </AccordionItemContent>
+          </AccordionItem>
           {faqs.map((faq) => (
             <AccordionItem key={faq.value} value={faq.value} mb={2}>
               <AccordionItemTrigger style={{ cursor: "pointer" }}>
@@ -118,8 +134,8 @@ const About = () => {
             </AccordionItem>
           ))}
         </AccordionRoot>
-        <Text mt={6}>
-          Questions? Contact us at{" "}
+        <Text my={6}>
+          Other questions? Contact us at{" "}
           <Box as="span" fontWeight="bold">
             <Link color="dark" href="mailto:hack@kublockchain.com">
               hack@kublockchain.com

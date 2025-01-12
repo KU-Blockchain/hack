@@ -90,7 +90,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
   // #region SelectEducationLevel
   const SelectEducationLevel = () => {
     const items = [
-      { value: "highschool", title: "High School Student", description: "Must be >14 years old" },
+      { value: "highschool", title: "High School Student", description: "Must be at least 14 years old" },
       { value: "college", title: "University Student", description: "Undergrad or Graduate" },
       { value: "community", title: "Professional or Community Member", description: "" },
     ];
