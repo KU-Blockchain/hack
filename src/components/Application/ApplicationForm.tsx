@@ -296,7 +296,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
               <Field label="Resume" helperText={<Text>PDFs only. Resumes are hashed and pinned using IPFS. <Link color="dark" href="https://docs.pinata.cloud/web3/ipfs-101/what-is-ipfs" target="_blank" rel="noopener noreferrer">What does this mean?</Link></Text>}>
                 <UploadResume setResume={setResume} />
               </Field>
-              <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Experiance Level</Fieldset.Legend>
+              <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Experience Level</Fieldset.Legend>
               <Field label="What's your prior level of blockchain experience?" helperText="We welcome all levels of experience!" required>
                 <SelectExperienceLevel />
               </Field>
