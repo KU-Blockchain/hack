@@ -384,8 +384,8 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                 </Field>
                 </>
               )}
-              <Field label="What is your age?" helperText={<Text>To ensure we comply with our <Link color="dark" href="https://policy.ku.edu/university-ceremonies-and-special-events/minors-on-campus" target="_blank" rel="noopener noreferrer">University Policy</Link> for extra accommodations.</Text>} required>
-                <Input 
+              <Field label="Are you under 18?" helperText={<Text>To ensure we comply with our <Link color="dark" href="https://policy.ku.edu/university-ceremonies-and-special-events/minors-on-campus" target="_blank" rel="noopener noreferrer">University Policy</Link> for extra accommodations.</Text>} required>
+                {/* <Input 
                   name="age" 
                   type="number" 
                   _focus={{ border: "2px solid black" }} 
@@ -393,10 +393,26 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                     const age = e.target.value;
                     setIsUnder18(Number(age) < 18);
                   }}
-                />
+                /> */}
+                {/* <CheckboxGroup color="dark" name="code-of-conduct" form="application">
+                    <Checkbox value="yes" onChange={(e) => setIsUnder18((e.target as HTMLInputElement).checked)}>I am under the age of 18.</Checkbox>
+                </CheckboxGroup> */}
+                <RadioGroup defaultValue="over 18" form="application"> 
+                  <Stack gap={3} align="stretch" direction="column">
+                    <Radio value="over 18" _hover={{ cursor: "pointer" }} onChange={() => setIsUnder18(false)}>I'm over the age of 18.</Radio>
+                    <Radio value="under 18" _hover={{ cursor: "pointer" }} onChange={() => setIsUnder18(true)}>I'm under the age of 18.</Radio>
+                  </Stack>
+                </RadioGroup>
               </Field>
               {isUnder18 && (
                 <>
+                <Field label="What is your age?" required>
+                  <Input 
+                    name="age" 
+                    type="number" 
+                    _focus={{ border: "2px solid black" }} 
+                  />
+                </Field>
                 <Field label="Please share the first and last name of your chaperone." helperText="If you're under 18, you will need a chaperone (a parent or trusted adult)." required> 
                   <Input name="chaperone-name" _focus={{ border: "2px solid black" }} />
                 </Field>
