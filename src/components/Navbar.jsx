@@ -20,7 +20,8 @@ import { FaChevronDown, FaChevronLeft } from "react-icons/fa6";
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const pages = ["About", "FAQs", "Schedule"];
+  const MobilePages = ["About", "Apply", "Schedule", "HackerDoc"];
+  const DesktopPages = ["About", "Schedule", "HackerDoc"];
   const [pageName, setPageName] = useState("Home");
   const path = usePathname();
 
@@ -35,11 +36,17 @@ const Navbar = () => {
         case "/about":
           setPageName("About");
           break;
-        case "/faqs":
-          setPageName("FAQs");
+        // case "/faqs":
+        //   setPageName("FAQs");
+        //   break;
+        case "/apply":
+          setPageName("Apply");
           break;
         case "/schedule":
           setPageName("Schedule");
+          break;
+        case "/hackerdoc":
+          setPageName("HackerDoc");
           break;
         // case "/sponsors":
         //   setPageName("Sponsors");
@@ -104,7 +111,7 @@ const Navbar = () => {
             bg="limestone"
             data-highlighted="0"
           >
-            {pages.map((page) => (
+            {MobilePages.map((page) => (
               <MenuItem
                 key={page}
                 m={2}
@@ -127,57 +134,80 @@ const Navbar = () => {
           </MenuContent>
         </MenuRoot>
       ) : (
-        <Box
-          as="nav"
-          position="fixed"
-          top="5"
-          left="50%"
-          transform="translateX(-50%)"
-          borderRadius="full"
-          px="10"
-          py="4"
-          boxShadow="sm"
-          zIndex="10"
-          bgGradient="to-r"
-          gradientFrom="orange.100"
-          gradientTo="red.100"
-        >
-          <HStack spacing={4}>
-            <Link href="/" mr={2} alignItems="center">
-              <Image
-                src="/icon_small.png"
-                alt="Icon"
-                width={{ base: "40px", md: "40px", lg: "50px" }}
-              />
-            </Link>
+        <>
+          <Box
+            top="0"
+            left="10%"
+            position="fixed"
+            zIndex="10"
+            py={5}
+            px={10}
+            borderBottomRadius="xl"
+            bgGradient="to-r"
+            gradientFrom="orange.100"
+            gradientTo="red.100"
+          >
+            <Link href="/apply"
+              fontSize="xl"
+              fontWeight="bold"
+              color="dark"
+              textAlign="center"
+              fontStyle="italic"
+            >APPLY NOW</Link>
+          </Box>
+          <Box
+            as="nav"
+            position="fixed"
+            top="5"
+            left="50%"
+            transform="translateX(-50%)"
+            borderRadius="full"
+            px="10"
+            py="4"
+            boxShadow="sm"
+            zIndex="10"
+            bgGradient="to-r"
+            gradientFrom="orange.100"
+            gradientTo="red.100"
+          >
+            
+            <HStack spacing={4}>
+              <Link href="/" mr={2} alignItems="center">
+                <Image
+                  src="/icon_small.png"
+                  alt="Icon"
+                  width={{ base: "40px", md: "40px", lg: "50px" }}
+                />
+              </Link>
 
-            {/* Navigation Links */}
-            {pages.map((page, index) => (
-              <HStack key={page} spacing={5}>
-                {/* Page Name */}
-                <Link
-                  href={`/${page.toLowerCase()}`}
-                  color="dark"
-                  _hover={{ textDecoration: "none", color: "gray.400" }}
-                  fontSize={{ base: "md", md: "lg", lg: "xl" }}
-                  onClick={() => setPageName(page)}
-                >
-                  {page}
-                </Link>
+              {/* Navigation Links */}
+              {DesktopPages.map((page, index) => (
+                <HStack key={page} spacing={5}>
+                  {/* Page Name */}
+                  <Link
+                    href={`/${page.toLowerCase()}`}
+                    color="dark"
+                    _hover={{ textDecoration: "none", color: "gray.400" }}
+                    fontSize={{ base: "md", md: "lg", lg: "xl" }}
+                    onClick={() => setPageName(page)}
+                  >
+                    {page}
+                  </Link>
 
-                {/* Vertical Separator */}
-                {index < pages.length - 1 && (
-                  <Box
-                    as="span"
-                    height="25px"
-                    borderLeft="1px solid"
-                    borderColor="dark"
-                  />
-                )}
-              </HStack>
-            ))}
-          </HStack>
-        </Box>
+                  {/* Vertical Separator */}
+                  {index < DesktopPages.length - 1 && (
+                    <Box
+                      as="span"
+                      height="25px"
+                      borderLeft="1px solid"
+                      borderColor="dark"
+                    />
+                  )}
+                </HStack>
+              ))}
+            </HStack>
+          </Box>
+        </>
       )}
     </>
   );

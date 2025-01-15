@@ -11,6 +11,15 @@ const accordionRecipe = defineRecipe({
   }
 })
 
+const fieldRecipe = defineRecipe({
+  base: {
+    color: "yellow",
+    _hover: {
+      cursor: "pointer",
+    },
+  },
+})
+
 const config = defineConfig({
   globalCss: {
     body: {
@@ -31,6 +40,7 @@ const config = defineConfig({
     },
     recipes: {
       accordionitem: accordionRecipe,
+      field: fieldRecipe,
     },
   },
 })

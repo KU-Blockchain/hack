@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 import Schedule from "@/components/Schedule";
 import { Metadata } from "next";
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 
 export const metadata: Metadata = {
   title: "SCHEDULE | The Midwest Block-Thon",
@@ -28,7 +29,7 @@ const SchedulePage = () => {
         px="4"
         textAlign="center"
         fontSize="xl"
-        pt={{ base: "20vh", md: "30vh" }}
+        pt={{ base: "20vh", md: "25vh" }}
       >
         <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
           SCHEDULE
@@ -38,6 +39,7 @@ const SchedulePage = () => {
         </Text>
         <Schedule />
       </Box>
+      <ScrollToTopButton />
     </div>
     </>
   );

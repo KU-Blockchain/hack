@@ -4,12 +4,13 @@ import {
   Heading,
   Link,
   VStack,
+  Button,
 } from "@chakra-ui/react";
 import { Metadata } from "next";
 import GifSrc from "@/components/GifSrc";
 import Loading from "@/components/Loading";
 import AboutKUBI from "@/components/AboutKUBI";
-import Waitlist from "@/components/Waitlist";
+//import Waitlist from "@/components/Waitlist";
 
 export const metadata: Metadata = {
   title: "The Midwest Block-a-Thon",
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "FAQs", "Schedule"];
+  const pages = ["About", "Schedule", "HackerDoc"];
 
   return (
     <>
@@ -73,7 +74,29 @@ export default function Page() {
               </HStack>
             ))}
           </HStack>
-          <Waitlist />
+          {/* <Waitlist /> */}
+          <Link
+            href="/apply"
+            color="dark"
+            _hover={{ textDecoration: "none" }}
+          >
+          <Button
+            bgGradient="to-r"
+            gradientFrom="orange.100"
+            gradientTo="red.100"
+            color="dark"
+            fontWeight="bold"
+            fontStyle="italic"
+            _hover={{
+              bgGradient: "to-r",
+              gradientFrom: "orange.200",
+              gradientTo: "red.200",
+              borderRadius: "full",
+            }}
+          >
+            APPLY NOW
+          </Button>
+          </Link>
         </VStack>
       </Box>
     </div>
