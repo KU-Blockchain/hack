@@ -3,11 +3,11 @@ import { Image } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 
 const useGifSrc = () => {
-  const [gifSrc, setGifSrc] = useState("/logo.gif");
+  const [gifSrc, setGifSrc] = useState("/animated_homepage.gif");
 
   useEffect(() => {
     const handleLoad = () => {
-      setGifSrc(`/logo.gif?timestamp=${Date.now()}`);
+      setGifSrc(`/animated_homepage.gif?timestamp=${Date.now()}`);
     };
 
     window.addEventListener("load", handleLoad);
