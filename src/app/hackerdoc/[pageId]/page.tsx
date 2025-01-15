@@ -9,6 +9,7 @@ import Navbar from '@/components/Navbar'
 import Loading from '@/components/Loading'
 import { Box, Heading } from '@chakra-ui/react'
 import { Metadata } from "next";
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 
 export const metadata: Metadata = {
   title: "HACKERDOC | The Midwest Block-Thon",
@@ -50,6 +51,7 @@ async function Page({ params }: { params: Promise<{ pageId: string }> }) {
         />
         }
       </Box>
+      <ScrollToTopButton />
     </>
   )
 }

@@ -8,6 +8,7 @@ import { Box, Heading, Text, Image, List, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 import { Metadata } from "next";
+import ScrollToTopButton from '@/components/ScrollToTopButton'
 
 export const metadata: Metadata = {
   title: "ABOUT | The Midwest Block-a-Thon",
@@ -144,6 +145,7 @@ const About = () => {
           .
         </Text>
       </Box>
+      <ScrollToTopButton />
     </>
   );
 };

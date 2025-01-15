@@ -6,6 +6,7 @@ import ApplicationForm from "@/components/Application/ApplicationForm";
 import { Metadata } from "next";
 import OPTIONS from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
 export const metadata: Metadata = {
   title: "APPLY | The Midwest Block-Thon",
@@ -53,6 +54,7 @@ const Application = async () => {
           </Box>
         )}
       </Box>
+      <ScrollToTopButton />
     </div>
   );
 };

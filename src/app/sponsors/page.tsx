@@ -1,12 +1,12 @@
 import { Box, Heading, Text, Link, Stack } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
-import { Metadata } from "next";
+//import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "SPONSORS | The Midwest Block-Thon",
-  description: "Learn about the sponsors of the Midwest Block-a-Thon.",
-};
+// export const metadata: Metadata = {
+//   title: "SPONSORS | The Midwest Block-Thon",
+//   description: "Learn about the sponsors of the Midwest Block-a-Thon.",
+// };
 
 const Sponsors = () => {
 
