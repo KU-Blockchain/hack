@@ -67,7 +67,7 @@ const About = () => {
         px="4"
         textAlign="center"
         fontSize="xl"
-        pt={{ base: "20vh", md: "25vh" }}
+        pt={{ base: "25vh", md: "30vh" }}
       >
         <Box display="flex" justifyContent="center" mb={2}>
           <Image width="70%" align="center" src="/ready_to_build.gif" alt="Ready to Build" />

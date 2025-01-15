@@ -16,7 +16,6 @@ const useGifSrc = () => {
 
   return (
     <Image
-      alt="chakra logo"
       src={gifSrc}
       width={{ base: 360, md: 520 }}
       my={{ base: -70, md: -85 }}
