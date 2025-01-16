@@ -37,7 +37,7 @@ const Loading = () => {
       display="flex"
       alignItems="center"
       justifyContent="center"
-      zIndex="1000"
+      zIndex="100000"
       height="100vh"
       width="100vw"
       bg="limestone"

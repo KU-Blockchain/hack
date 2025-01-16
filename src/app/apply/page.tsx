@@ -7,6 +7,8 @@ import { Metadata } from "next";
 import OPTIONS from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import EmailVerifyPopup from "@/components/EmailVerifyPopup";
+import SignOut from "@/components/SignOut";
 
 export const metadata: Metadata = {
   title: "APPLY | The Midwest Block-Thon",
@@ -21,11 +23,16 @@ export const metadata: Metadata = {
 
 const Application = async () => {
   const session = await getServerSession(OPTIONS);
+  
 
   return (
     <div>
       <Loading />
       <Navbar />
+      {session && (
+        <SignOut />
+      )}
+      <EmailVerifyPopup />
       <Box
         maxW="800px"
         mx="auto"

@@ -38,7 +38,7 @@ const AboutKUBI = () => {
           </DialogTrigger>
           <DialogContent
             bg="white"
-            boxShadow="xl"
+            boxShadow="md"
             pos="fixed"
             zIndex="100"
             top="50%"
