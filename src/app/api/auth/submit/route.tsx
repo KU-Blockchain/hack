@@ -182,7 +182,7 @@ export async function POST(request: NextRequest) {
           applicationForm.education_level.college.graduation,
           applicationForm.education_level.community.company,
           applicationForm.education_level.community.field,
-          applicationForm.age,
+          applicationForm.age || "over 18",
           applicationForm.chaperone.chaperone_name,
           applicationForm.chaperone.chaperone_email,
           applicationForm.dietary,

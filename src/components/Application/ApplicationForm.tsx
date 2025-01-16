@@ -287,13 +287,13 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                   />
                 </NativeSelectRoot>
               </Field>
-              <Field label="Linkedin URL">
+              <Field label="Linkedin URL" optionalText={<Badge size="xs" variant="surface">Optional</Badge>}>
                 <Input name="linkedin" type="url" _focus={{ border: "2px solid black" }} />
               </Field>
-              <Field label="Portfolio URL" helperText="If you have one, share your portfolio! Can be a personal website, GitHub, resume link, etc.">
+              <Field label="Portfolio URL" optionalText={<Badge size="xs" variant="surface">Optional</Badge>} helperText="If you have one, share your portfolio! Can be a personal website, GitHub, resume link, etc.">
                 <Input name="portfolio" type="url" _focus={{ border: "2px solid black" }} />
               </Field>
-              <Field label="Resume" helperText={<Text>PDFs only. Resumes are hashed and pinned using IPFS. <Link color="dark" href="https://docs.pinata.cloud/web3/ipfs-101/what-is-ipfs" target="_blank" rel="noopener noreferrer">What does this mean?</Link></Text>}>
+              <Field label="Resume" optionalText={<Badge size="xs" variant="surface">Optional</Badge>} helperText={<Text>PDFs only. Resumes are hashed and pinned using IPFS. <Link color="dark" href="https://docs.pinata.cloud/web3/ipfs-101/what-is-ipfs" target="_blank" rel="noopener noreferrer">What does this mean?</Link></Text>}>
                 <UploadResume setResume={setResume} />
               </Field>
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Experience Level</Fieldset.Legend>
@@ -422,10 +422,10 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                 </>
               )}
               <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">Code of Conduct and Safety</Fieldset.Legend>
-              <Field label="Please list any dietary restrictions.">
+              <Field label="Please list any dietary restrictions." optionalText={<Badge size="xs" variant="surface">Optional</Badge>}>
                 <Textarea name="dietary" _focus={{ border: "2px solid black" }} />
               </Field>
-              <Field label="We want to ensure this event as safe, comfortable, and inclusive for everyone. Are there any additional accommodations we can provide that would make this event more accessible for you?">
+              <Field label="We want to ensure this event as safe, comfortable, and inclusive for everyone. Are there any additional accommodations we can provide that would make this event more accessible for you?" optionalText={<Badge size="xs" variant="surface">Optional</Badge>}>
                 <Textarea name="accommodations" _focus={{ border: "2px solid black" }} />
               </Field>
               <Field 
