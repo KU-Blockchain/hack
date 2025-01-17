@@ -9,6 +9,7 @@ import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 import { Metadata } from "next";
 import ScrollToTopButton from '@/components/ScrollToTopButton'
+import KBFImages from '@/components/KBFImages'
 
 export const metadata: Metadata = {
   title: "ABOUT | The Midwest Block-a-Thon",
@@ -99,6 +100,9 @@ const About = () => {
             restrictions will be accommodated.
           </List.Item>
         </List.Root>
+
+        <KBFImages />
+
         {/* Page Heading */}
         <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
           FREQUENTLY ASKED QUESTIONS

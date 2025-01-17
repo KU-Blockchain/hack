@@ -18,6 +18,7 @@
     "@next-auth/firebase-adapter": "^2.0.1",
     "@notionhq/client": "^2.2.15",
     "@types/nodemailer": "^6.4.17",
+    "@vercel/analytics": "^1.4.1",
     "firebase-admin": "^13.0.2",
     "framer-motion": "^11.11.17",
     "fuse.js": "^7.0.0",

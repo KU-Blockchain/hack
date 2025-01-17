@@ -1,6 +1,7 @@
 import Provider from "../utils/provider";
 // core styles shared by all of react-notion-x (required)
 import 'react-notion-x/src/styles.css'
+import { Analytics } from "@vercel/analytics/react";
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
@@ -10,6 +11,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Provider>
           {children}
         </Provider>
+        <Analytics />
       </body>
     </html>
   );
