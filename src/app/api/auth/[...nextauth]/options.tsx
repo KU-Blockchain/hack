@@ -3,8 +3,10 @@ import GitHubProvider from 'next-auth/providers/github';
 import DiscordProvider from 'next-auth/providers/discord';
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from 'next-auth/providers/email';
+//import CredentialsProvider from 'next-auth/providers/credentials';
 import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 import { firestore } from "@/utils/firestore";
+import { randomInt } from "crypto";
 import { createTransport } from "nodemailer";
 
 const isDev = process.env.NEXTAUTH_URL?.includes("localhost");
@@ -41,8 +43,13 @@ const OPTIONS: NextAuthOptions = {
         }
       },
       from: process.env.NEXTAUTH_EMAIL_FROM,
+      maxAge: 3 * 60, // 3 minutes
+      async generateVerificationToken() {
+        return gernerateOTP().toString()
+      },
       async sendVerificationRequest({
         identifier: email,
+        token,
         url,
         provider: { server, from },
       }) {
@@ -52,9 +59,9 @@ const OPTIONS: NextAuthOptions = {
         const result = await transport.sendMail({
           to: email,
           from: from,
-          subject: `Your magic link is here 🪄✨`,
-          text: text({ url }),
-          html: html({ url }),
+          subject: `Your magic code is here 🪄`,
+          text: text({ url, token }),
+          html: html({ url, token }),
         })
         const failed = result.rejected.filter(Boolean)
         if (failed.length) {
@@ -73,6 +80,10 @@ const OPTIONS: NextAuthOptions = {
   adapter: FirestoreAdapter(firestore),
 };
 
+function gernerateOTP() {
+  return randomInt(100000, 999999);
+};
+
 /**
  * Email HTML body
  * Insert invisible space into domains from being turned into a hyperlink by email
@@ -81,8 +92,8 @@ const OPTIONS: NextAuthOptions = {
  *
  * @note We don't add the email address to avoid needing to escape it, if you do, remember to sanitize it!
  */
-function html(params: { url: string }) {
-  const { url } = params
+function html(params: { url: string, token: string }) {
+  const { url, token } = params
 
   return `
 <body style="background: #fff;">
@@ -98,10 +109,11 @@ function html(params: { url: string }) {
 			<td align="center" style="padding: 20px 0;">
 				<table border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td align="center" style="border-radius: 5px;" bgcolor="#fed7aa"><a
-								href="${url}" target="_blank"
-								style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #3b301b; text-decoration: none; border-radius: 5px; padding: 10px 20px; border: 1px solid #fed7aa; display: inline-block; font-weight: bold;">
-                Sign in</a></td>
+						<td align="center" style="border-radius: 5px;" bgcolor="#fed7aa">
+              <a style="font-size: 18px; font-family: Helvetica, Arial, sans-serif; color: #3b301b; text-decoration: none; border-radius: 5px; padding: 10px 20px; border: 1px solid #fed7aa; display: inline-block; font-weight: bold;">
+              ${token}
+              </a>
+            </td>
 					</tr>
 				</table>
 			</td>
@@ -109,7 +121,8 @@ function html(params: { url: string }) {
 		<tr>
 			<td align="center"
 				style="padding: 0px 0px 10px 0px; font-size: 16px; line-height: 22px; font-family: Helvetica, Arial, sans-serif; color: #3b301b;">
-				If you did not request this email you can safely ignore it. <br /> Add hack@kublockchain.com to your safe senders to ensure you receive future emails from us.
+				This code will expire in <i>3 minutes</i>. <br />
+        If you did not request this email you can safely ignore it.
       </td>
 		</tr>
 	</table>
@@ -117,7 +130,10 @@ function html(params: { url: string }) {
 		<p style="font-size: 16px; line-height: 25px; font-family: Helvetica, Arial, sans-serif; color: #3b301b;">
 			<i><b><u>The Midwest Block-a-Thon 2025</u></b></i> - a hackathon for innovators <br />
 	    1536 W 15th St, Lawrence, KS 66045 <br />
-      Made with 🔥 by KU Blockchain Institute
+      Made with 🔥 by KU Blockchain Institute <br />
+		  <p style="font-size: 12px; font-family: Helvetica, Arial, sans-serif; color: #3b301b;">
+        Add hack@kublockchain.com to your safe senders to ensure you receive future emails from us.
+      </p>
     </p>
 	</footer>
 </body>
@@ -125,8 +141,11 @@ function html(params: { url: string }) {
 }
 
 /** Email Text body (fallback for email clients that don't render HTML, e.g. feature phones) */
-function text({ url }: { url: string}) {
-  return `Sign in to The Midwest Block-a-Thon Application Portal\n${url}\n\n`
+function text(params: { url: string, token: string}) {
+  const { token } = params;
+  return `
+  Sign in to The Midwest Block-a-Thon Application Portal\n${token}\n\n
+  If you did not request this email you can safely ignore it.\n\n`
 }
 
 export default OPTIONS;

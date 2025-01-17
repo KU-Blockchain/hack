@@ -1,14 +1,13 @@
 import { Box, Heading, Text, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
-import SignIn from "@/components/Application/SignIn";
+import SignIn from "@/components/AccountManagement/SignIn";
 import ApplicationForm from "@/components/Application/ApplicationForm";
 import { Metadata } from "next";
 import OPTIONS from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
-import EmailVerifyPopup from "@/components/EmailVerifyPopup";
-import SignOut from "@/components/SignOut";
+import SignOut from "@/components/AccountManagement/SignOut";
 
 export const metadata: Metadata = {
   title: "APPLY | The Midwest Block-Thon",
@@ -32,7 +31,6 @@ const Application = async () => {
       {session && (
         <SignOut />
       )}
-      <EmailVerifyPopup />
       <Box
         maxW="800px"
         mx="auto"

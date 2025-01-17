@@ -14,14 +14,20 @@ import { Button } from "@/components/ui/button"
 import { Field } from "@/components/ui/field"
 import { defineStyle } from "@chakra-ui/react"
 import { useState } from "react";
+import EmailVerifyPopup from "@/components/AccountManagement/EmailVerifyPopup";
 import { FaDiscord, FaGithub, FaGoogle, FaWandMagicSparkles } from "react-icons/fa6";
 
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
+  const [renderEmailVerifyPopup, setRenderEmailVerifyPopup] = useState(false);
   const [loading, setLoading] = useState(false);
   
   return (
+    <>
+    {renderEmailVerifyPopup && email &&
+      <EmailVerifyPopup email={email} />
+    }
     <Stack>
       <Button disabled={loading} bg="dark" onClick={async () => {
         setLoading(true);
@@ -63,7 +69,8 @@ export default function SignIn() {
           setLoading(false);
           return;
         }
-        signIn("email", { email: email, callbackUrl: '/apply' });//.finally(() => setLoading(false)); 
+        setRenderEmailVerifyPopup(true);
+        signIn("email", { email: email, redirect: false });//.finally(() => setLoading(false)); 
       }}>
         <Stack>
           <Box pos="relative" w="full">
@@ -73,12 +80,13 @@ export default function SignIn() {
           <Button disabled={loading} width="100%" type="submit" bg="dark">
             <HStack justify="center">
               <FaWandMagicSparkles color="white" />
-              <Text color="white">Send Magic Link</Text>
+              <Text color="white">Send Magic Code</Text>
             </HStack>
           </Button>
         </Stack>
       </form>
     </Stack>
+    </>
   )
 }
 
