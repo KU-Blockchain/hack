@@ -33,12 +33,13 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "Schedule", "HackerDoc"];
+  const pages = ["About", "Schedule", "HackerDoc", "Sponsors"];
 
   return (
     <>
     <div>
       <Loading />
+      <a id="mlh-trust-badge" style={{ display: "block", maxWidth: "100px", minWidth: "60px", position: "fixed", right: "100px", top: "0", width: "10%", zIndex: 10000 }} href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2025/mlh-trust-badge-2025-white.svg" alt="Major League Hacking 2025 Hackathon Season" style={{ width: "100%" }} /></a>
       <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
         <AboutKUBI />
 
@@ -58,7 +59,7 @@ export default function Page() {
                   color="dark"
                   _hover={{ textDecoration: "none", color: "gray.500" }}
                   fontWeight="medium"
-                  fontSize="xl"
+                  fontSize={{ base: "lg", md: "xl" }}
                 >
                   {page}
                 </Link>
