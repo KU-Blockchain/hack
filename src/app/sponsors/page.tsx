@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Link, Stack } from "@chakra-ui/react";
+import { Box, Heading, Text, Link, Stack, Image, HStack } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
 //import { Metadata } from "next";
@@ -37,12 +37,20 @@ const Sponsors = () => {
           <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#5170ff" gradientTo="#ff66c4" p={4} color="dark">
             <Text textAlign="center" fontWeight="bold">PETA TIER</Text>
           </Box>
-          <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#0cc0df" gradientTo="#ffde59" p={4} color="dark">
+          <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
+            <Link href="https://dabl.club/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/dablclub.svg" alt="sponsor logo" /></Link>
+            <Link href="https://pinata.cloud/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/pinata.svg" alt="sponsor logo" /></Link>
+          </HStack>
+          {/* <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#0cc0df" gradientTo="#ffde59" p={4} color="dark">
             <Text textAlign="center" fontWeight="bold">TERA TIER</Text>
-          </Box>
-          <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#fff7ad" gradientTo="#ffa9f9" p={4} color="dark">
+          </Box> */}
+          <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#fff7ad" gradientTo="#ffa9f9" p={4} mt={4} color="dark">
             <Text textAlign="center" fontWeight="bold">GIGA TIER</Text>
           </Box>
+          <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
+            <Link href="https://soniclabs.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/sonic.png" alt="sponsor logo" /></Link>
+            <Link href="https://ripple.com/company" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/ripple.png" alt="sponsor logo" /></Link>
+          </HStack>
         </Stack>
       </Box>
     </div>
