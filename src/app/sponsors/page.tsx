@@ -1,12 +1,12 @@
 import { Box, Heading, Text, Link, Stack, Image, HStack } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
-//import { Metadata } from "next";
+import { Metadata } from "next";
 
-// export const metadata: Metadata = {
-//   title: "SPONSORS | The Midwest Block-Thon",
-//   description: "Learn about the sponsors of the Midwest Block-a-Thon.",
-// };
+export const metadata: Metadata = {
+  title: "SPONSORS | The Midwest Block-Thon",
+  description: "Learn about the sponsors of the Midwest Block-a-Thon.",
+};
 
 const Sponsors = () => {
 
@@ -38,8 +38,8 @@ const Sponsors = () => {
             <Text textAlign="center" fontWeight="bold">PETA TIER</Text>
           </Box>
           <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
-            <Link href="https://dabl.club/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/dablclub.svg" alt="sponsor logo" /></Link>
-            <Link href="https://pinata.cloud/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/pinata.svg" alt="sponsor logo" /></Link>
+            <Link href="https://dabl.club/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/dablclub.svg" alt="Dabl Club sponsor logo" /></Link>
+            <Link href="https://pinata.cloud/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/pinata.svg" alt=" Pinata sponsor logo" /></Link>
           </HStack>
           {/* <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#0cc0df" gradientTo="#ffde59" p={4} color="dark">
             <Text textAlign="center" fontWeight="bold">TERA TIER</Text>
@@ -48,8 +48,8 @@ const Sponsors = () => {
             <Text textAlign="center" fontWeight="bold">GIGA TIER</Text>
           </Box>
           <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
-            <Link href="https://soniclabs.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/sonic.png" alt="sponsor logo" /></Link>
-            <Link href="https://ripple.com/company" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/ripple.png" alt="sponsor logo" /></Link>
+            <Link href="https://soniclabs.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/sonic.png" alt="Sonic sponsor logo" /></Link>
+            <Link href="https://ripple.com/company" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/ripple.png" alt="Ripple sponsor logo" /></Link>
           </HStack>
         </Stack>
       </Box>

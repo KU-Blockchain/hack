@@ -32,6 +32,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      console.log("PATH", path);
       switch (path) {
         case "/about":
           setPageName("About");
@@ -45,7 +46,7 @@ const Navbar = () => {
         case "/schedule":
           setPageName("Schedule");
           break;
-        case "/hackerdoc":
+        case path.match(/^\/hackerdoc\/.*$/)?.input:
           setPageName("HackerDoc");
           break;
         case "/sponsors":
