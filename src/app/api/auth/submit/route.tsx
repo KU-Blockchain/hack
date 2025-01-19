@@ -151,6 +151,20 @@ export async function POST(request: NextRequest) {
   });
 
   const sheets = google.sheets({ version: 'v4', auth });
+
+  const checkUser = await sheets.spreadsheets.values.get({
+    spreadsheetId: process.env.GOOGLE_APPLICANTS_SPREADSHEET_ID,
+    range: 'Sheet1!E:E',
+  });
+
+  if (checkUser.data.values && applicationForm.email) {
+    for (const row of checkUser.data.values) {
+      if (row[0] === applicationForm.email.toLowerCase()) {
+        return NextResponse.json({ message: 'Application already submitted' }, { status: 200 });
+      }
+    }
+  }
+
   const date = new Date();
   const timestamp = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
   const education_level = applicationForm.education_level.high_school.name ? 'High School' : applicationForm.education_level.college.name ? 'College' : 'Community';
