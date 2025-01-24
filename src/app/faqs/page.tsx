@@ -53,7 +53,7 @@ export default function FAQs() {
     {
       value: "question7",
       title: "Will there be places for me to sleep?",
-      text: "We will have at least one room as a dedicated quiet, sleeping space. We do recommend that you bring your own sleeping bag if you plan to stay overnight.",
+      text: "We will have at least one room as a dedicated quiet, sleeping space. We do recommend that you bring your own sleeping bag if you are planning on sleeping.",
     },
   ];
 
