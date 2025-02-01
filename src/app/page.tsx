@@ -39,7 +39,29 @@ export default function Page() {
     <>
     <div>
       <Loading />
-      {/* <a id="mlh-trust-badge" style={{ display: "block", maxWidth: "100px", minWidth: "60px", position: "fixed", right: "100px", top: "0", width: "10%", zIndex: 10000 }} href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2025/mlh-trust-badge-2025-white.svg" alt="Major League Hacking 2025 Hackathon Season" style={{ width: "100%" }} /></a> */}
+      {/* <Link
+        id="mlh-trust-badge"
+        _hover={{ transform: "translateY(10px) scale(1.1)" }}
+        style={{
+          display: "block",
+          transition: "transform 0.2s",
+          maxWidth: "100px",
+          minWidth: "60px",
+          position: "fixed",
+          right: "100px",
+          top: "0",
+          width: "10%",
+          zIndex: 10000,
+        }}
+        href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
+        target="_blank"
+      >
+        <img
+          src="https://s3.amazonaws.com/logged-assets/trust-badge/2025/mlh-trust-badge-2025-white.svg"
+          alt="Major League Hacking 2025 Hackathon Season"
+          style={{ width: "100%" }}
+        />
+      </Link> */}
       <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
         <AboutKUBI />
 

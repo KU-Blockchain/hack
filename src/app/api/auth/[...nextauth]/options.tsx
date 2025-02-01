@@ -74,7 +74,7 @@ const OPTIONS: NextAuthOptions = {
     signIn: "/apply",
     error: "/apply",
     verifyRequest: "/apply?request=verify",
-    signOut: "/apply?signout=true",
+    //signOut: "/apply?signout=true",
   },
   secret: process.env.NEXTAUTH_SECRET,
   adapter: FirestoreAdapter(firestore),

@@ -32,7 +32,7 @@ const About = () => {
     {
       value: "question3",
       title: "How does the application process work?",
-      text: "Once applications open, you'll find them by clicking the 'Apply Now' button on our homepage and filling out the required information. For now, please join our waitlist so you can be the first to know when applications open!",
+      text: "You can find the application by clicking the 'Apply Now' button on our homepage and filling out your information. We intend to accept most, if not all, applicants! You’ll hear back within two weeks of applying.",
     },
     {
       value: "question4",
@@ -41,8 +41,7 @@ const About = () => {
     },
     {
       value: "question5",
-      title:
-        "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
+      title: "Will Mercury be in retrograde or will any other significantly disruptive astrological events be going on during this time?",
       text: "Mercury is slated to be in retrograde March 14 to April 6, but do not fear! We will have outlets, wifi, and anything else your tech might need to ensure no disruptive events occur during your hacking!",
     },
     // {
