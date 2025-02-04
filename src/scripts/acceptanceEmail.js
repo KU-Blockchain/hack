@@ -1,5 +1,5 @@
-//const nodemailer = require("nodemailer");
-//require("dotenv").config();
+const nodemailer = require("nodemailer");
+require("dotenv").config();
 
 const server = {
   host: process.env.NEXTAUTH_EMAIL_HOST,
@@ -15,19 +15,34 @@ const transporter = nodemailer.createTransport(server);
 // async..await is not allowed in global scope, must use a wrapper
 async function main() {
   // send mail with defined transport object
-  const name = "Micah";
-  const email = "micahborghese@gmail.com";
 
-  const info = await transporter.sendMail({
-    from: '"KU Blockchain" <hack@kublockchain.com>', // sender address
-    to: email, // list of receivers
-    subject: `${name}, you're in! 🎉`, // Subject line
-    text: text({ name, email }),
-    html: html({ name, email }),
-  });
+	async function readJsonFile(filePath) {
+		await fetch(filePath).then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			return response.json();
+		})
+	}
 
-  console.log("Message sent: %s", info.messageId);
-  // Message sent: <d786aa62-4e0a-070a-47ed-0b0666549519@ethereal.email>
+	const jsonFilePath = 'applicants.json';
+	const jsonData = await readJsonFile(jsonFilePath);
+
+	for (const item of jsonData) {
+		console.log(item);
+	}
+  // const name = "Micah";
+  // const email = "micahborghese@gmail.com";
+
+  // const info = await transporter.sendMail({
+  //   from: '"KU Blockchain" <hack@kublockchain.com>', // sender address
+  //   to: email, // list of receivers
+  //   subject: `${name}, you're in! 🎉`, // Subject line
+  //   text: text({ name, email }),
+  //   html: html({ name, email }),
+  // });
+
+  // console.log("Message sent: %s", info.messageId);
 }
 
 /**
@@ -78,7 +93,7 @@ function html(params) {
 				What's next?
 				<ul>
 					<li>Mark your calendar for <a
-							href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4gOGQ4ZTI5MmFhNjE4YWNkYjQ3M2NiMDJjMjhhY2Y5MTllY2VlNTQzYjAyNTAyZTdhMjVhZWQxNzVkZjlhZWEzOEBn&tmsrc=8d8e292aa618acdb473cb02c28acf919ecee543b02502e7a25aed175df9aea38%40group.calendar.google.com">Saturday
+							href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4ga3UuYmxvY2tjaGFpbi5pbnN0aXR1dGVAbQ&tmsrc=ku.blockchain.institute%40gmail.com">Saturday
 							and Sunday, March 29-30, 2025</a>!</li>
 					<li>Join our community <a href="${process.env.NEXT_PUBLIC_DISCORD_LINK}">Discord</a> server</li>
 					<li>Check out learning resources on our <a

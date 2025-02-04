@@ -47,18 +47,18 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
           </Text>
           <List.Root textAlign="left" mx={2} my={4}>
             <List.Item>
-              Mark your calendar for <Link href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4gOGQ4ZTI5MmFhNjE4YWNkYjQ3M2NiMDJjMjhhY2Y5MTllY2VlNTQzYjAyNTAyZTdhMjVhZWQxNzVkZjlhZWEzOEBn&tmsrc=8d8e292aa618acdb473cb02c28acf919ecee543b02502e7a25aed175df9aea38%40group.calendar.google.com">
+              Mark your calendar for <Link color="dark" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4ga3UuYmxvY2tjaGFpbi5pbnN0aXR1dGVAbQ&tmsrc=ku.blockchain.institute%40gmail.com">
               Saturday and Sunday, March 29-30, 2025</Link>!
             </List.Item>
             <List.Item my={4}>
-              Join our community <Link onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Discord server</Link>
+              Join our community <Link color="dark" onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Discord server</Link>
             </List.Item>
             <List.Item>
-              Check out learning resources on our <Link href="https://hack.kublockchain.com/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2#178dd445c69b8038aa1ed972fcd1a54e">
+              Check out learning resources on our <Link color="dark" href="https://hack.kublockchain.com/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2#178dd445c69b8038aa1ed972fcd1a54e">
               HackerDoc</Link>
             </List.Item>
             <List.Item my={4}>
-              Follow us on <Link href="https://instagram.com/kublockchain">Instagram</Link>!
+              Follow us on <Link color="dark" href="https://instagram.com/kublockchain">Instagram</Link>!
             </List.Item>
             <List.Item>
               Keep an eye out for an email with more details soon
