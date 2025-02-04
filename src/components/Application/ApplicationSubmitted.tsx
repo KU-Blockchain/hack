@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Link, Text, Box, VStack, HStack, Spinner } from "@chakra-ui/react";
+import { Link, Text, Box, VStack, HStack, Spinner, List } from "@chakra-ui/react";
+import { Button } from "@/components/ui/button";
 import { Alert } from "@/components/ui/alert"
 
 interface ApplicationFormProps {
@@ -37,7 +38,33 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
   return (
     <Box justifyContent={"center"} alignItems={"center"} textAlign={"center"} p={4}>
       {status === "Admitted" || status === "Emailed-Admitted" ? (
-        <Text fontWeight="bold" fontSize="3xl">🎉 {firstName}, you're in! 🎉</Text>
+        <>
+          <Text fontWeight="bold" fontSize="3xl">🎉 {firstName}, you're in! 🎉</Text>
+          <Button size="lg" my={4} onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Join our Discord</Button>
+          <Text color="dark" fontSize="sm">*this link is unique, please do not share*<br></br>Joining the server using this link gives you an attendee role. If you are already in the KUBI server, this may not work. Please reach out to hack@kublockchain.com with your Discord username so we can assign you the role!</Text>
+          <Text textAlign={"left"} my={4}>
+            What's next?
+          </Text>
+          <List.Root textAlign="left" mx={2} my={4}>
+            <List.Item>
+              Mark your calendar for <Link href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4gOGQ4ZTI5MmFhNjE4YWNkYjQ3M2NiMDJjMjhhY2Y5MTllY2VlNTQzYjAyNTAyZTdhMjVhZWQxNzVkZjlhZWEzOEBn&tmsrc=8d8e292aa618acdb473cb02c28acf919ecee543b02502e7a25aed175df9aea38%40group.calendar.google.com">
+              Saturday and Sunday, March 29-30, 2025</Link>!
+            </List.Item>
+            <List.Item my={4}>
+              Join our community <Link onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Discord server</Link>
+            </List.Item>
+            <List.Item>
+              Check out learning resources on our <Link href="https://hack.kublockchain.com/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2#178dd445c69b8038aa1ed972fcd1a54e">
+              HackerDoc</Link>
+            </List.Item>
+            <List.Item my={4}>
+              Follow us on <Link href="https://instagram.com/kublockchain">Instagram</Link>!
+            </List.Item>
+            <List.Item>
+              Keep an eye out for an email with more details soon
+            </List.Item>
+          </List.Root>
+        </>
       ) : status === "Denied" || status === "Emailed-Denied" ? (
         <Text>{firstName}, we're sorry, but your application has been rejected. Please reach out to hack@kublockchain.com if you'd like an explanation.</Text>
       ) : (
