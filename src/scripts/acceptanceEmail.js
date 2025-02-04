@@ -1,5 +1,5 @@
-const nodemailer = require("nodemailer");
-require("dotenv").config();
+//const nodemailer = require("nodemailer");
+//require("dotenv").config();
 
 const server = {
   host: process.env.NEXTAUTH_EMAIL_HOST,
