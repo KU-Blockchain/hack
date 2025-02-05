@@ -39,7 +39,7 @@ export default function Page() {
     <>
     <div>
       <Loading />
-      {/* <Link
+      <Link
         id="mlh-trust-badge"
         _hover={{ transform: "translateY(10px) scale(1.1)" }}
         style={{
@@ -61,7 +61,7 @@ export default function Page() {
           alt="Major League Hacking 2025 Hackathon Season"
           style={{ width: "100%" }}
         />
-      </Link> */}
+      </Link>
       <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
         <AboutKUBI />
 

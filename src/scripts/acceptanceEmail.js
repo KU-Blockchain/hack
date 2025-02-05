@@ -1,5 +1,6 @@
 //const nodemailer = require("nodemailer");
 //require("dotenv").config();
+//const fs = require('fs').promises;
 
 const server = {
   host: process.env.NEXTAUTH_EMAIL_HOST,
@@ -17,32 +18,29 @@ async function main() {
   // send mail with defined transport object
 
 	async function readJsonFile(filePath) {
-		await fetch(filePath).then(response => {
-			if (!response.ok) {
-				throw new Error(`HTTP error! status: ${response.status}`);
-			}
-			return response.json();
-		})
+		const data = await fs.readFile(filePath, 'utf8');
+		return JSON.parse(data);
 	}
 
-	const jsonFilePath = 'applicants.json';
+	const jsonFilePath = 'src/scripts/applicants.json';
 	const jsonData = await readJsonFile(jsonFilePath);
 
 	for (const item of jsonData) {
-		console.log(item);
+		const name = item.name;
+		const email = item.email;
+
+		console.log("Sending email to", name, email);
+
+		const info = await transporter.sendMail({
+			from: '"KU Blockchain" <hack@kublockchain.com>', // sender address
+			to: email, // list of receivers
+			subject: `${name}, you're in! 🎉`, // Subject line
+			text: text({ name, email }),
+			html: html({ name, email }),
+		});
+
+		console.log("Message sent: %s", info.messageId);
 	}
-  // const name = "Micah";
-  // const email = "micahborghese@gmail.com";
-
-  // const info = await transporter.sendMail({
-  //   from: '"KU Blockchain" <hack@kublockchain.com>', // sender address
-  //   to: email, // list of receivers
-  //   subject: `${name}, you're in! 🎉`, // Subject line
-  //   text: text({ name, email }),
-  //   html: html({ name, email }),
-  // });
-
-  // console.log("Message sent: %s", info.messageId);
 }
 
 /**
