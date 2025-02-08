@@ -1,8 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Link, Text, Box, VStack, HStack, Spinner, List } from "@chakra-ui/react";
+import { Link, Text, Box, VStack, HStack, Spinner, List, Stack } from "@chakra-ui/react";
 import { Button } from "@/components/ui/button";
 import { Alert } from "@/components/ui/alert"
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { useAccount, useDisconnect } from 'wagmi';
 
 interface ApplicationFormProps {
   applicantEmail: string;
@@ -12,20 +14,39 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const [status, setStatus] = useState("Pending");
   const [firstName, setFirstName] = useState("");
+  const [walletId, setWalletId] = useState("");
+  const account = useAccount();
 
   // Initialize the client-side rendering
   useEffect(() => {
     const checkStatus = async () => {
-      const response = await fetch(`/api/auth/status?email=${applicantEmail ?? ''}`, {
+      const applicantResponse = await fetch(`/api/auth/status?email=${applicantEmail ?? ''}`, {
         method: "GET",
       });
-      const data = await response.json();
-      setStatus(data.values[0][0]);
-      setFirstName(data.values[0][2]);
-      console.log("API Response:", data);
+      const applicantData = await applicantResponse.json();
+      setStatus(applicantData.values[0][0]);
+      setFirstName(applicantData.values[0][2]);
+      const walletResponse = await fetch(`/api/auth/wallet?email=${applicantEmail ?? ''}`, {
+        method: "GET",
+      });
+      const walletData = await walletResponse.json();
+      console.log(walletData);
+      setWalletId(walletData.walletId);
     };
     checkStatus().then(() => setIsReady(true));
   }, []);
+
+  useEffect(() => {
+    if (account.status === "connected") {
+      if (account?.chainId == 1) {
+        fetch(`/api/auth/wallet?email=${applicantEmail ?? ''}`, {
+          method: "POST",
+          body: account?.address,
+        });
+        console.log("Account connected:", account?.address);
+      }
+    }
+  }, [account]);
 
   // Avoid rendering until the client is ready
   if (!isReady) return (
@@ -39,9 +60,21 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
     <Box justifyContent={"center"} alignItems={"center"} textAlign={"center"} p={4}>
       {status === "Admitted" || status === "Emailed-Admitted" ? (
         <>
-          <Text fontWeight="bold" fontSize="3xl">🎉 {firstName}, you're in! 🎉</Text>
-          <Button size="lg" my={4} onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Join our Discord</Button>
-          <Text color="dark" fontSize="sm">*this link is unique, please do not share*<br></br>Joining the server using this link gives you an attendee role. If you are already in the KUBI server, this may not work. Please reach out to hack@kublockchain.com with your Discord username so we can assign you the role!</Text>
+          <Text fontWeight="bold" fontSize="3xl" mb={5}>🎉 {firstName}, you're in! 🎉</Text>
+          <HStack>
+            <Stack width="50%" alignItems="center">
+              <Button bg="dark" color="limestone" _hover={{ transform: "translateY(-2px) scale(1.05)" }} width="60%" size="lg" my={4} onClick={() => window.open(`${process.env.NEXT_PUBLIC_DISCORD_LINK}`, "_blank")}>Join our Discord</Button>
+              <Text color="dark" fontSize="sm">*this link is unique, please do not share*<br></br>Joining the server using this link gives you an attendee role. If you are already in the KUBI server, this may not work. Please reach out to hack@kublockchain.com with your Discord username so we can assign you the role!</Text>
+            </Stack>
+            <Stack alignItems="center" width="50%">
+              {walletId ? (
+                <Button width="60%" bg="dark" color="limestone" _hover={{ transform: "translateY(-2px) scale(1.05)" }} fontSize="sm">Your wallet ID is: <br></br> {walletId}</Button>
+              ) : (
+                <Box my={4}><ConnectButton /></Box>
+              )}
+              <Text color="dark" fontSize="sm">So you can receive prize money!<br></br>Disbursements will paid out in USDC on the Ethereum Network and txid will be sent to your email the same day.</Text>
+            </Stack>
+          </HStack>
           <Text textAlign={"left"} my={4}>
             What's next?
           </Text>
