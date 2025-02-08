@@ -24,7 +24,6 @@ interface College extends EducationBase {
   name: string;
   year: string;
   study: string;
-  graduation: string;
 }
 
 interface Community extends EducationBase {
@@ -121,7 +120,6 @@ export async function POST(request: NextRequest) {
         name: formData.get('university') as string,
         year: formData.get('year') as string,
         study: formData.get('study') as string,
-        graduation: formData.get('graduation') as string,
       },
       community: {
         company: formData.get('company') as string,
@@ -193,7 +191,6 @@ export async function POST(request: NextRequest) {
           applicationForm.education_level.college.name,
           applicationForm.education_level.college.year,
           applicationForm.education_level.college.study,
-          applicationForm.education_level.college.graduation,
           applicationForm.education_level.community.company,
           applicationForm.education_level.community.field,
           applicationForm.age || "over 18",

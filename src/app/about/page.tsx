@@ -10,6 +10,7 @@ import Loading from "@/components/Loading";
 import { Metadata } from "next";
 import ScrollToTopButton from '@/components/ScrollToTopButton'
 import KBFImages from '@/components/KBFImages'
+import AboutKUBI from '@/components/AboutKUBI'
 
 export const metadata: Metadata = {
   title: "ABOUT | The Midwest Block-a-Thon",
@@ -59,6 +60,7 @@ const About = () => {
   return (
     <>
       <Loading />
+      <AboutKUBI />
       <Navbar />
       <Box
         maxW="800px"

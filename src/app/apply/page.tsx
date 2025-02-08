@@ -8,6 +8,7 @@ import OPTIONS from "@/app/api/auth/[...nextauth]/options";
 import { getServerSession } from "next-auth/next";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import SignOut from "@/components/AccountManagement/SignOut";
+import AboutKUBI from "@/components/AboutKUBI";
 
 export const metadata: Metadata = {
   title: "APPLY | The Midwest Block-Thon",
@@ -27,6 +28,7 @@ const Application = async () => {
   return (
     <div>
       <Loading />
+      <AboutKUBI />
       <Navbar />
       {session && (
         <SignOut />

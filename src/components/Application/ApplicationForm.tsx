@@ -353,24 +353,6 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                 <Field label="Field of study (majors, minors, certificates, etc.)" required>
                   <Input name="study" _focus={{ border: "2px solid black" }} />
                 </Field>
-                <Field label="What is your expected graduation year?" required>
-                  <NativeSelectRoot>
-                    <NativeSelectField
-                      _focus={{ border: "2px solid black" }}
-                      name="year"
-                      items={[
-                        "2025",
-                        "2026",
-                        "2027",
-                        "2028",
-                        "2029",
-                        "2030",
-                        "2031 and beyond",
-                      ]}
-                      placeholder="Select a year"
-                    />
-                  </NativeSelectRoot>
-                </Field>
                 </>
               )}
               {isCommunityApplication && (

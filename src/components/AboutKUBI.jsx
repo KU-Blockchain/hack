@@ -11,8 +11,10 @@ import {
   DialogBody,
   DialogFooter,
   DialogActionTrigger,
-  DialogCloseTrigger
+  DialogCloseTrigger,
+  IconButton
 } from "@chakra-ui/react";
+import { FaInstagram, FaDiscord, FaGlobe, FaXTwitter } from "react-icons/fa6";
 import React from "react";
 
 const AboutKUBI = () => {
@@ -72,13 +74,34 @@ const AboutKUBI = () => {
                   Close
                 </Button>
               </DialogActionTrigger>
-              <Button
+              <IconButton
                 onClick={() => window.open("https://kublockchain.com")}
                 bg="dark"
                 color="white"
               >
-                Learn More
-              </Button>
+                <FaGlobe />
+              </IconButton>
+              <IconButton
+                onClick={() => window.open("https://instagram.com/kublockchain")}
+                bg="dark"
+                color="white"
+              >
+                <FaInstagram />
+              </IconButton>
+              <IconButton
+                onClick={() => window.open("https://twitter.com/kublockchain")}
+                bg="dark"
+                color="white"
+              >
+                <FaXTwitter />
+              </IconButton>
+              <IconButton
+                onClick={() => window.open("https://discord.gg/GAznpHUzny")}
+                bg="dark"
+                color="white"
+              >
+                <FaDiscord />
+              </IconButton>
             </DialogFooter>
             <DialogCloseTrigger />
           </DialogContent>

@@ -10,6 +10,7 @@ import { Metadata } from "next";
 import GifSrc from "@/components/GifSrc";
 import Loading from "@/components/Loading";
 import AboutKUBI from "@/components/AboutKUBI";
+import PrizePoolAnimation from "@/components/PrizePoolAnimation";
 //import Waitlist from "@/components/Waitlist";
 
 export const metadata: Metadata = {
@@ -66,7 +67,10 @@ export default function Page() {
         <AboutKUBI />
 
         <VStack gap="7">
-          <GifSrc />
+          <Box>
+            <GifSrc />
+            <PrizePoolAnimation />
+          </Box>
 
           <Heading size="2xl" letterSpacing="tight">
             March 29-30, 2025 <br></br> University of Kansas

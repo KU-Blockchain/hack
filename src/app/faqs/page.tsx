@@ -10,6 +10,8 @@ import {
 import { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
+import AboutKUBI from "@/components/AboutKUBI";
+import About from "../about/page";
 
 export const metadata: Metadata = {
   title: "FAQs | The Midwest Block-Thon",
@@ -59,6 +61,7 @@ export default function FAQs() {
   return (
     <>
       <Loading />
+      <AboutKUBI />
       <Navbar />
       <Box
         maxW="800px"
