@@ -1,6 +1,13 @@
 "use client";
 import { ChakraProvider, defaultConfig, defineConfig, createSystem, defineRecipe } from "@chakra-ui/react"
 import { ThemeProvider } from "next-themes"
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+
+import { config as wagmiConfig } from './wagmi';
+
+const queryClient = new QueryClient();
 
 const accordionRecipe = defineRecipe({
   base: {
@@ -20,7 +27,7 @@ const fieldRecipe = defineRecipe({
   },
 })
 
-const config = defineConfig({
+const chakraConfig = defineConfig({
   globalCss: {
     body: {
       color: "dark",
@@ -45,14 +52,18 @@ const config = defineConfig({
   },
 })
 
-const system = createSystem(config, defaultConfig)
+const system = createSystem(chakraConfig, defaultConfig)
 
 export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <ChakraProvider value={system}>
-      <ThemeProvider attribute="class" disableTransitionOnChange>
-        {props.children}
-      </ThemeProvider>
+      <WagmiProvider config={wagmiConfig}>
+      <QueryClientProvider client={queryClient}>
+      <RainbowKitProvider>
+        <ThemeProvider attribute="class" disableTransitionOnChange>{props.children}</ThemeProvider>
+      </RainbowKitProvider>
+      </QueryClientProvider>
+      </WagmiProvider>
     </ChakraProvider>
   )
 }

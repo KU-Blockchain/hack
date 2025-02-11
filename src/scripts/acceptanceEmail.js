@@ -80,7 +80,7 @@ function html(params) {
 				<p
 					style="padding: 0px 0px; font-size: 11px; font-family: Helvetica, Arial, sans-serif; color: #3b301b;">
 					*this link is unique, please do not share*</br></br>
-          Joining the server using this link gives you an
+					Joining the server using this link gives you an
 					attendee role. If you are already in the KUBI server, this may not work. Please reply to this email
 					with your Discord username so we can assign you the role!</p>
 			</td>
@@ -94,6 +94,7 @@ function html(params) {
 							href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=NDV0azQ2ZTJhdWVoODJzZDUxcXVyM2NwZW4ga3UuYmxvY2tjaGFpbi5pbnN0aXR1dGVAbQ&tmsrc=ku.blockchain.institute%40gmail.com">Saturday
 							and Sunday, March 29-30, 2025</a>!</li>
 					<li>Join our community <a href="${process.env.NEXT_PUBLIC_DISCORD_LINK}">Discord</a> server</li>
+          <li>Connect your wallet on the <a href="https://hack.kublockchain.com/apply">Hacker Dashboard</a></li>
 					<li>Check out learning resources on our <a
 							href="https://hack.kublockchain.com/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2#178dd445c69b8038aa1ed972fcd1a54e">HackerDoc</a>
 					</li>

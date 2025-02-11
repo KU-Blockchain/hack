@@ -139,7 +139,6 @@ export async function POST(request: NextRequest) {
     email_opt_in: formData.get('email-opt-in') as string,
   };
   
-  console.log(applicationForm);
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
@@ -206,8 +205,6 @@ export async function POST(request: NextRequest) {
       ],
     },
   });
-
-  console.log(response);
 
   return NextResponse.json({ message: 'Application submitted' }, { status: 200 });
 }
