@@ -46,8 +46,8 @@ const Sponsors = () => {
             <Text textAlign="center" fontWeight="bold">TERA TIER</Text>
           </Box>
           <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
-          <Link href="https://dabl.club/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/dablclub.svg" alt="Dabl Club sponsor logo" /></Link>
-            {/* <Link href="https://www.autonomys.xyz/" width="65%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/autonomys.png" alt="Autonomys sponsor logo" /></Link> */}
+            <Link href="https://dabl.club/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/dablclub.svg" alt="Dabl Club sponsor logo" /></Link>
+            <Link href="https://www.autonomys.xyz/" width="45%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/autonomys.png" alt="Autonomys sponsor logo" /></Link>
           </HStack>
           <Box w="150px" borderRadius="xl" bgGradient="to-r" gradientFrom="#fff7ad" gradientTo="#ffa9f9" p={4} mt={4} color="dark">
             <Text textAlign="center" fontWeight="bold">GIGA TIER</Text>
