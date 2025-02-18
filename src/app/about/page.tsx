@@ -3,6 +3,7 @@ import {
   AccordionItem,
   AccordionItemTrigger,
   AccordionItemContent,
+  HStack,
 } from "@chakra-ui/react";
 import { Box, Heading, Text, Image, List, Link } from "@chakra-ui/react";
 import Navbar from "@/components/Navbar";
@@ -102,7 +103,23 @@ const About = () => {
           </List.Item>
         </List.Root>
 
-        <KBFImages />
+        {/* <KBFImages /> */}
+        <HStack justifyContent="center" my={6}>
+          <Image
+            src="/images/classroom.jpg"
+            alt="KBF Still Image"
+            minH="150px"
+            maxH="300px"
+            maxW="40vw"
+          />
+          <Image
+            src="/images/walking.jpg"
+            alt="KBF Still Image"
+            minH="150px"
+            maxH="300px"
+            maxW="40vw"
+          />
+        </HStack>
 
         {/* Page Heading */}
         <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
