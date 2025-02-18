@@ -35,6 +35,7 @@ interface ApplicationForm {
   first_name: string;
   last_name: string;
   email: string;
+  phone_number: string;
   country: string;
   t_shirt: string;
   linkedin: string;
@@ -105,6 +106,7 @@ export async function POST(request: NextRequest) {
     first_name: formData.get('first-name') as string,
     last_name: formData.get('last-name') as string,
     email: formData.get('email') as string,
+    phone_number: formData.get('phone-number') as string,
     country: formData.get('country') as string,
     t_shirt: formData.get('t-shirt') as string,
     linkedin: formData.get('linkedin') as string,
@@ -178,6 +180,7 @@ export async function POST(request: NextRequest) {
           applicationForm.first_name,
           applicationForm.last_name,
           applicationForm.email,
+          applicationForm.phone_number,
           applicationForm.country,
           applicationForm.t_shirt,
           applicationForm.linkedin,

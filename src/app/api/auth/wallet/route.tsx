@@ -34,7 +34,7 @@ export async function GET(request: NextRequest) {
         const rowIndex = index + 1; // convert 0-based index to 1-based row number
         const response = await sheets.spreadsheets.values.get({
           spreadsheetId: process.env.GOOGLE_APPLICANTS_SPREADSHEET_ID,
-          range: `Sheet1!AC${rowIndex}`, // ensure exact row, column retrieval
+          range: `Sheet1!AD${rowIndex}`, // ensure exact row, column retrieval
         });
   
         if (response.data.values && response.data.values.length > 0) {
@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
         const rowIndex = checkUser.data.values.indexOf(row) + 1; // convert 0-based index to 1-based row number
         const response = await sheets.spreadsheets.values.update({
           spreadsheetId: process.env.GOOGLE_APPLICANTS_SPREADSHEET_ID,
-          range: `Sheet1!AC${rowIndex}`,
+          range: `Sheet1!AD${rowIndex}`,
           valueInputOption: 'RAW',
           requestBody: {
             values: [[walletId]],

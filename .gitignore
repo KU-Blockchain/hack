@@ -3,6 +3,9 @@
 # applicant data
 src/scripts/applicants.json
 src/scripts/Applications.csv
+src/scripts/PromoList.csv
+src/scripts/kstate-email.html
+src/scripts/promoList.json
 
 # dependencies
 /node_modules

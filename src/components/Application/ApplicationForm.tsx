@@ -9,6 +9,7 @@ import {
   TimelineRoot,
   TimelineTitle,
 } from "@/components/ui/timeline"
+import { withMask } from "use-mask-input"
 import { Radio, RadioGroup } from "@/components/ui/radio"
 import {
   RadioCardItem,
@@ -259,6 +260,9 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
               </Field>
               <Field required label="Email address" helperText="Need to use a different email? Please contact us at hack@kublockchain.com after submission.">
                 <Input disabled={true} value={applicantEmail} name="email" type="email" _focus={{ border: "2px solid black" }} />
+              </Field>
+              <Field required label="Phone Number">
+                <Input name="phone-number" _focus={{ border: "2px solid black" }} placeholder="(999) 999-9999" ref={withMask("(999) 999-9999")} />
               </Field>
               <Field label="Country of Residence" required>
                 <NativeSelectRoot>
