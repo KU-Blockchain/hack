@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/pitch_deck',
-        destination: 'https://drive.google.com/file/d/1fa9-AcEG87KAztrUdX1aTKR4lPwEj-gU/view?usp=sharing',
+        destination: 'https://drive.google.com/file/d/1wqog13j5fv_aWUAU3U1UMH55U8gzwm_N/view?usp=sharing',
         permanent: false, // Use true for permanent (308) redirect
       },
       {
