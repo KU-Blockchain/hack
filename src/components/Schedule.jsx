@@ -40,7 +40,7 @@ const ScheduleViewer = () => {
   const [filteredSchedule, setFilteredSchedule] = useState([]);
   const [query, setQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState(-1);
-  const calendarLink = ""; // TODO: ADD INVITE TO BLOCKATHON CALENDAR
+  const calendarLink = "https://calendar.google.com/calendar/u/0?cid=a3UuYmxvY2tjaGFpbi5pbnN0aXR1dGVAZ21haWwuY29t"; // INVITE TO BLOCKATHON CALENDAR
 
   useEffect(() => {
     // Fetch schedule data from API
