@@ -115,8 +115,8 @@ export async function POST(request: NextRequest) {
     experience_level: formData.get('experience-level') as string,
     education_level: {
       high_school: {
-        name: formData.get('high_school_name') as string,
-        year: formData.get('high_school_year') as string,
+        name: formData.get('high-school-name') as string,
+        year: formData.get('high-school-grade') as string,
       },
       college: {
         name: formData.get('university') as string,

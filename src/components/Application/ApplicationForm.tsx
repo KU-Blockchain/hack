@@ -311,13 +311,13 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
                 <>
                 <Fieldset.Legend color="dark" fontWeight="bold" fontSize="lg">High School Application</Fieldset.Legend>
                 <Field label="Which High School do you attend?" required>
-                  <Input name="high-school" _focus={{ border: "2px solid black" }}/>
+                  <Input name="high-school-name" _focus={{ border: "2px solid black" }}/>
                 </Field>
                 <Field label="What grade are you in?" required>
                   <NativeSelectRoot>
                     <NativeSelectField
                       _focus={{ border: "2px solid black" }}
-                      name="grade"
+                      name="high-school-grade"
                       items={[
                         "Freshman",
                         "Sophomore",
