@@ -58,7 +58,7 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
 
   return (
     <Box justifyContent={"center"} alignItems={"center"} textAlign={"center"} p={4}>
-      {status === "Admitted" || status === "Emailed-Admitted" ? (
+      {status === "Admitted" || status === "Emailed-Admitted" || status === "REGISTERED" ? (
         <>
           <Text fontWeight="bold" fontSize="3xl" mb={5}>🎉 {firstName}, you're in! 🎉</Text>
           <HStack>
@@ -72,7 +72,7 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
               ) : (
                 <Box my={4}><ConnectButton /></Box>
               )}
-              <Text color="dark" fontSize="sm">So you can receive prize money!<br></br>Disbursements will paid out in USDC on the Ethereum Network and txid will be sent to your email the same day.</Text>
+              <Text color="dark" fontSize="sm">So you can receive prize money!<br></br>Most disbursements will paid out in USDC on the Ethereum Network and txid will be sent to your email the same day.</Text>
             </Stack>
           </HStack>
           <Text textAlign={"left"} my={4}>
