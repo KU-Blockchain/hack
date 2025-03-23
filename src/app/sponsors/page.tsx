@@ -56,6 +56,19 @@ const Sponsors = () => {
             <Link href="https://soniclabs.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/sonic.png" alt="Sonic sponsor logo" /></Link>
             <Link href="https://ripple.com/company" width="35%" target="_blank" rel="noopener noreferrer"><Image src="/sponsors/ripple.png" alt="Ripple sponsor logo" /></Link>
           </HStack>
+          <Box w="300px" borderRadius="xl" bg="white" borderColor="dark" borderWidth={5} p={4} mt={4} color="dark">
+            <Text textAlign="center" fontWeight="bold">OUR FOOD PARTNERS</Text>
+          </Box>
+          <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} my={7}>
+            <Link href="https://www.drinkbubblr.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/bubblr.png" alt="Bubblr logo" /></Link>
+            <Link href="https://www.themadgreeklawrence.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/madgreek.png" alt="The Mad Greek logo" /></Link>
+            <Link href="https://hawaiianbros.com/" width="35%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/hawaiianbros.png" alt="Hawaiian Bros logo" /></Link>
+          </HStack>
+          <HStack justifyContent={"center"} gap={{ base: 10, md: 20 }} mb={7}>
+            <Link href="https://taylorsdonuts.com/" width="20%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/donuts.png" alt="Taylors Donuts logo" /></Link>
+            <Link href="https://www.bobaandbeyondlawrenceks.com/" width="20%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/boba.png" alt="Boba and Beyond logo" /></Link>
+            <Link href="https://www.jbscalifusion.com/" width="20%" target="_blank" rel="noopener noreferrer"><Image src="sponsors/food/jbcalifusion.png" alt="JBs Cali Fusion logo" /></Link>
+          </HStack>
         </Stack>
       </Box>
     </div>

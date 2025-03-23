@@ -36,9 +36,9 @@ const SchedulePage = () => {
         <Heading size="3xl" mb={4} fontWeight="bold" fontStyle="italic">
           SCHEDULE
         </Heading>
-        <Text>
+        {/* <Text>
           Our schedule is subject to change while we finalize our locations and partnerships.
-        </Text>
+        </Text> */}
         <Schedule />
       </Box>
       <ScrollToTopButton />
