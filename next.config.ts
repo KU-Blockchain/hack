@@ -21,12 +21,12 @@ const nextConfig: NextConfig = {
     return [
       {
         source: '/hackerdoc',
-        destination: 'https://www.canva.com/design/DAGg_8ZVSHg/DF-fE5xzN4_OK1wcmiSTng/view?utm_content=DAGg_8ZVSHg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf3ca4380c5',
+        destination: '/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2',
         permanent: true, // Use true for permanent (308) redirect
       },
       {
         source: '/maps',
-        destination: '/hackerdoc/151dd445c69b80098be5f78f9a6b5ae2',
+        destination: 'https://www.canva.com/design/DAGg_8ZVSHg/DF-fE5xzN4_OK1wcmiSTng/view?utm_content=DAGg_8ZVSHg&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=hf3ca4380c5',
         permanent: true, // Use true for permanent (308) redirect
       },
       {
