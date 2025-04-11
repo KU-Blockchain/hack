@@ -11,6 +11,7 @@ import GifSrc from "@/components/GifSrc";
 import Loading from "@/components/Loading";
 import AboutKUBI from "@/components/AboutKUBI";
 import PrizePoolAnimation from "@/components/PrizePoolAnimation";
+import WelcomeDialog from "@/components/WelcomeDialog";
 //import Waitlist from "@/components/Waitlist";
 
 export const metadata: Metadata = {
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "Schedule", "HackerDoc", "Sponsors"];
+  const pages = ["About", "Schedule", "Sponsors"];
 
   return (
     <>
@@ -103,7 +104,8 @@ export default function Page() {
             ))}
           </HStack>
           {/* <Waitlist /> */}
-          <Link
+          <WelcomeDialog />
+          {/* <Link
             href="/apply"
             color="dark"
             _hover={{ textDecoration: "none" }}
@@ -124,7 +126,7 @@ export default function Page() {
           >
             APPLY NOW
           </Button>
-          </Link>
+          </Link> */}
         </VStack>
       </Box>
     </div>

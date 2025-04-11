@@ -80,18 +80,6 @@ const Waitlist = () => {
 
   return (
     <>
-    {/* <Button
-      bgGradient="to-r" 
-      gradientFrom="orange.100" 
-      gradientTo="red.100"
-      color="dark"
-      fontWeight="bold" 
-      fontStyle="italic"
-      _hover={{ bgGradient: "to-r", gradientFrom: "orange.200", gradientTo: "red.200", borderRadius: "full" }}
-    >
-      PRE-REGISTRATION COMING SOON
-    </Button> */}
-
     <DialogRoot
     placement="center"
     motionPreset="slide-in-bottom"

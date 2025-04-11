@@ -20,8 +20,8 @@ import { FaChevronDown, FaChevronLeft } from "react-icons/fa6";
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const MobilePages = ["About", "Apply", "Schedule", "HackerDoc", "Sponsors"];
-  const DesktopPages = ["About", "Schedule", "HackerDoc", "Sponsors"];
+  const MobilePages = ["About", "Schedule", "Sponsors"];
+  const DesktopPages = ["About", "Schedule", "Sponsors"];
   const [pageName, setPageName] = useState("Home");
   const path = usePathname();
 
@@ -37,18 +37,15 @@ const Navbar = () => {
         case "/about":
           setPageName("About");
           break;
-        // case "/faqs":
-        //   setPageName("FAQs");
+        // case "/apply":
+        //   setPageName("Apply");
         //   break;
-        case "/apply":
-          setPageName("Apply");
-          break;
         case "/schedule":
           setPageName("Schedule");
           break;
-        case path.match(/^\/hackerdoc\/.*$/)?.input:
-          setPageName("HackerDoc");
-          break;
+        // case path.match(/^\/hackerdoc\/.*$/)?.input:
+        //   setPageName("HackerDoc");
+        //   break;
         case "/sponsors":
           setPageName("Sponsors");
           break;
@@ -136,7 +133,7 @@ const Navbar = () => {
         </MenuRoot>
       ) : (
         <>
-          <Box
+          {/* <Box
             top="0"
             left="10%"
             position="fixed"
@@ -155,7 +152,7 @@ const Navbar = () => {
               textAlign="center"
               fontStyle="italic"
             >APPLY NOW</Link>
-          </Box>
+          </Box> */}
           <Box
             as="nav"
             position="fixed"
