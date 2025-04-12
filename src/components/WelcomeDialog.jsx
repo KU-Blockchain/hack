@@ -13,6 +13,7 @@ import {
   DialogFooter,
   DialogActionTrigger,
   DialogCloseTrigger,
+  AspectRatio,
   IconButton
 } from "@chakra-ui/react";
 import { FaInstagram, FaDiscord, FaGlobe, FaXTwitter } from "react-icons/fa6";
@@ -55,17 +56,20 @@ const WelcomeDialog = () => {
             </DialogHeader>
             <DialogBody>
               <VStack>
-                <Image
+                {/* <Image
                   src="/logo_horizontal.png"
                   alt="KUBI Logo"
                   boxSize="90%"
                   objectFit={"contain"}
   
-                />
+                /> */}
+                <AspectRatio ratio={16 / 9} width="90%">
+                  <iframe src="https://www.youtube.com/embed/cfyqkR7vFYs?si=e3wP_TAErC4Cdtwx" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen={true}></iframe>
+                </AspectRatio>
                 <p>
                   We are proud for those who attended and volunteered at our inagural
                   bockchain and web3 hackathon this year, hosted at The University of Kansas!
-                  We hope to see you again soon.
+                  It was a huge sucess, and we hope to see you again soon.
                 </p>
               </VStack>
             </DialogBody>
