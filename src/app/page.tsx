@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "Schedule", "Sponsors"];
+  const pages = ["About", "Schedule", "HackerDoc", "Sponsors"];
 
   return (
     <>
