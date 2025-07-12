@@ -17,6 +17,15 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ["@chakra-ui/react"],
   },
+  webpack: (config) => {
+    // Exclude scripts folder from webpack compilation
+    config.module.rules.push({
+      test: /\.(js|ts|tsx)$/,
+      include: /src\/scripts/,
+      use: 'ignore-loader'
+    });
+    return config;
+  },
   async redirects() {
     return [
       {

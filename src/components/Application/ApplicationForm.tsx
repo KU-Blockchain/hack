@@ -59,7 +59,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
       setIsSubmitting(false);
     }
     checkSubmission();
-  }, [isSubmitting]);
+  }, [isSubmitting, applicantEmail]);
 
   const SelectExperienceLevel = () => {
     const items = [
@@ -71,7 +71,7 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
     ]
   
     return (
-      <RadioGroup name="experience-level" value={level} onValueChange={(e) => setLevel(e.value)} defaultValue="beginner">
+      <RadioGroup name="experience-level" value={level} onValueChange={(e) => setLevel(e.value ?? "beginner")} defaultValue="beginner">
         <Stack gap={3} align="stretch" direction="column"> 
           {items.map((item) => (
             <Radio
@@ -106,14 +106,14 @@ const ApplicationForm: React.FC<ApplicationFormProps> = ({ applicantEmail, appli
     useEffect(() => {
       if (!value) return
       handleChange(value);
-    }, [value]);
+    }, []);
   
     return (
       <RadioCardRoot 
         w="100%" 
         defaultValue="next"
         value={value}
-        onValueChange={(e) => setValue(e.value)} 
+        onValueChange={(e) => setValue(e.value ?? "college")} 
         name="education-level"
       >
         <Stack align="stretch" direction={{ base: "column", md: "row" }}>

@@ -1,11 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # applicant data
-src/scripts/applicants.json
-src/scripts/Applications.csv
-src/scripts/PromoList.csv
-src/scripts/kstate-email.html
-src/scripts/promoList.json
+src/scripts/sample_emails
 
 # dependencies
 /node_modules

@@ -17,6 +17,7 @@ const useGifSrc = () => {
   return (
     <Image
       src={gifSrc}
+      alt="Animated Homepage"
       width={{ base: 360, md: 520 }}
       my={{ base: -70, md: -85 }}
     />

@@ -34,7 +34,7 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
       setWalletId(walletData.walletId);
     };
     checkStatus().then(() => setIsReady(true));
-  }, []);
+  }, [applicantEmail]);
 
   useEffect(() => {
     if (account.status === "connected") {
@@ -46,7 +46,7 @@ const ApplicationSubmitted: React.FC<ApplicationFormProps> = ({ applicantEmail }
         console.log("Account connected:", account?.address);
       }
     }
-  }, [account]);
+  }, [account, applicantEmail]);
 
   // Avoid rendering until the client is ready
   if (!isReady) return (

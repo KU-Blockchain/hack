@@ -4,7 +4,7 @@ import {
   Heading,
   Link,
   VStack,
-  Button,
+  Image,
 } from "@chakra-ui/react";
 import { Metadata } from "next";
 import GifSrc from "@/components/GifSrc";
@@ -58,7 +58,7 @@ export default function Page() {
         href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
         target="_blank"
       >
-        <img
+        <Image
           src="https://s3.amazonaws.com/logged-assets/trust-badge/2025/mlh-trust-badge-2025-white.svg"
           alt="Major League Hacking 2025 Hackathon Season"
           style={{ width: "100%" }}
@@ -103,30 +103,7 @@ export default function Page() {
               </HStack>
             ))}
           </HStack>
-          {/* <Waitlist /> */}
           <WelcomeDialog />
-          {/* <Link
-            href="/apply"
-            color="dark"
-            _hover={{ textDecoration: "none" }}
-          >
-          <Button
-            bgGradient="to-r"
-            gradientFrom="orange.100"
-            gradientTo="red.100"
-            color="dark"
-            fontWeight="bold"
-            fontStyle="italic"
-            _hover={{
-              bgGradient: "to-r",
-              gradientFrom: "orange.200",
-              gradientTo: "red.200",
-              borderRadius: "full",
-            }}
-          >
-            APPLY NOW
-          </Button>
-          </Link> */}
         </VStack>
       </Box>
     </div>
