@@ -49,7 +49,7 @@ const AboutKUBI = () => {
           >
             <DialogHeader>
               <DialogTitle>
-                Made with 🔥 by the KU Blockchain Institute
+                Made with 🔥 by Kansas Blockchain
               </DialogTitle>
             </DialogHeader>
             <DialogBody>
@@ -62,8 +62,8 @@ const AboutKUBI = () => {
                   mr="3"
                 />
                 <p>
-                  The Midwest Block-a-Thon is brought to you by the KU
-                  Blockchain Institute, a student-run organization at the
+                  The Midwest Block-a-Thon is brought to you by Kansas
+                  Blockchain, a student-run organization at the
                   University of Kansas.
                 </p>
               </HStack>
