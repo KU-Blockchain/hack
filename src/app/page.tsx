@@ -1,12 +1,17 @@
 import {
   Box,
+  HStack,
+  Link,
   Heading,
   VStack,
+  Image,
 } from "@chakra-ui/react";
 import { Metadata } from "next";
 import GifSrc from "@/components/GifSrc";
 import Loading from "@/components/Loading";
 import AboutKUBI from "@/components/AboutKUBI";
+import PrizePoolAnimation from "@/components/PrizePoolAnimation";
+import WelcomeDialog from "@/components/WelcomeDialog";
 //import Waitlist from "@/components/Waitlist";
 
 export const metadata: Metadata = {
@@ -30,18 +35,42 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
+  const pages = ["About", "Schedule", "Sponsors"];
 
   return (
     <>
-      <div>
-        <Loading />
-        <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
-          <AboutKUBI />
+    <div>
+      <Loading />
+      <Link
+        id="mlh-trust-badge"
+        _hover={{ transform: "translateY(10px) scale(1.1)" }}
+        style={{
+          display: "block",
+          transition: "transform 0.2s",
+          maxWidth: "100px",
+          minWidth: "60px",
+          position: "fixed",
+          right: "100px",
+          top: "0",
+          width: "10%",
+          zIndex: 10000,
+        }}
+        href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2025-season&utm_content=white"
+        target="_blank"
+      >
+        <Image
+          src="https://s3.amazonaws.com/logged-assets/trust-badge/2025/mlh-trust-badge-2025-white.svg"
+          alt="Major League Hacking 2025 Hackathon Season"
+          style={{ width: "100%" }}
+        />
+      </Link>
+      <Box textAlign="center" fontSize="xl" pt={{ base: "30vh", md: "30vh" }}>
+        <AboutKUBI />
 
-          <VStack gap="7">
-            <Box>
-              <GifSrc />
-            </Box>
+        <VStack gap="7">
+          <Box>
+            <GifSrc />
+          </Box>
 
             <Heading size="4xl" letterSpacing="tight">
               Coming Spring 2026!
@@ -49,11 +78,11 @@ export default function Page() {
             <Heading>
               The University of Kansas
             </Heading>
-
-
-          </VStack>
-        </Box>
-      </div>
+            
+          <WelcomeDialog />
+        </VStack>
+      </Box>
+    </div>
     </>
   );
 }

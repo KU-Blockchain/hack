@@ -43,9 +43,9 @@ const Navbar = () => {
         case "/schedule":
           setPageName("Schedule");
           break;
-        case path.match(/^\/hackerdoc\/.*$/)?.input:
-          setPageName("HackerDoc");
-          break;
+        // case path.match(/^\/hackerdoc\/.*$/)?.input:
+        //   setPageName("HackerDoc");
+        //   break;
         case "/sponsors":
           setPageName("Sponsors");
           break;

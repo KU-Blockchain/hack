@@ -51,7 +51,7 @@ const WelcomeDialog = () => {
           >
             <DialogHeader>
               <DialogTitle>
-                The Midwest Block-a-Thon is over 🎉
+                The 2025 Midwest Block-a-Thon is over 🎉
               </DialogTitle>
             </DialogHeader>
             <DialogBody>
