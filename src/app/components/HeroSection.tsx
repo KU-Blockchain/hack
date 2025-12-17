@@ -11,7 +11,7 @@ export function HeroSection() {
         className="mb-8"
       >
         <img 
-          src="/logo-banner.png" 
+          src="/transparent-logo-banner.png" 
           alt="Midwest Block-a-thon 2026" 
           className="w-full max-w-3xl h-auto"
         />

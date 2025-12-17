@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from 'motion/react';
 import {
   Accordion,
@@ -31,33 +32,70 @@ export function FAQSection() {
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8 }}
-      viewport={{ once: true }}
-      className="max-w-3xl mx-auto px-6 py-16 relative z-10"
-    >
-      <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center text-white">
-        Frequently Asked Questions
-      </h2>
+    <div className="flex items-center justify-center px-6 relative z-10">
+      <div className="max-w-3xl w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h1 className="p-10 text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
+            FAQ
+          </h1>
+          <p className="text-xl text-white/70">
+            Questions we've been asked in the past
+          </p>
+        </motion.div>
 
-      <Accordion type="single" collapsible className="space-y-4">
-        {faqs.map((faq, index) => (
-          <AccordionItem 
-            key={index} 
-            value={`item-${index}`}
-            className="bg-[#073623]/30 border border-[#E89A7B]/20 rounded-lg px-6 backdrop-blur-sm"
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+        >
+          <Accordion type="single" collapsible className="space-y-4">
+            {faqs.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                value={`item-${index}`}
+                className={`bg-[#073623]/30 border border-[#E89A7B]/20 rounded-lg px-6 backdrop-blur-sm ${index === faqs.length - 1 ? '!border-b border-[#E89A7B]/20' : ''}`}
+              >
+                <AccordionTrigger className="text-left text-white hover:text-[#E89A7B] transition-colors py-4 cursor-pointer">
+                  {faq.question}
+                </AccordionTrigger>
+                <AccordionContent className="text-white/70 pb-4">
+                  {faq.answer}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center m-16"
           >
-            <AccordionTrigger className="text-left text-white hover:text-[#E89A7B] transition-colors py-4">
-              {faq.question}
-            </AccordionTrigger>
-            <AccordionContent className="text-white/70 pb-4">
-              {faq.answer}
-            </AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </motion.div>
+            <p className="text-xl text-white/70 mb-12">
+              Have more questions? Contact us after registering below
+            </p>
+            <a
+              href="https://luma.com/event/evt-YHqv3fV8bSezehz"
+              target="https://luma.com/fbnegd5h"
+            >
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#1a3d3a] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow cursor-pointer"
+              >
+                Register for Event
+              </motion.button>
+            </a>
+          </motion.div>
+        </motion.div>
+      </div>
+    </div >
   );
 }

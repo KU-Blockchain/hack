@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { useEffect, useState, useRef } from 'react';
 
@@ -20,10 +21,11 @@ export function CountdownSection() {
   });
 
   useEffect(() => {
-    // Set target date to 8AM on March 6, 2026
-    const targetDate = new Date('2026-03-06T08:00:00').getTime();
+    // Set target date to 8 PM on March 6, 2026
+    const targetDate = new Date('2026-03-06T20:00:00').getTime();
 
-    const interval = setInterval(() => {
+    // Calculate countdown immediately
+    const calculateCountdown = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
 
@@ -33,7 +35,13 @@ export function CountdownSection() {
         minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
         seconds: Math.floor((distance % (1000 * 60)) / 1000),
       });
-    }, 1000);
+    };
+
+    // Calculate immediately on mount
+    calculateCountdown();
+
+    // Then update every second
+    const interval = setInterval(calculateCountdown, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -54,10 +62,9 @@ export function CountdownSection() {
           ].map((item, index) => (
             <motion.div
               key={item.label}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: 50 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              viewport={{ once: true }}
               className="relative"
             >
               <div className="bg-gradient-to-br from-[#073623]/50 to-[#041f16]/50 backdrop-blur-sm border border-[#E89A7B]/20 rounded-2xl p-8">

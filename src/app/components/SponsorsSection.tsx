@@ -1,3 +1,4 @@
+import React from 'react';
 import { motion } from "motion/react";
 import { Building2 } from "lucide-react";
 
@@ -11,11 +12,11 @@ export function SponsorsSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
+          <h1 className="p-10 text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
             Our Sponsors
           </h1>
           <p className="text-xl text-white/70">
-            Powering innovation in the blockchain ecosystem
+            Powering innovation in the Blockchain and Web3 Ecosystem
           </p>
         </motion.div>
 
