@@ -1,11 +1,13 @@
+# Blockathon
 
-  # Blockathon
+### CHECK TODO IF CONTRIBUTING
 
-  This is a code bundle for Blockathon. The original project is available at https://www.figma.com/design/o4llkKWvylvk3Oq6MacXPW/Blockathon.
+Original Design: https://www.figma.com/design/o4llkKWvylvk3Oq6MacXPW/Blockathon.
 
-  ## Running the code
+## Running the code
 
-  Run `yarn` to install the dependencies.
+Ensure that you are in the root directory
 
-  Run `yarn dev` to start the development server.
-  
+Run `yarn` to install the dependencies.
+
+Run `yarn dev` to start the development server.
