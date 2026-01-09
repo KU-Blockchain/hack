@@ -50,7 +50,7 @@ export default function App() {
             <NotifySection />
             <div className="text-center px-6 py-12 relative z-10">
               <p className="text-white/50 text-sm">
-                © 2026 Midwest Block-a-thon. All rights reserved
+                © 2026 Midwest Block-a-thon. All rights reserved.
               </p>
             </div>
           </>
