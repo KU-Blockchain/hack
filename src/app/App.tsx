@@ -23,7 +23,7 @@ export default function App() {
       <Navigation activeTab={activeTab} onTabChange={setActiveTab} />
 
       {/* MLH Trust Badge */}
-      <a
+      {/*<a
         id="mlh-trust-badge"
         href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2026-season&utm_content=white"
         target="_blank"
@@ -40,7 +40,7 @@ export default function App() {
           alt="Major League Hacking 2026 Hackathon Season"
           className="w-full"
         />
-      </a>
+      </a>*/}
 
       <div className="relative z-10">
         {activeTab === 'home' && (

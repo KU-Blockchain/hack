@@ -28,6 +28,10 @@ export function FAQSection() {
     {
       question: "Are there prizes?",
       answer: "Yes! We'll be announcing exciting prizes and sponsor opportunities soon. Sign up to stay updated!"
+    },
+    {
+      question: "How Long is it?",
+      answer: "The hackathon will be 36 hours long, from Friday night to Sunday night. This only considers hacking time, not the opening or closing ceremonies."
     }
   ];
 
