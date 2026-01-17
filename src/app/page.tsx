@@ -12,7 +12,6 @@ import Loading from "@/components/Loading";
 import AboutKUBI from "@/components/AboutKUBI";
 import PrizePoolAnimation from "@/components/PrizePoolAnimation";
 import WelcomeDialog from "@/components/WelcomeDialog";
-//import Waitlist from "@/components/Waitlist";
 
 export const metadata: Metadata = {
   title: "The Midwest Block-a-Thon",
@@ -35,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  const pages = ["About", "Schedule", "HackerDoc", "Sponsors"];
+  const pages = ["About", "Schedule", "Sponsors"];
 
   return (
     <>

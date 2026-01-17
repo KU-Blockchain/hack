@@ -20,8 +20,8 @@ import { FaChevronDown, FaChevronLeft } from "react-icons/fa6";
 const Navbar = () => {
   const [isReady, setIsReady] = useState(false); // proper client rendering
   const isMobile = useBreakpointValue({ base: true, md: false });
-  const MobilePages = ["About", "Schedule", "HackerDoc", "Sponsors"];
-  const DesktopPages = ["About", "Schedule", "HackerDoc", "Sponsors"];
+  const MobilePages = ["About", "Schedule", "Sponsors"];
+  const DesktopPages = ["About", "Schedule", "Sponsors"];
   const [pageName, setPageName] = useState("Home");
   const path = usePathname();
 
@@ -43,9 +43,9 @@ const Navbar = () => {
         case "/schedule":
           setPageName("Schedule");
           break;
-        case path.match(/^\/hackerdoc\/.*$/)?.input:
-          setPageName("HackerDoc");
-          break;
+        // case path.match(/^\/hackerdoc\/.*$/)?.input:
+        //   setPageName("HackerDoc");
+        //   break;
         case "/sponsors":
           setPageName("Sponsors");
           break;

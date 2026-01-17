@@ -18,6 +18,7 @@ import {
 } from "@chakra-ui/react";
 import { FaInstagram, FaDiscord, FaGlobe, FaXTwitter } from "react-icons/fa6";
 import React from "react";
+import { lightTheme } from "@rainbow-me/rainbowkit";
 
 const WelcomeDialog = () => {
   return (
