@@ -4,13 +4,13 @@ const nextConfig: NextConfig = {
   /* config options here */
   staticPageGenerationTimeout: 300,
   images: {
-    domains: [
-      'www.notion.so',
-      'notion.so',
-      'images.unsplash.com',
-      'abs.twimg.com',
-      'pbs.twimg.com',
-      's3.us-west-2.amazonaws.com'
+    remotePatterns: [
+      { hostname: 'www.notion.so' },
+      { hostname: 'notion.so' },
+      { hostname: 'images.unsplash.com' },
+      { hostname: 'abs.twimg.com' },
+      { hostname: 'pbs.twimg.com' },
+      { hostname: 's3.us-west-2.amazonaws.com' }
     ],
     formats: ['image/avif', 'image/webp']
   },
