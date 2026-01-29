@@ -13,15 +13,14 @@ export function SponsorsSection() {
           className="text-center mb-16"
         >
           <h1 className="p-10 text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
-            Our Sponsors
+            Sponsors
           </h1>
           <p className="text-xl text-white/70">
             Powering innovation in the Blockchain and Web3 Ecosystem
           </p>
         </motion.div>
 
-        {/* Previous Sponsors Slideshow */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -31,7 +30,7 @@ export function SponsorsSection() {
             Previous Sponsors
           </h3>
           <div className="relative overflow-hidden">
-            {/* Gradient overlays for smooth fade effect */}
+            {// Gradient overlays for smooth fade effect}
             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#073623] to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#073623] to-transparent z-10 pointer-events-none" />
 
@@ -63,17 +62,17 @@ export function SponsorsSection() {
                       transition={{ duration: 0.3 }}
                       className="flex-shrink-0 w-56 h-36 bg-gradient-to-br from-white/10 to-white/5 border border-[#E89A7B]/30 rounded-2xl flex items-center justify-center backdrop-blur-md shadow-lg shadow-black/20 relative overflow-hidden group cursor-pointer"
                     >
-                      {/* Animated gradient background on hover */}
+                      {// Animated gradient background on hover}
                       <div className="absolute inset-0 bg-gradient-to-br from-[#E89A7B]/20 to-[#F5C4A8]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                      {/* Shine effect */}
+                      {// Shine effect}
                       <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
                       <span className="text-white/70 group-hover:text-white font-bold text-lg transition-colors duration-300 relative z-10">
                         {sponsor}
                       </span>
 
-                      {/* Corner accent */}
+                      {// Corner accent}
                       <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#E89A7B]/20 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </motion.div>
                   ))}
@@ -82,13 +81,13 @@ export function SponsorsSection() {
             </motion.div>
           </div>
 
-          {/* Decorative elements */}
+          {// Decorative elements}
           <div className="absolute -top-4 left-1/4 w-2 h-2 bg-[#E89A7B]/40 rounded-full animate-pulse" />
           <div
             className="absolute -bottom-4 right-1/3 w-2 h-2 bg-[#F5C4A8]/40 rounded-full animate-pulse"
             style={{ animationDelay: "0.5s" }}
           />
-        </motion.div>
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -122,7 +121,7 @@ export function SponsorsSection() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-12 text-center text-white/40"
         >
-          <p>Sponsor logos will be displayed here</p>
+          {/* <p>Sponsor logos will be displayed here</p> */}
         </motion.div>
       </div>
     </div>

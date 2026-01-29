@@ -16,8 +16,8 @@ export function Navigation({
   const tabs = [
     { id: "home", label: "Home" },
     { id: "faq", label: "FAQ" },
-    // { id: "sponsors", label: "Sponsor Us" },
-    // { id: "2025", label: "2025 Recap" },
+    { id: "sponsors", label: "Sponsors" },
+    { id: "2025", label: "2025 Recap" },
   ];
 
   const handleTabClick = (tabId: string) => {
