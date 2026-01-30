@@ -12,7 +12,6 @@ export function CountdownSection() {
   const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0.8, 1, 1, 0.8]);
 
-  // Placeholder countdown - can be updated with actual date
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -24,7 +23,6 @@ export function CountdownSection() {
     // Set target date to 8 PM on March 6, 2026
     const targetDate = new Date('2026-03-06T20:00:00').getTime();
 
-    // Calculate countdown immediately
     const calculateCountdown = () => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -53,7 +51,7 @@ export function CountdownSection() {
       className="min-h-[50vh] flex items-center justify-center px-6 relative z-10 py-12"
     >
       <div className="text-center">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-4 gap-2 max-w-4xl mx-auto">
           {[
             { value: countdown.days, label: 'Days' },
             { value: countdown.hours, label: 'Hours' },
@@ -67,11 +65,11 @@ export function CountdownSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="relative"
             >
-              <div className="bg-gradient-to-br from-[#073623]/50 to-[#041f16]/50 backdrop-blur-sm border border-[#E89A7B]/20 rounded-2xl p-8">
-                <div className="text-6xl md:text-7xl font-bold bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent mb-2">
+              <div className="bg-gradient-to-br from-[#073623]/50 to-[#041f16]/50 backdrop-blur-sm border border-[#E89A7B]/20 rounded-2xl p-4 md:p-8">
+                <div className="text-2xl md:text-6xl font-bold bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent mb-2">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="text-sm md:text-base uppercase tracking-wider text-[#E89A7B]/60">
+                <div className="text-xs md:text-base uppercase tracking-wider text-[#E89A7B]/60">
                   {item.label}
                 </div>
               </div>

@@ -36,7 +36,7 @@ export function FAQSection() {
   ];
 
   return (
-    <div className="flex items-center justify-center px-6 relative z-10">
+    <div className="flex items-center justify-center px-6 pt-20 relative z-10">
       <div className="max-w-3xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -86,8 +86,8 @@ export function FAQSection() {
               Have more questions? Contact us after registering below
             </p>
             <a
-              href="https://luma.com/event/evt-YHqv3fV8bSezehz"
-              target="https://luma.com/fbnegd5h"
+              href="https://forms.gle/gSNEYntftL298XS29"
+              target="_blank"
             >
               <motion.button
                 whileHover={{ scale: 1.05 }}

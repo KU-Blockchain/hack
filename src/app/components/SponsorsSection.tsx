@@ -106,6 +106,7 @@ export function SponsorsSection() {
           </p>
           <motion.a
             href="https://forms.gle/HW86qBZVqefoHsax8"
+            target="_blank"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#073623] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow"
