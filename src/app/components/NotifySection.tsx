@@ -41,16 +41,16 @@ export function NotifySection() {
           </motion.div>
           
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-white">
-            Get Notified
+            Sign Up Now!
           </h2>
           
           <p className="text-xl text-white/70 mb-12">
-            Be the first to know when we launch. Register on Luma to receive updates about Midwest Block-a-thon 2026
+            Be the first to know when we launch. Register to receive updates about Midwest Block-a-thon 2026
           </p>
 
           <a
-            href="https://luma.com/event/evt-YHqv3fV8bSezehz"
-            target="https://luma.com/fbnegd5h"
+            href="https://forms.gle/gSNEYntftL298XS29"
+            target="_blank"
           >
             <motion.button
               whileHover={{ scale: 1.05 }}
