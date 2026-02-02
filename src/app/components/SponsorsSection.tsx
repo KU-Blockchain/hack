@@ -2,20 +2,37 @@ import React from 'react';
 import { motion } from "motion/react";
 import { Building2 } from "lucide-react";
 
-export function SponsorsSection() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const inputs = {
-      fullName: form.fullName.value,
-      email: form.email.value,
-      company: form.company.value,
-      message: form.message.value,
-    };
-    
-    console.log(inputs);
+
+async function sendEmail(e) {
+  e.preventDefault();
+
+  // Stack info into payload
+  const payload = {
+    user_name: e.target.user_name.value,
+    email: e.target.email.value,
+    company: e.target.company.value,
+    message: e.target.message.value,
   };
-  
+
+  // Send payload to backend
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (response.ok) {
+    // Redirect to success page
+    console.log("Email sent successfully");
+    window.location.href = "/contact/success";
+  } else {
+    // Show error message as alert
+    alert("Failed to send email, contact charlieedoherty@gmail.com");
+  }
+}
+
+
+export function SponsorsSection() {
   return (
     <div className="min-h-screen flex items-center justify-center px-6 py-20 relative z-10">
       <div className="max-w-5xl w-full">
@@ -118,15 +135,15 @@ export function SponsorsSection() {
             blockchain innovators.
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-2xl mx-auto justify-left">
-            <label htmlFor="fullName" className="text-white/80 text-left">Name</label>
-            <input type="text" id="fullName" placeholder="Enter your name" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
+          <form onSubmit={sendEmail} className="flex flex-col gap-2 max-w-2xl mx-auto justify-left">
+            <label htmlFor="user_name" className="text-white/80 text-left">Name</label>
+            <input required type="text" id="user_name" name="user_name" placeholder="Enter your name" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
             <label htmlFor="email" className="text-white/80 text-left">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
+            <input required type="email" id="email" name="email" placeholder="Enter your email" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
             <label htmlFor="company" className="text-white/80 text-left">Company</label>
-            <input type="text" id="company" placeholder="Enter your company" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
+            <input required type="text" id="company" name="company" placeholder="Enter your company" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
             <label htmlFor="message" className="text-white/80 text-left">Message</label>
-            <textarea id="message" placeholder="Enter your message" maxLength={500} className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2 min-h-32" />
+            <textarea required id="message" name="message" placeholder="Enter your message" maxLength={500} className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2 min-h-32" />
             
             <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#073623] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow">
               Submit
