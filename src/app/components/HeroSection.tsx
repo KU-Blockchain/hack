@@ -26,6 +26,9 @@ export function HeroSection() {
         <h1 className="text-6xl md:text-8xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
           COMING SOON
         </h1>
+        <p className="text-4xl bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent md:text-6xl">
+          March 6-8
+        </p>
       </motion.div>
     </section>
   );
