@@ -57,7 +57,7 @@ export function ScheduleSection() {
       list = list.filter(
         (e) =>
           e.title.toLowerCase().includes(q) ||
-          e.organizer?.toLowerCase().includes(q) ||
+          e.speaker?.toLowerCase().includes(q) ||
           e.location?.toLowerCase().includes(q) ||
           SCHEDULE_TRACKS.find((t) => t.id === e.trackId)?.name.toLowerCase().includes(q)
       );
@@ -74,7 +74,7 @@ export function ScheduleSection() {
           transition={{ duration: 0.5 }}
           className="mb-8"
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-2">
+          <h1 className="text-4xl md:text-5xl font-bold py-10 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
             Conference Agenda
           </h1>
           <p className="text-lg text-white/70">
@@ -183,7 +183,7 @@ export function ScheduleSection() {
                           key={event.id}
                           initial={{ opacity: 0, scale: 0.98 }}
                           animate={{ opacity: 1, scale: 1 }}
-                          className="absolute left-1 right-1 rounded-lg bg-white/10 border border-white/10 p-2 cursor-pointer hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
+                          className="absolute left-1 right-1 rounded-lg bg-white/10 border border-white/10 p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
                           style={{
                             top: `${top}px`,
                             height: `${Math.max(height - 4, 44)}px`,
@@ -194,7 +194,7 @@ export function ScheduleSection() {
                           </p>
                           <p className="text-xs font-medium text-white truncate" title={event.title}>
                             {event.title}
-                            {event.organizer ? ` ${event.organizer}` : ''}
+                            {event.speaker ? ` ${event.speaker}` : ''}
                           </p>
                           {event.location && (
                             <p className="text-xs text-white/40 truncate mt-0.5">

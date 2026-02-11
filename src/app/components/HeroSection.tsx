@@ -16,20 +16,6 @@ export function HeroSection() {
           className="w-full max-w-3xl h-auto"
         />
       </motion.div>
-
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-center"
-      >
-        <h1 className="text-6xl md:text-8xl font-bold mb-2 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
-          COMING SOON
-        </h1>
-        <p className="text-4xl bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent md:text-6xl">
-          March 6-8, 2026
-        </p>
-      </motion.div>
     </section>
   );
 }
