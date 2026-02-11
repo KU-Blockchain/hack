@@ -23,9 +23,6 @@ export function HeroSection() {
         transition={{ duration: 0.8, delay: 0.3 }}
         className="text-center"
       >
-        <p className="text-4xl bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent md:text-6xl">
-          March 6-8
-        </p>
       </motion.div>
     </section>
   );

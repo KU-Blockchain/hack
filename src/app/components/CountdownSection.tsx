@@ -62,7 +62,7 @@ export function CountdownSection() {
         className="flex items-center justify-center px-6 py-10 relative z-10"
       >
         <div className="text-center">
-          <div className="grid grid-cols-4 gap-5 max-w-4xl mx-auto">
+          <div className="grid grid-cols-4 gap-2 md:gap-5 max-w-4xl mx-auto">
             {[
               { value: countdown.days, label: 'Days' },
               { value: countdown.hours, label: 'Hours' },
@@ -76,7 +76,7 @@ export function CountdownSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="relative"
               >
-                <div className="bg-gradient-to-br from-[#073623]/50 to-[#041f16]/50 backdrop-blur-sm border border-[#E89A7B]/20 rounded-2xl md:p-8">
+                <div className="bg-gradient-to-br from-[#073623]/50 to-[#041f16]/50 backdrop-blur-sm border border-[#E89A7B]/20 rounded-2xl p-4 md:p-8">
                   <div className="text-2xl md:text-6xl font-bold bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
                     {String(item.value).padStart(2, '0')}
                   </div>

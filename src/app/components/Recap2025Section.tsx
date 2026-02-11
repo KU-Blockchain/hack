@@ -6,7 +6,7 @@ export function Recap2025Section() {
   const stats = [
     { icon: <Users className="w-8 h-8" />, value: '90+', label: 'Participants' },
     { icon: <Code className="w-8 h-8" />, value: '22', label: 'Projects Submitted' },
-    { icon: <Trophy className="w-8 h-8" />, value: '$10,000', label: 'In Prizes' },
+    { icon: <Trophy className="w-8 h-8" />, value: '$4,000+', label: 'In Prizes' },
   ];
 
   return (
