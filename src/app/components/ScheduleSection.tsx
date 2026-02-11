@@ -11,36 +11,46 @@ import {
 type RoomFilter = TrackId | 'all';
 
 const GRID_START_HOUR = 8;
-const GRID_END_HOUR = 24;
+const GRID_END_HOUR_DEFAULT = 26; // through 1:00 AM (hour 25)
 const PX_PER_HOUR = 56;
 
+/** Minutes from midnight. Times after midnight (12 AM, 1 AM, 2 AM, ...) use 24*60, 25*60, 26*60 for grid placement below 11 PM. */
 function parseTime(s: string): number {
   const match = s.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/i);
   if (!match) return 0;
   let h = parseInt(match[1], 10);
   const m = parseInt(match[2], 10);
   const pm = match[3].toUpperCase() === 'PM';
-  if (h === 12) h = pm ? 12 : 0;
-  else if (pm) h += 12;
+  if (pm) {
+    if (h === 12) h = 12;
+    else h += 12;
+    return h * 60 + m;
+  }
+  // AM: 12 AM = 24*60 (next day), 1–7 AM = 25*60..31*60 (next day), 8–11 AM = same day
+  if (h === 12) return 24 * 60 + m;
+  if (h >= 1 && h <= 7) return (24 + h) * 60 + m;
   return h * 60 + m;
 }
 
 function timeLabel(hour: number): string {
+  if (hour >= 24) return `${hour === 24 ? 12 : hour - 24}:00 AM`;
   if (hour === 12) return '12:00 PM';
-  if (hour === 24) return '12:00 AM';
   if (hour < 12) return `${hour}:00 AM`;
   return `${hour - 12}:00 PM`;
 }
 
-const timeSlots = Array.from(
-  { length: GRID_END_HOUR - GRID_START_HOUR },
-  (_, i) => GRID_START_HOUR + i
-);
-
 const gridStartMinutes = GRID_START_HOUR * 60;
-const gridBodyHeight = (GRID_END_HOUR - GRID_START_HOUR) * PX_PER_HOUR;
 
-function eventPosition(event: ScheduleEvent) {
+/** Grid end hour (exclusive). At least 26 (through 1 AM); extends if any event ends later. */
+function getGridEndHour(): number {
+  const maxEnd = Math.max(
+    ...SCHEDULE_EVENTS.map((e) => parseTime(e.endTime)),
+    25 * 60
+  );
+  return Math.max(GRID_END_HOUR_DEFAULT, Math.ceil(maxEnd / 60) + 1);
+}
+
+function eventPosition(event: ScheduleEvent): { top: number; height: number } {
   const start = parseTime(event.startTime);
   const end = parseTime(event.endTime);
   const top = ((start - gridStartMinutes) / 60) * PX_PER_HOUR;
@@ -49,8 +59,8 @@ function eventPosition(event: ScheduleEvent) {
 }
 
 const ROOM_SHORT_NAMES: Record<string, string> = {
-  eaton2: 'EATON 2',
-  leep2: 'LEEP2',
+  eaton2: 'AUDITORIUM (EATON 2)',
+  leep2: 'COMMON SPACE (LEEP2)',
   other: 'Other',
 };
 
@@ -58,6 +68,17 @@ export function ScheduleSection() {
   const [selectedDay, setSelectedDay] = useState<DayId>('mar6');
   const [search, setSearch] = useState('');
   const [roomFilter, setRoomFilter] = useState<RoomFilter>('all');
+
+  const gridEndHour = useMemo(() => getGridEndHour(), []);
+  const timeSlots = useMemo(
+    () =>
+      Array.from(
+        { length: gridEndHour - GRID_START_HOUR },
+        (_, i) => GRID_START_HOUR + i
+      ),
+    [gridEndHour]
+  );
+  const gridBodyHeight = (gridEndHour - GRID_START_HOUR) * PX_PER_HOUR;
 
   const filteredEvents = useMemo(() => {
     let list = SCHEDULE_EVENTS.filter((e) => e.dayId === selectedDay);
@@ -200,7 +221,7 @@ export function ScheduleSection() {
                 <div
                   className="grid w-full min-w-0 md:min-w-[800px]"
                   style={{
-                    gridTemplateColumns: `44px repeat(${SCHEDULE_TRACKS.length}, minmax(0, 1fr))`,
+                    gridTemplateColumns: `50px repeat(${SCHEDULE_TRACKS.length}, minmax(0, 1fr))`,
                     gridTemplateRows: `auto ${gridBodyHeight}px`,
                   }}
                 >
@@ -225,7 +246,7 @@ export function ScheduleSection() {
                     {timeSlots.map((hour) => (
                       <div
                         key={hour}
-                        className="flex items-start pt-0.5 px-0.5 md:px-2 text-[10px] md:text-sm text-white/50 border-b border-white/10 border-dashed shrink-0"
+                        className="flex items-start pt-0.5 px-2 text-[10px] md:text-sm text-white/50 border-b border-white/10 border-dashed shrink-0"
                         style={{ height: PX_PER_HOUR }}
                       >
                         {timeLabel(hour)}

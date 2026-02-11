@@ -66,7 +66,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     dayId: 'mar6',
     trackId: 'eaton2',
     startTime: '6:00 PM',
-    endTime: '6:30 PM',
+    endTime: '7:00 PM',
     title: 'Opening Ceremony',
   },
   {
@@ -81,7 +81,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     id: 'workshop1',
     dayId: 'mar6',
     trackId: 'eaton2',
-    startTime: '7:15 PM',
+    startTime: '7:00 PM',
     endTime: '8:00 PM',
     title: 'Workshop #2',
   },
@@ -101,15 +101,16 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     endTime: '11:00 PM',
     title: 'Fun Mini-Event',
   },
-  // ——— Sat Mar 7 ———
+
   {
-    id: 'saturday-midnight-snack',
-    dayId: 'mar7',
+    id: 'friday-midnight-snack',
+    dayId: 'mar6',
     trackId: 'leep2',
     startTime: '12:00 AM',
-    endTime: '12:30 AM',
+    endTime: '1:00 AM',
     title: 'Midnight Snack',
   },
+  // ——— Sat Mar 7 ———
   {
     id: 'saturday-breakfast',
     dayId: 'mar7',
@@ -174,15 +175,15 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     endTime: '10:00 PM',
     title: 'Ping Pong Tournament!',
   },
-  // ——— Sun Mar 8 ———
   {
-    id: 'sunday-midnight-snack',
-    dayId: 'mar8',
+    id: 'saturday-midnight-snack',
+    dayId: 'mar7',
     trackId: 'leep2',
     startTime: '12:00 AM',
-    endTime: '12:30 AM',
+    endTime: '1:00 AM',
     title: 'Midnight Snack',
   },
+  // ——— Sun Mar 8 ———
   {
     id: 'sunday-breakfast',
     dayId: 'mar8',
@@ -196,7 +197,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     dayId: 'mar8',
     trackId: 'other',
     startTime: '8:00 AM',
-    endTime: '8:30 AM',
+    endTime: '9:00 AM',
     title: 'Hacking Ends (submissions hard deadline)',
   },
   {
