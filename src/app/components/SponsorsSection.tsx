@@ -145,7 +145,7 @@ export function SponsorsSection() {
             <label htmlFor="message" className="text-white/80 text-left">Message</label>
             <textarea required id="message" name="message" placeholder="Enter your message" maxLength={500} className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2 min-h-32" />
             
-            <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#073623] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow">
+            <button type="submit" className="cursor-pointer w-full px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#073623] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow">
               Submit
             </button>
           </form>
