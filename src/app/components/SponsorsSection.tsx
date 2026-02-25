@@ -46,21 +46,18 @@ export function SponsorsSection() {
             Sponsors
           </h1>
           <p className="text-xl text-white/70">
-            Powering innovation in the Blockchain and Web3 Ecosystem
+            Powering innovation in the Blockchain and Web3 Ecosystem providing $10K+ in prizes!
           </p>
         </motion.div>
 
-        {/* <motion.div
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-16 relative"
-        >
-          <h3 className="text-2xl md:text-3xl font-semibold text-white/80 text-center mb-12">
-            Previous Sponsors
-          </h3>
+        > 
           <div className="relative overflow-hidden">
-            {// Gradient overlays for smooth fade effect}
+            {/* Gradient overlays for smooth fade effect */}
             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#073623] to-transparent z-10 pointer-events-none" />
             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#073623] to-transparent z-10 pointer-events-none" />
 
@@ -79,31 +76,36 @@ export function SponsorsSection() {
                   className="flex gap-8 items-center"
                 >
                   {[
-                    "Sponsor One",
-                    "Sponsor Two",
-                    "Sponsor Three",
-                    "Sponsor Four",
-                    "Sponsor Five",
-                    "Sponsor Six",
+                    { name: "KU", src: "/ku.png" },
+                    { name: "PayPal", src: "/paypal.png" },
+                    { name: "Pinata", src: "/pinata.png" },
+                    { name: "Ripple", src: "/ripple.png" },
+                    { name: "Sui", src: "/sui.png" },
+                    { name: "MLH", src: "/mlh.png" },
                   ].map((sponsor, i) => (
                     <motion.div
-                      key={i}
+                      key={`${setIndex}-${i}`}
                       whileHover={{ scale: 1.05, y: -5 }}
                       transition={{ duration: 0.3 }}
-                      className="flex-shrink-0 w-56 h-36 bg-gradient-to-br from-white/10 to-white/5 border border-[#E89A7B]/30 rounded-2xl flex items-center justify-center backdrop-blur-md shadow-lg shadow-black/20 relative overflow-hidden group cursor-pointer"
+                      className="flex-shrink-0 w-56 h-36 bg-gradient-to-br from-white/95 to-white/85 border-2 border-white/40 rounded-2xl flex items-center justify-center p-4 shadow-xl shadow-black/30 relative overflow-hidden group cursor-pointer"
                     >
-                      {// Animated gradient background on hover}
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#E89A7B]/20 to-[#F5C4A8]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      {/* Subtle warm tint so blue logos have contrast */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#F5C4A8]/5 to-[#E89A7B]/5 rounded-2xl" />
 
-                      {// Shine effect}
-                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+                      {/* Animated gradient background on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#E89A7B]/15 to-[#F5C4A8]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 
-                      <span className="text-white/70 group-hover:text-white font-bold text-lg transition-colors duration-300 relative z-10">
-                        {sponsor}
-                      </span>
+                      {/* Shine effect */}
+                      <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent rounded-2xl" />
 
-                      {// Corner accent}
-                      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#E89A7B]/20 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <img
+                        src={sponsor.src}
+                        alt={sponsor.name}
+                        className="max-w-full max-h-full object-contain relative z-10 drop-shadow-md"
+                      />
+
+                      {/* Corner accent */}
+                      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-[#E89A7B]/15 to-transparent rounded-bl-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </motion.div>
                   ))}
                 </div>
@@ -111,13 +113,13 @@ export function SponsorsSection() {
             </motion.div>
           </div>
 
-          {// Decorative elements}
+          {/* Decorative elements */}
           <div className="absolute -top-4 left-1/4 w-2 h-2 bg-[#E89A7B]/40 rounded-full animate-pulse" />
           <div
             className="absolute -bottom-4 right-1/3 w-2 h-2 bg-[#F5C4A8]/40 rounded-full animate-pulse"
             style={{ animationDelay: "0.5s" }}
           />
-        </motion.div> */}
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -144,21 +146,11 @@ export function SponsorsSection() {
             <input required type="text" id="company" name="company" placeholder="Enter your company" className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2" />
             <label htmlFor="message" className="text-white/80 text-left">Message</label>
             <textarea required id="message" name="message" placeholder="Enter your message" maxLength={500} className="w-full p-2 rounded-md border border-[#E89A7B]/20 text-white/60 bg-[#073623]/30 mb-2 min-h-32" />
-            
+
             <button type="submit" className="cursor-pointer w-full px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#073623] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow">
               Submit
             </button>
           </form>
-        </motion.div>
-
-        {/* Placeholder for future sponsor logos */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mt-12 text-center text-white/40"
-        >
-          {/* <p>Sponsor logos will be displayed here</p> */}
         </motion.div>
       </div>
     </div>
