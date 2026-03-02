@@ -33,12 +33,6 @@ export default function App() {
             <HeroSection />
             <CountdownSection />
             <NotifySection />
-            <Footer />
-          </>
-        )}
-
-        {activeTab === 'faq' && (
-          <>
             <FAQSection />
             <Footer />
           </>

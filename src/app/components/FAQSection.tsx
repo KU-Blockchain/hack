@@ -15,7 +15,7 @@ export function FAQSection() {
     },
     {
       question: "When and where is the event?",
-      answer: "The hackathon kicks off on March 6, 2026. Stay tuned for venue details and more information!"
+      answer: "The hackathon kicks off on March 6, 2026 at the KU School of Engineering. Search LEEP2 on maps to find the venue!"
     },
     {
       question: "Who can participate?",
@@ -27,11 +27,19 @@ export function FAQSection() {
     },
     {
       question: "Are there prizes?",
-      answer: "Yes! We'll be announcing exciting prizes and sponsor opportunities soon. Sign up to stay updated!"
+      answer: "Yes! Check out the Tracks section to see the prizes for each track."
     },
     {
       question: "How Long is it?",
-      answer: "The hackathon will be 36 hours long, from Friday night to Sunday night. This only considers hacking time, not the opening or closing ceremonies."
+      answer: "The hackathon will be 36 hours long, from Friday night to Sunday morning. This only considers hacking time, not the opening or closing ceremonies."
+    },
+    {
+      question: "Are there travel subsidies or lodging provided?",
+      answer: "Unfortunately, we will not be providing travel subsidies or lodging."
+    },
+    {
+      question: "What should I do if I have more questions?",
+      answer: "You can contact us at hack@kublockchain.com or by messaging us on our Discord server: discord.gg/gkYm5FKk."
     }
   ];
 
@@ -75,29 +83,6 @@ export function FAQSection() {
               </AccordionItem>
             ))}
           </Accordion>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center m-16"
-          >
-            <p className="text-xl text-white/70 mb-12">
-              Have more questions? Contact us after registering below
-            </p>
-            <a
-              href="https://forms.gle/gSNEYntftL298XS29"
-              target="_blank"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] text-[#1a3d3a] font-bold rounded-lg hover:shadow-lg hover:shadow-[#E89A7B]/30 transition-shadow cursor-pointer"
-              >
-                Register for Event
-              </motion.button>
-            </a>
-          </motion.div>
         </motion.div>
       </div>
     </div >
