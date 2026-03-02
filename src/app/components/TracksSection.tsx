@@ -231,7 +231,80 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   },
 ];
 
+const GENERAL_TRACK_IDS = ['general', 'business'];
+
+function TrackGroupCard({
+  group,
+}: {
+  group: SponsorTrackGroup;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6 }}
+      className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-8 mx-5 shadow-xl shadow-black/30"
+    >
+      <div className="flex flex-row items-start gap-4 md:gap-6 mb-4 md:mb-6">
+        <img
+          src={group.logo}
+          alt={group.sponsorName}
+          className="size-15 flex-shrink-0 object-contain rounded-lg bg-white/90 p-2"
+        />
+        <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-4">
+          <div>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#E89A7B]">
+              {group.sponsorName}
+            </h2>
+            {group.id === "general" || group.id === "business" ? (
+              <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Non-sponsor track</p>
+            ) : (
+              <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Themed challenges sponsored by {group.sponsorName}.</p>
+            )}
+          </div>
+          <p className="text-sm md:text-base text-[#F5C4A8]/90 font-semibold md:flex-shrink-0">
+            Total prizes: {group.totalPrize}
+          </p>
+        </div>
+      </div>
+
+      <Accordion
+        type="multiple"
+        className="space-y-3"
+      >
+        {group.tracks.map((track) => (
+          <AccordionItem
+            key={track.id}
+            value={track.id}
+            className="border border-white/10 rounded-xl bg-[#073623]/60 px-4"
+          >
+            <AccordionTrigger className="text-white hover:no-underline py-3">
+              <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-2">
+                <span className="text-base md:text-lg font-semibold">
+                  {track.name}
+                </span>
+                <span className="text-sm md:text-base text-[#F5C4A8] font-medium">
+                  Prize: {track.prize}
+                </span>
+              </div>
+            </AccordionTrigger>
+            <AccordionContent className="text-sm md:text-base text-white/70 pt-0 pb-4">
+              <div className="space-y-2 text-left">
+                {track.description}
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        ))}
+      </Accordion>
+    </motion.div>
+  );
+}
+
 export function TracksSection() {
+  const generalGroups = SPONSOR_TRACKS.filter((g) => GENERAL_TRACK_IDS.includes(g.id));
+  const sponsorGroups = SPONSOR_TRACKS.filter((g) => !GENERAL_TRACK_IDS.includes(g.id));
+
   return (
     <section className="min-h-screen px-2 py-16 md:px-6 md:py-20 lg:px-8 relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -239,75 +312,39 @@ export function TracksSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center"
         >
-          <h1 className="p-10 text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
+          <h1 className="p-10 text-5xl md:text-7xl font-bold bg-gradient-to-r from-[#E89A7B] to-[#F5C4A8] bg-clip-text text-transparent">
             Tracks
           </h1>
         </motion.div>
 
-        <div className="space-y-4 md:space-y-8">
-          {SPONSOR_TRACKS.map((group) => (
-            <motion.div
-              key={group.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-100px' }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-8 mx-5 shadow-xl shadow-black/30"
-            >
-              <div className="flex flex-row items-start gap-4 md:gap-6 mb-4 md:mb-6">
-                <img
-                  src={group.logo}
-                  alt={group.sponsorName}
-                  className="size-15 flex-shrink-0 object-contain rounded-lg bg-white/90 p-2"
-                />
-                <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-4">
-                  <div>
-                    <h2 className="text-2xl md:text-3xl font-bold text-[#E89A7B]">
-                      {group.sponsorName}
-                    </h2>
-                    {group.id === "general" || group.id === "business" ? (
-                      <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Non-sponsor track</p>
-                    ) : (
-                      <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Themed challenges sponsored by {group.sponsorName}.</p>
-                    )}
-                  </div>
-                  <p className="text-sm md:text-base text-[#F5C4A8]/90 font-semibold md:flex-shrink-0">
-                    Total prizes: {group.totalPrize}
-                  </p>
-                </div>
-              </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-6"
+        >
+          <p className="p-10 text-xl text-white/70">
+            This year we our offering $13,000 in prizes over five different hackathon tracks, plus an additional $2,000 for our Web3 focused case competition!
+          </p>
+        </motion.div>
 
-              <Accordion
-                type="multiple"
-                className="space-y-3"
-              >
-                {group.tracks.map((track) => (
-                  <AccordionItem
-                    key={track.id}
-                    value={track.id}
-                    className="border border-white/10 rounded-xl bg-[#073623]/60 px-4"
-                  >
-                    <AccordionTrigger className="text-white hover:no-underline py-3">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-2">
-                        <span className="text-base md:text-lg font-semibold">
-                          {track.name}
-                        </span>
-                        <span className="text-sm md:text-base text-[#F5C4A8] font-medium">
-                          Prize: {track.prize}
-                        </span>
-                      </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm md:text-base text-white/70 pt-0 pb-4">
-                      <div className="space-y-2 text-left">
-                        {track.description}
-                      </div>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </motion.div>
+        <h2 className="text-lg font-semibold text-white/70 uppercase tracking-wider mb-4 px-5">
+          General
+        </h2>
+        <div className="space-y-4 md:space-y-8 mb-10 md:mb-14">
+          {generalGroups.map((group) => (
+            <TrackGroupCard key={group.id} group={group} />
+          ))}
+        </div>
+
+        <h2 className="text-lg font-semibold text-white/70 uppercase tracking-wider mb-4 px-5">
+          Sponsors
+        </h2>
+        <div className="space-y-4 md:space-y-8">
+          {sponsorGroups.map((group) => (
+            <TrackGroupCard key={group.id} group={group} />
           ))}
         </div>
       </div>
