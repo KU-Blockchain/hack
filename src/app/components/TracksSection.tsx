@@ -17,6 +17,7 @@ type Track = {
 type SponsorTrackGroup = {
   id: string;
   sponsorName: string;
+  logo: string; // path in public, e.g. /ku.png
   totalPrize: string;
   tracks: Track[];
 };
@@ -24,7 +25,8 @@ type SponsorTrackGroup = {
 const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'general',
-    sponsorName: 'General Hackathon Track',
+    sponsorName: 'General Track',
+    logo: '/ku-logo.png',
     totalPrize: 'TBD',
     tracks: [
       {
@@ -60,6 +62,7 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'business',
     sponsorName: 'Business Track',
+    logo: '/ku-logo.png',
     totalPrize: 'TBD',
     tracks: [
       {
@@ -90,12 +93,13 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'paypal',
     sponsorName: 'PayPal',
-    totalPrize: 'TBD',
+    logo: '/paypal-logo.png',
+    totalPrize: '$5,000',
     tracks: [
       {
         id: 'paypal-pyusd-agentic-kyc',
         name: 'PYUSD Stablecoin x Agentic Payments x KYC Wallets',
-        prize: 'TBD',
+        prize: '$5,000',
         description: (
           <>
             <p>
@@ -118,7 +122,14 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
                 <li>Wallet experiences that integrate KYC and identity in a secure, privacy-conscious way.</li>
               </ul>
             </div>
-            <p className="mt-2">Prize amounts TBD — check back for updates.</p>
+            <div className="mt-3">
+              <p className="font-semibold">Prizes:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place $2,500</li>
+                <li>🥈 2nd place $1,500</li>
+                <li>🥉 3rd place $1,000</li>
+              </ul>
+            </div>
           </>
         ),
       },
@@ -127,12 +138,13 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'pinata',
     sponsorName: 'Pinata',
+    logo: '/pinata-logo.png',
     totalPrize: 'Up to $2,000',
     tracks: [
       {
         id: 'pinata-builder',
         name: 'Pinata Builder Track',
-        prize: 'Up to $2,000',
+        prize: '$500 per winning team member',
         description: (
           <>
             <p>
@@ -146,9 +158,6 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
                 <li>Showcasing reliability, transparency, or ownership of data and user-generated content.</li>
               </ul>
             </div>
-            <p className="mt-2">
-              One winning team. Each team member (max 4) receives $500 — potential total $2,000.
-            </p>
             <div className="mt-2">
               <p className="font-semibold">Prizes:</p>
               <ul className="list-none space-y-1">
@@ -163,6 +172,7 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'ripple',
     sponsorName: 'Ripple',
+    logo: '/ripple-logo.png',
     totalPrize: '$3,000',
     tracks: [
       {
@@ -200,6 +210,24 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
         ),
       },
     ],
+  }, {
+    id: 'sui',
+    sponsorName: 'SUI',
+    logo: '/sui-logo.png',
+    totalPrize: '$3,000',
+    tracks: [
+      {
+        id: 'sui-ctf',
+        name: 'SUI Capture the Flag',
+        prize: '$3,000 total',
+        description: (
+          <>
+            <p>All track information can be found here and is subject to change:</p>
+            <a className="text-blue-500 underline" href="https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0</a>
+          </>
+        ),
+      },
+    ],
   },
 ];
 
@@ -218,7 +246,7 @@ export function TracksSection() {
           </h1>
         </motion.div>
 
-        <div className="space-y-8 md:space-y-10">
+        <div className="space-y-4 md:space-y-8">
           {SPONSOR_TRACKS.map((group) => (
             <motion.div
               key={group.id}
@@ -226,22 +254,29 @@ export function TracksSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.6 }}
-              className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-8 shadow-xl shadow-black/30"
+              className="rounded-2xl border border-white/15 bg-white/5 backdrop-blur-sm p-6 md:p-8 mx-5 shadow-xl shadow-black/30"
             >
-              <div className="flex flex-col md:flex-row md:items-baseline md:justify-between gap-3 mb-4 md:mb-6">
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-[#E89A7B]">
-                    {group.sponsorName}
-                  </h2>
-                  <p className="text-sm md:text-base text-white/60 mt-1">
-                    {group.id === 'business' || group.id === 'general'
-                      ? 'Non-sponsor track open to all participants.'
-                      : `Themed challenges sponsored by ${group.sponsorName}.`}
+              <div className="flex flex-row items-start gap-4 md:gap-6 mb-4 md:mb-6">
+                <img
+                  src={group.logo}
+                  alt={group.sponsorName}
+                  className="size-15 flex-shrink-0 object-contain rounded-lg bg-white/90 p-2"
+                />
+                <div className="flex-1 min-w-0 flex flex-col md:flex-row md:items-start md:justify-between gap-2 md:gap-4">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-[#E89A7B]">
+                      {group.sponsorName}
+                    </h2>
+                    {group.id === "general" || group.id === "business" ? (
+                      <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Non-sponsor track</p>
+                    ) : (
+                      <p className="hidden md:block text-sm md:text-base text-white/60 mt-1">Themed challenges sponsored by {group.sponsorName}.</p>
+                    )}
+                  </div>
+                  <p className="text-sm md:text-base text-[#F5C4A8]/90 font-semibold md:flex-shrink-0">
+                    Total prizes: {group.totalPrize}
                   </p>
                 </div>
-                <p className="text-sm md:text-base text-[#F5C4A8]/90 font-semibold">
-                  Total prizes: {group.totalPrize}
-                </p>
               </div>
 
               <Accordion
