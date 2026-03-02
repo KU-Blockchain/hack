@@ -8,6 +8,7 @@ import { Navigation } from './components/Navigation';
 import { SponsorsSection } from './components/SponsorsSection';
 import { Recap2025Section } from './components/Recap2025Section';
 import { ScheduleSection } from './components/ScheduleSection';
+import { TracksSection } from './components/TracksSection';
 import { useState, useEffect } from 'react';
 import { MLHTrustBadge } from './components/MLHTrustBadge';
 import { Footer } from './components/Footer';
@@ -53,6 +54,13 @@ export default function App() {
         {activeTab === 'schedule' && (
           <>
             <ScheduleSection />
+            <Footer />
+          </>
+        )}
+
+        {activeTab === 'tracks' && (
+          <>
+            <TracksSection />
             <Footer />
           </>
         )}
