@@ -11,7 +11,7 @@ type Track = {
   id: string;
   name: string;
   prize: string;
-  description: string;
+  description: React.ReactNode;
 };
 
 type SponsorTrackGroup = {
@@ -25,14 +25,35 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   {
     id: 'general',
     sponsorName: 'General Hackathon Track',
-    totalPrize: 'TBD (1st, 2nd, 3rd)',
+    totalPrize: 'TBD',
     tracks: [
       {
         id: 'general-dapp',
         name: 'Open Innovation (General DApp)',
-        prize: 'TBD for 1st / 2nd / 3rd',
-        description:
-          'This is the main hackathon track for any project that does not fit into a specific sponsor challenge. Build the most compelling decentralized application you can—any theme, any vertical—as long as your project meaningfully uses a blockchain. To qualify, your project must include at least one on-chain state change (for example: writing data to a smart contract, minting or updating tokens/NFTs, updating on-chain storage, or executing a transaction that changes state). Frontend-only demos without real on-chain interactions will not be eligible for prizing. Prizes for 1st, 2nd, and 3rd place will be announced soon.',
+        prize: 'TBD',
+        description: (
+          <>
+            <p>
+              This is the main hackathon track for any project that does not fit into a specific
+              sponsor challenge. Build the most compelling decentralized application you can—any
+              theme, any vertical—as long as your project meaningfully uses a blockchain.
+            </p>
+            <p className="mt-2">
+              To qualify, your project must include at least one on-chain state change (e.g. writing
+              data to a smart contract, minting or updating tokens/NFTs, updating on-chain storage,
+              or executing a transaction that changes state). Frontend-only demos without real
+              on-chain interactions will not be eligible for prizing.
+            </p>
+            <div className="mt-3">
+              <p className="font-semibold">Prizes (TBD):</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place – TBD</li>
+                <li>🥈 2nd place – TBD</li>
+                <li>🥉 3rd place – TBD</li>
+              </ul>
+            </div>
+          </>
+        ),
       },
     ],
   },
@@ -45,8 +66,24 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
         id: 'business-case-competition',
         name: 'Business Case Competition',
         prize: 'TBD',
-        description:
-          'A business-focused case competition track running alongside the hackathon. Teams will receive a real-world case during registration—the earlier you arrive, the earlier you can begin strategizing. Final presentations for this track will take place at 9:00 AM on Sunday, March 8th in the School of Engineering, with mentor support available throughout the event to help you refine your analysis and presentation. Prize structure and full details are still being finalized and will be announced closer to the event, so check back here for updates.',
+        description: (
+          <>
+            <p>
+              A business-focused case competition track running alongside the hackathon. Teams will
+              work on a real-world case that connects blockchain concepts to strategy, operations,
+              and go-to-market thinking.
+            </p>
+            <ul className="mt-2 list-disc list-inside space-y-1">
+              <li>The case is given during registration — the earlier you arrive, the earlier you can start.</li>
+              <li>Final presentations at 9:00 AM Sunday, March 8th in the School of Engineering.</li>
+              <li>Mentor support available throughout the event.</li>
+            </ul>
+            <p className="mt-2">
+              Prize structure and full details are still being finalized and will be announced closer
+              to the event.
+            </p>
+          </>
+        ),
       },
     ],
   },
@@ -59,8 +96,31 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
         id: 'paypal-pyusd-agentic-kyc',
         name: 'PYUSD Stablecoin x Agentic Payments x KYC Wallets',
         prize: 'TBD',
-        description:
-          'PayPal is proud to sponsor the Midwest Block-a-thon, a 36-hour blockchain-focused event hosted by the University of Kansas Blockchain Institute, bringing together developers, students, and innovators from both inside and outside KU to learn, build, and experiment with Web3. This track focuses on real-world use cases for PYUSD as a programmable, low-volatility stablecoin that unlocks instant settlement, automated financial flows, and merchant-friendly payment experiences. We are especially excited about agentic payments, where autonomous smart agents can initiate and manage payments on behalf of users, as well as KYC-enabled wallets and on-chain identity systems that keep users safe while supporting real-world compliance. Strong projects might explore new payment flows, recurring or streaming payments, on-chain invoicing, agent-driven transaction orchestration, or wallet experiences that integrate identity and KYC in a secure, privacy-conscious way. Show us how PYUSD and agentic payments can make Web3 payments feel ready for everyday use cases.',
+        description: (
+          <>
+            <p>
+              PayPal is proud to sponsor the Midwest Block-a-thon, a 36-hour blockchain-focused
+              event hosted by the University of Kansas Blockchain Institute, bringing together
+              developers, students, and innovators from inside and outside KU to learn, build, and
+              experiment with Web3.
+            </p>
+            <p className="mt-2">
+              This track focuses on real-world use cases for PYUSD as a programmable, low-volatility
+              stablecoin: instant settlement, automated financial flows, and merchant-friendly
+              payments. We are especially excited about agentic payments (autonomous smart agents
+              managing payments on behalf of users) and KYC-enabled wallets with on-chain identity.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">You might explore:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>New payment flows, recurring or streaming payments, on-chain invoicing.</li>
+                <li>Agent-driven transaction orchestration using PYUSD.</li>
+                <li>Wallet experiences that integrate KYC and identity in a secure, privacy-conscious way.</li>
+              </ul>
+            </div>
+            <p className="mt-2">Prize amounts TBD — check back for updates.</p>
+          </>
+        ),
       },
     ],
   },
@@ -72,23 +132,72 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
       {
         id: 'pinata-builder',
         name: 'Pinata Builder Track',
-        prize: '$500 per team member (max 4)',
-        description:
-          'Build something that uses Pinata in a meaningful way—from agentic AI systems to full-stack applications, show what is possible when files are content-addressed. Strong submissions should lean into Pinata to power reliability, transparency, or ownership of user and application data. One winning team will be selected, and each team member (up to 4) will receive $500 for a potential total of $2,000 in prizes.',
+        prize: 'Up to $2,000',
+        description: (
+          <>
+            <p>
+              Build something that uses Pinata in a meaningful way — from agentic AI systems to
+              full-stack applications, show what is possible when files are content-addressed.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Judging focus:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Using Pinata as an integral part of your product or architecture.</li>
+                <li>Showcasing reliability, transparency, or ownership of data and user-generated content.</li>
+              </ul>
+            </div>
+            <p className="mt-2">
+              One winning team. Each team member (max 4) receives $500 — potential total $2,000.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prizes:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place – $500 per team member (up to 4 people = $2,000)</li>
+              </ul>
+            </div>
+          </>
+        ),
       },
     ],
   },
   {
     id: 'ripple',
     sponsorName: 'Ripple',
-    totalPrize: '$3,000 (Top 3)',
+    totalPrize: '$3,000',
     tracks: [
       {
         id: 'ripple-xrpl-challenge',
         name: 'XRPL Real-World Impact',
-        prize: 'Top 3: $1,500 / $1,000 / $500',
-        description:
-          "Build an MVP that uses the XRP Ledger's core features to solve a real-world problem. We're especially interested in ideas around DeFi, privacy, and programmability, but any impactful use of XRPL on Testnet or Devnet is welcome. Strong entries might explore flows using stablecoins like RLUSD, experiment with XRPL-native capabilities such as lending and borrowing, smart escrow, multi-purpose tokens, batched transactions, or TokenEscrow, or ship SDKs and tooling that help other developers integrate XRPL into their apps. Payment-focused projects—like microfinance tools, subscription or streaming payment rails, and tokenized real-world assets—are also highly encouraged. To compete, teams should submit a working, testable MVP that is publicly available on GitHub with a clear README explaining how to run and use the project.",
+        prize: '$3,000 total',
+        description: (
+          <>
+            <p>
+              Build an MVP that uses the XRP Ledger&apos;s core features to solve a real-world
+              problem. We&apos;re especially interested in DeFi, privacy, and programmability, but
+              any impactful use of XRPL on Testnet or Devnet is welcome.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Example directions:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Flows using stablecoins like RLUSD.</li>
+                <li>XRPL-native capabilities: lending/borrowing, smart escrow, multi-purpose tokens, batched transactions, TokenEscrow.</li>
+                <li>SDKs and tooling for other developers to integrate XRPL.</li>
+                <li>Payment-focused products: microfinance, subscription rails, tokenized real-world assets.</li>
+              </ul>
+            </div>
+            <p className="mt-2">
+              Submit a working, testable MVP publicly available on GitHub with a clear README.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prizes:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place – $1,500</li>
+                <li>🥈 2nd place – $1,000</li>
+                <li>🥉 3rd place – $500</li>
+              </ul>
+            </div>
+          </>
+        ),
       },
     ],
   },
@@ -125,11 +234,13 @@ export function TracksSection() {
                     {group.sponsorName}
                   </h2>
                   <p className="text-sm md:text-base text-white/60 mt-1">
-                    Themed challenges sponsored by {group.sponsorName}.
+                    {group.id === 'business' || group.id === 'general'
+                      ? 'Non-sponsor track open to all participants.'
+                      : `Themed challenges sponsored by ${group.sponsorName}.`}
                   </p>
                 </div>
                 <p className="text-sm md:text-base text-[#F5C4A8]/90 font-semibold">
-                  Up to {group.totalPrize} in prizes
+                  Total prizes: {group.totalPrize}
                 </p>
               </div>
 
@@ -154,7 +265,9 @@ export function TracksSection() {
                       </div>
                     </AccordionTrigger>
                     <AccordionContent className="text-sm md:text-base text-white/70 pt-0 pb-4">
-                      {track.description}
+                      <div className="space-y-2 text-left">
+                        {track.description}
+                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
