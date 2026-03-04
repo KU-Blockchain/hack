@@ -27,18 +27,17 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
     id: 'general',
     sponsorName: 'General Track',
     logo: '/ku-logo.png',
-    totalPrize: 'TBD',
+    totalPrize: '$1,000',
     tracks: [
       {
         id: 'general-dapp',
         name: 'Open Innovation (General DApp)',
-        prize: 'TBD',
+        prize: '$1,000',
         description: (
           <>
             <p>
-              This is the main hackathon track for any project that does not fit into a specific
-              sponsor challenge. Build the most compelling decentralized application you can—any
-              theme, any vertical—as long as your project meaningfully uses a blockchain.
+              This is the main hackathon track for any project. Build the most compelling decentralized application you can.
+              All projects qualify for prizes as long as your project meaningfully uses a blockchain network or technology.
             </p>
             <p className="mt-2">
               To qualify, your project must include at least one on-chain state change (e.g. writing
@@ -47,11 +46,33 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
               on-chain interactions will not be eligible for prizing.
             </p>
             <div className="mt-3">
-              <p className="font-semibold">Prizes (TBD):</p>
+              <p className="font-semibold">Prizes:</p>
               <ul className="list-none space-y-1">
-                <li>🥇 1st place – TBD</li>
-                <li>🥈 2nd place – TBD</li>
-                <li>🥉 3rd place – TBD</li>
+                <li>🥇 1st place - $1,000</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'general-beginner',
+        name: 'Best Beginner Track',
+        prize: '$500',
+        description: (
+          <>
+            <p>
+              This track is for teams with no prior blockchain experience. All members of the team must be first-time attendees of the Midwest Blockathon or any Web3 focused hackathon.
+            </p>
+            <p className="mt-2">
+              To qualify, your project must include at least one on-chain state change (e.g. writing
+              data to a smart contract, minting or updating tokens/NFTs, updating on-chain storage,
+              or executing a transaction that changes state). Frontend-only demos without real
+              on-chain interactions will not be eligible for prizing.
+            </p>
+            <div className="mt-3">
+              <p className="font-semibold">Prizes:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place - $500</li>
               </ul>
             </div>
           </>
@@ -61,14 +82,14 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
   },
   {
     id: 'business',
-    sponsorName: 'Business Track',
+    sponsorName: 'Case Competition',
     logo: '/ku-logo.png',
-    totalPrize: 'TBD',
+    totalPrize: '$1,000',
     tracks: [
       {
-        id: 'business-case-competition',
-        name: 'Business Case Competition',
-        prize: 'TBD',
+        id: 'case-competition',
+        name: 'Case Competition',
+        prize: '$1,000',
         description: (
           <>
             <p>
@@ -81,53 +102,71 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
               <li>Final presentations at 9:00 AM Sunday, March 8th in the School of Engineering.</li>
               <li>Mentor support available throughout the event.</li>
             </ul>
-            <p className="mt-2">
-              Prize structure and full details are still being finalized and will be announced closer
-              to the event.
-            </p>
+            <div className="mt-3">
+              <p className="font-semibold">Prizes:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1st place - $1,000</li>
+              </ul>
+            </div>
           </>
         ),
       },
     ],
   },
   {
-    id: 'paypal',
-    sponsorName: 'PayPal',
-    logo: '/paypal-logo.png',
+    id: 'sui',
+    sponsorName: 'SUI',
+    logo: '/sui-logo.png',
     totalPrize: '$5,000',
     tracks: [
       {
-        id: 'paypal-pyusd-agentic-kyc',
-        name: 'PYUSD Stablecoin x Agentic Payments x KYC Wallets',
-        prize: '$5,000',
+        id: 'sui-ctf',
+        name: 'SUI Capture the Flag',
+        prize: '$500 1st place / $120 30th place',
+        description: (
+          <>
+            <p>All track information can be found here and is subject to change:</p>
+            <a className="text-blue-500 underline" href="https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0</a>
+          </>
+        ),
+      },
+    ],
+  },
+  {
+    id: 'ripple',
+    sponsorName: 'Ripple',
+    logo: '/ripple-logo.png',
+    totalPrize: '$3,000',
+    tracks: [
+      {
+        id: 'ripple-xrpl-challenge',
+        name: 'XRPL Real-World Impact',
+        prize: '$1,500, $1,000, $500',
         description: (
           <>
             <p>
-              PayPal is proud to sponsor the Midwest Block-a-thon, a 36-hour blockchain-focused
-              event hosted by the University of Kansas Blockchain Institute, bringing together
-              developers, students, and innovators from inside and outside KU to learn, build, and
-              experiment with Web3.
-            </p>
-            <p className="mt-2">
-              This track focuses on real-world use cases for PYUSD as a programmable, low-volatility
-              stablecoin: instant settlement, automated financial flows, and merchant-friendly
-              payments. We are especially excited about agentic payments (autonomous smart agents
-              managing payments on behalf of users) and KYC-enabled wallets with on-chain identity.
+              Build an MVP that uses the XRP Ledger&apos;s core features to solve a real-world
+              problem. We&apos;re especially interested in DeFi, privacy, and programmability, but
+              any impactful use of XRPL on Testnet or Devnet is welcome.
             </p>
             <div className="mt-2">
-              <p className="font-semibold">You might explore:</p>
+              <p className="font-semibold">Example directions:</p>
               <ul className="list-disc list-inside space-y-1">
-                <li>New payment flows, recurring or streaming payments, on-chain invoicing.</li>
-                <li>Agent-driven transaction orchestration using PYUSD.</li>
-                <li>Wallet experiences that integrate KYC and identity in a secure, privacy-conscious way.</li>
+                <li>Flows using stablecoins like RLUSD.</li>
+                <li>XRPL-native capabilities: lending/borrowing, smart escrow, multi-purpose tokens, batched transactions, TokenEscrow.</li>
+                <li>SDKs and tooling for other developers to integrate XRPL.</li>
+                <li>Payment-focused products: microfinance, subscription rails, tokenized real-world assets.</li>
               </ul>
             </div>
-            <div className="mt-3">
+            <p className="mt-2">
+              Submit a working, testable MVP publicly available on GitHub with a clear README.
+            </p>
+            <div className="mt-2">
               <p className="font-semibold">Prizes:</p>
               <ul className="list-none space-y-1">
-                <li>🥇 1st place $2,500</li>
-                <li>🥈 2nd place $1,500</li>
-                <li>🥉 3rd place $1,000</li>
+                <li>🥇 1st place – $1,500</li>
+                <li>🥈 2nd place – $1,000</li>
+                <li>🥉 3rd place – $500</li>
               </ul>
             </div>
           </>
@@ -164,66 +203,6 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
                 <li>🥇 1st place – $500 per team member (up to 4 people = $2,000)</li>
               </ul>
             </div>
-          </>
-        ),
-      },
-    ],
-  },
-  {
-    id: 'ripple',
-    sponsorName: 'Ripple',
-    logo: '/ripple-logo.png',
-    totalPrize: '$3,000',
-    tracks: [
-      {
-        id: 'ripple-xrpl-challenge',
-        name: 'XRPL Real-World Impact',
-        prize: '$3,000 total',
-        description: (
-          <>
-            <p>
-              Build an MVP that uses the XRP Ledger&apos;s core features to solve a real-world
-              problem. We&apos;re especially interested in DeFi, privacy, and programmability, but
-              any impactful use of XRPL on Testnet or Devnet is welcome.
-            </p>
-            <div className="mt-2">
-              <p className="font-semibold">Example directions:</p>
-              <ul className="list-disc list-inside space-y-1">
-                <li>Flows using stablecoins like RLUSD.</li>
-                <li>XRPL-native capabilities: lending/borrowing, smart escrow, multi-purpose tokens, batched transactions, TokenEscrow.</li>
-                <li>SDKs and tooling for other developers to integrate XRPL.</li>
-                <li>Payment-focused products: microfinance, subscription rails, tokenized real-world assets.</li>
-              </ul>
-            </div>
-            <p className="mt-2">
-              Submit a working, testable MVP publicly available on GitHub with a clear README.
-            </p>
-            <div className="mt-2">
-              <p className="font-semibold">Prizes:</p>
-              <ul className="list-none space-y-1">
-                <li>🥇 1st place – $1,500</li>
-                <li>🥈 2nd place – $1,000</li>
-                <li>🥉 3rd place – $500</li>
-              </ul>
-            </div>
-          </>
-        ),
-      },
-    ],
-  }, {
-    id: 'sui',
-    sponsorName: 'SUI',
-    logo: '/sui-logo.png',
-    totalPrize: '$3,000',
-    tracks: [
-      {
-        id: 'sui-ctf',
-        name: 'SUI Capture the Flag',
-        prize: '$3,000 total',
-        description: (
-          <>
-            <p>All track information can be found here and is subject to change:</p>
-            <a className="text-blue-500 underline" href="https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0" target="_blank" rel="noopener noreferrer">https://docs.google.com/document/d/1m6qi1AgpCvWCJglS8KbFXhRsQo_OCGgyFxbJx56VZtc/edit?tab=t.0</a>
           </>
         ),
       },
@@ -326,7 +305,7 @@ export function TracksSection() {
           className="text-center mb-6"
         >
           <p className="p-10 text-xl text-white/70">
-            This year we our offering $13,000 in prizes over five different hackathon tracks, plus an additional $2,000 for our Web3 focused case competition!
+            This year we our offering over $10,000 in prizes for our Hackathon, with an additional $1,000 for our Web3 focused case competition!
           </p>
         </motion.div>
 

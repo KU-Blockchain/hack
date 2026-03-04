@@ -77,7 +77,6 @@ export function SponsorsSection() {
                 >
                   {[
                     { name: "KU", src: "/ku.png" },
-                    { name: "PayPal", src: "/paypal.png" },
                     { name: "Pinata", src: "/pinata.png" },
                     { name: "Ripple", src: "/ripple.png" },
                     { name: "Sui", src: "/sui.png" },

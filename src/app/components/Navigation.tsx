@@ -16,6 +16,7 @@ export function Navigation({
   const tabs = [
     { id: "home", label: "Home" },
     { id: "schedule", label: "Schedule" },
+    { id: "tracks", label: "Tracks" },
     { id: "sponsors", label: "Sponsors" },
     { id: "2025", label: "2025 Recap" },
   ];
