@@ -12,7 +12,7 @@ type RoomFilter = TrackId | 'all';
 
 const GRID_START_HOUR = 8;
 const GRID_END_HOUR_DEFAULT = 26; // through 1:00 AM (hour 25)
-const PX_PER_HOUR = 56;
+const PX_PER_HOUR = 72;
 
 /** Minutes from midnight. Times after midnight (12 AM, 1 AM, 2 AM, ...) use 24*60, 25*60, 26*60 for grid placement below 11 PM. */
 function parseTime(s: string): number {
@@ -202,7 +202,7 @@ export function ScheduleSection() {
                     .map((event) => (
                       <li
                         key={event.id}
-                        className="rounded-lg bg-white/10 border border-white/10 p-3"
+                        className="rounded-lg bg-white/10 border border-white/10 p-4"
                       >
                         <p className="text-xs text-white/50">
                           {event.endTime ? `${event.startTime} – ${event.endTime}` : event.startTime}
@@ -288,21 +288,21 @@ export function ScheduleSection() {
                                 key={event.id}
                                 initial={{ opacity: 0, scale: 0.98 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-1 md:p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
+                                className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
                                 style={{
                                   top: `${top}px`,
-                                  height: `${Math.min(Math.max(height - 4, 20), height)}px`,
+                                  height: `${Math.min(Math.max(height - 6, 28), height)}px`,
                                 }}
                               >
                                 <p className="text-[9px] md:text-xs text-white/50 leading-tight">
                                   {event.endTime ? `${event.startTime} – ${event.endTime}` : event.startTime}
                                 </p>
-                                <p className="text-[10px] md:text-xs font-medium text-white truncate leading-tight" title={event.title}>
+                                <p className="text-[10px] md:text-xs font-medium text-white leading-tight" title={event.title}>
                                   {event.title}
                                   {event.speaker ? ` · ${event.speaker}` : ''}
                                 </p>
                                 {event.description && (
-                                  <p className="text-[8px] md:text-[9px] text-white/50 leading-tight mt-0.5 line-clamp-2" title={event.description}>
+                                  <p className="text-[8px] md:text-[9px] text-white/50 leading-tight mt-0.5" title={event.description}>
                                     {event.description}
                                   </p>
                                 )}
@@ -321,10 +321,10 @@ export function ScheduleSection() {
                             key={event.id}
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
-                            className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-1 md:p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[2]"
+                            className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-2 md:p-3 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[2]"
                             style={{
                               top: `${top}px`,
-                              height: `${Math.min(Math.max(height - 4, 20), height)}px`,
+                              height: `${Math.min(Math.max(height - 6, 28), height)}px`,
                             }}
                           >
                             <p className="text-[9px] md:text-xs text-white/50 leading-tight">

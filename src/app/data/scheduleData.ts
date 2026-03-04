@@ -222,7 +222,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     dayId: 'mar8',
     trackId: 'other',
     startTime: '8:00 AM',
-    title: 'Hacking Ends (submissions hard deadline)',
+    title: 'Hacking Ends',
     description: 'No submissions after this time will be accepted.',
   },
   {
