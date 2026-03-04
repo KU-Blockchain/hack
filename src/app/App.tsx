@@ -31,7 +31,7 @@ export default function App() {
         {activeTab === 'home' && (
           <>
             <HeroSection />
-            <CountdownSection />
+            <CountdownSection onPrizesClick={() => setActiveTab('tracks')} />
             <NotifySection />
             <FAQSection />
             <Footer />
