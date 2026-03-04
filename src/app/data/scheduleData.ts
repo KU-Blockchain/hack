@@ -50,8 +50,8 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     dayId: 'mar6',
     trackId: 'leep2',
     startTime: '3:00 PM',
-    endTime: '5:00 PM',
-    title: 'Doors open for hackers',
+    endTime: '6:00 PM',
+    title: 'Doors open and check-in',
   },
   {
     id: 'mentors-panel',

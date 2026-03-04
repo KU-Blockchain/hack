@@ -8,9 +8,9 @@ type CountdownSectionProps = {
   onPrizesClick?: () => void;
 };
 
-const EVENT_START = new Date('2026-03-06T20:00:00').getTime();
-const HACKATHON_DURATION_MS = 36 * 60 * 60 * 1000;
-const HACKATHON_END = EVENT_START + HACKATHON_DURATION_MS;
+// Hacking begins Fri Mar 6 8:00 PM CST; submissions due Sun Mar 8 8:00 AM CST (36h later)
+const EVENT_START = new Date('2026-03-06T20:00:00-06:00').getTime();
+const SUBMISSION_DEADLINE = new Date('2026-03-08T08:00:00-06:00').getTime();
 
 export function CountdownSection({ onPrizesClick }: CountdownSectionProps) {
   const ref = useRef<HTMLDivElement>(null);
@@ -47,8 +47,8 @@ export function CountdownSection({ onPrizesClick }: CountdownSectionProps) {
         return;
       }
 
-      if (now >= EVENT_START && now < HACKATHON_END) {
-        const distance = HACKATHON_END - now;
+      if (now >= EVENT_START && now < SUBMISSION_DEADLINE) {
+        const distance = SUBMISSION_DEADLINE - now;
         setPhase('hackathon');
         setCountdown({
           days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -97,7 +97,7 @@ export function CountdownSection({ onPrizesClick }: CountdownSectionProps) {
         {phase !== 'finished' ? (
           <div className="text-center space-y-4">
             <p className="text-sm md:text-base uppercase tracking-[0.2em] text-[#E89A7B]/70">
-              {phase === 'pre' ? 'Hackathon starts in' : 'Hackathon ends in'}
+              {phase === 'pre' ? 'Hackathon starts in' : 'Hackathon in progress — Submit in'}
             </p>
             <div className="grid grid-cols-4 gap-2 md:gap-5 max-w-4xl mx-auto">
               {[
@@ -148,7 +148,7 @@ export function CountdownSection({ onPrizesClick }: CountdownSectionProps) {
           <span className="relative inline-flex items-center">
             <span className="absolute -inset-1 rounded-full bg-[#F5C4A8]/20 blur-md group-hover:bg-[#F5C4A8]/30 transition-colors" />
             <span className="relative bg-gradient-to-r from-[#FCE3D1] via-[#F5C4A8] to-[#E89A7B] bg-clip-text text-transparent text-2xl md:text-3xl font-extrabold tracking-tight">
-              $15,000+
+              $10,000+
             </span>
           </span>
           <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#F5C4A8]/80 to-transparent group-hover:w-14 transition-all" />
