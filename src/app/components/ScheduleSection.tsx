@@ -44,7 +44,9 @@ const gridStartMinutes = GRID_START_HOUR * 60;
 /** Grid end hour (exclusive). At least 26 (through 1 AM); extends if any event ends later. */
 function getGridEndHour(): number {
   const maxEnd = Math.max(
-    ...SCHEDULE_EVENTS.map((e) => parseTime(e.endTime)),
+    ...SCHEDULE_EVENTS.map((e) =>
+      e.endTime ? parseTime(e.endTime) : parseTime(e.startTime) + 60
+    ),
     25 * 60
   );
   return Math.max(GRID_END_HOUR_DEFAULT, Math.ceil(maxEnd / 60) + 1);
@@ -52,7 +54,7 @@ function getGridEndHour(): number {
 
 function eventPosition(event: ScheduleEvent): { top: number; height: number } {
   const start = parseTime(event.startTime);
-  const end = parseTime(event.endTime);
+  const end = event.endTime ? parseTime(event.endTime) : start + 60;
   const top = ((start - gridStartMinutes) / 60) * PX_PER_HOUR;
   const height = ((end - start) / 60) * PX_PER_HOUR;
   return { top, height };
@@ -203,9 +205,12 @@ export function ScheduleSection() {
                         className="rounded-lg bg-white/10 border border-white/10 p-3"
                       >
                         <p className="text-xs text-white/50">
-                          {event.startTime} – {event.endTime}
+                          {event.endTime ? `${event.startTime} – ${event.endTime}` : event.startTime}
                         </p>
                         <p className="font-medium text-white mt-0.5">{event.title}</p>
+                        {event.description && (
+                          <p className="text-xs text-white/50 mt-1">{event.description}</p>
+                        )}
                         {event.speaker && (
                           <p className="text-xs text-white/40 mt-1">{event.speaker}</p>
                         )}
@@ -254,47 +259,90 @@ export function ScheduleSection() {
                     ))}
                   </div>
 
-                  {/* Track columns */}
-                  {SCHEDULE_TRACKS.map((track, trackIndex) => (
-                    <div
-                      key={track.id}
-                      className={`relative min-w-0 ${trackIndex > 0 ? 'border-l border-white/10 border-dashed' : ''}`}
-                      style={{ height: gridBodyHeight }}
-                    >
-                      {timeSlots.slice(1).map((hour) => (
-                        <div
-                          key={hour}
-                          className="absolute left-0 right-0 border-b border-white/10 border-dashed"
-                          style={{ top: (hour - GRID_START_HOUR) * PX_PER_HOUR }}
-                        />
-                      ))}
-                      {filteredEvents
-                        .filter((e) => e.trackId === track.id)
-                        .map((event) => {
-                          const { top, height } = eventPosition(event);
-                          return (
-                            <motion.div
-                              key={event.id}
-                              initial={{ opacity: 0, scale: 0.98 }}
-                              animate={{ opacity: 1, scale: 1 }}
-                              className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-1 md:p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
-                              style={{
-                                top: `${top}px`,
-                                height: `${Math.max(height - 4, 36)}px`,
-                              }}
-                            >
-                              <p className="text-[9px] md:text-xs text-white/50 leading-tight">
-                                {event.startTime} – {event.endTime}
+                  {/* Track columns — wrapped so span-all events can overlay full width */}
+                  <div
+                    className="relative grid min-w-0 col-span-3"
+                    style={{
+                      gridTemplateColumns: `repeat(${SCHEDULE_TRACKS.length}, minmax(0, 1fr))`,
+                      height: gridBodyHeight,
+                    }}
+                  >
+                    {SCHEDULE_TRACKS.map((track, trackIndex) => (
+                      <div
+                        key={track.id}
+                        className={`relative min-w-0 ${trackIndex > 0 ? 'border-l border-white/10 border-dashed' : ''}`}
+                      >
+                        {timeSlots.slice(1).map((hour) => (
+                          <div
+                            key={hour}
+                            className="absolute left-0 right-0 border-b border-white/10 border-dashed"
+                            style={{ top: (hour - GRID_START_HOUR) * PX_PER_HOUR }}
+                          />
+                        ))}
+                        {filteredEvents
+                          .filter((e) => e.trackId === track.id && !e.spanAllTracks)
+                          .map((event) => {
+                            const { top, height } = eventPosition(event);
+                            return (
+                              <motion.div
+                                key={event.id}
+                                initial={{ opacity: 0, scale: 0.98 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-1 md:p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[1]"
+                                style={{
+                                  top: `${top}px`,
+                                  height: `${Math.min(Math.max(height - 4, 20), height)}px`,
+                                }}
+                              >
+                                <p className="text-[9px] md:text-xs text-white/50 leading-tight">
+                                  {event.endTime ? `${event.startTime} – ${event.endTime}` : event.startTime}
+                                </p>
+                                <p className="text-[10px] md:text-xs font-medium text-white truncate leading-tight" title={event.title}>
+                                  {event.title}
+                                  {event.speaker ? ` · ${event.speaker}` : ''}
+                                </p>
+                                {event.description && (
+                                  <p className="text-[8px] md:text-[9px] text-white/50 leading-tight mt-0.5 line-clamp-2" title={event.description}>
+                                    {event.description}
+                                  </p>
+                                )}
+                              </motion.div>
+                            );
+                          })}
+                      </div>
+                    ))}
+                    {/* Full-width events spanning all tracks */}
+                    {filteredEvents
+                      .filter((e) => e.spanAllTracks)
+                      .map((event) => {
+                        const { top, height } = eventPosition(event);
+                        return (
+                          <motion.div
+                            key={event.id}
+                            initial={{ opacity: 0, scale: 0.98 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            className="absolute left-0.5 right-0.5 md:left-1 md:right-1 rounded bg-white/10 border border-white/10 p-1 md:p-2 hover:bg-white/15 hover:border-[#E89A7B]/30 transition-colors z-[2]"
+                            style={{
+                              top: `${top}px`,
+                              height: `${Math.min(Math.max(height - 4, 20), height)}px`,
+                            }}
+                          >
+                            <p className="text-[9px] md:text-xs text-white/50 leading-tight">
+                              {event.endTime ? `${event.startTime} – ${event.endTime}` : event.startTime}
+                            </p>
+                            <p className="text-[10px] md:text-xs font-medium text-white truncate leading-tight" title={event.title}>
+                              {event.title}
+                              {event.speaker ? ` · ${event.speaker}` : ''}
+                            </p>
+                            {event.description && (
+                              <p className="text-[8px] md:text-[9px] text-white/50 leading-tight mt-0.5 line-clamp-2" title={event.description}>
+                                {event.description}
                               </p>
-                              <p className="text-[10px] md:text-xs font-medium text-white truncate leading-tight" title={event.title}>
-                                {event.title}
-                                {event.speaker ? ` · ${event.speaker}` : ''}
-                              </p>
-                            </motion.div>
-                          );
-                        })}
-                    </div>
-                  ))}
+                            )}
+                          </motion.div>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
             </>

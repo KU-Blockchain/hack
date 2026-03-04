@@ -23,10 +23,12 @@ export interface ScheduleEvent {
   dayId: DayId
   trackId: TrackId
   startTime: string // e.g. "10:00 AM"
-  endTime: string   // e.g. "2:00 PM"
+  endTime?: string  // e.g. "2:00 PM" — optional; if omitted, only start time is shown
   title: string
   speaker?: string
   location?: string
+  description?: string
+  spanAllTracks?: boolean // if true, event renders as one block across all track columns
 }
 
 // ——— Edit below ———
@@ -52,6 +54,15 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '3:00 PM',
     endTime: '6:00 PM',
     title: 'Doors open and check-in',
+    description: 'Check in available until Saturday at Midnight. Contact the organizers through Discord if you can\'t show up at this time.',
+  },
+  {
+    id: 'mlh-workshop-1',
+    dayId: 'mar6',
+    trackId: 'eaton2',
+    startTime: '4:00 PM',
+    endTime: '5:00 PM',
+    title: 'MLH Workshop - GitHub Copilot',
   },
   {
     id: 'mentors-panel',
@@ -73,35 +84,34 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     id: 'friday-dinner',
     dayId: 'mar6',
     trackId: 'leep2',
-    startTime: '6:00 PM',
-    endTime: '7:00 PM',
+    startTime: '6:30 PM',
+    endTime: '7:30 PM',
     title: 'Dinner',
+    description: 'The Mad Greek',
   },
   {
-    id: 'workshop1',
+    id: 'charlie-workshop',
     dayId: 'mar6',
     trackId: 'eaton2',
-    startTime: '7:00 PM',
-    endTime: '8:00 PM',
-    title: 'Workshop #2',
+    startTime: '7:30 PM',
+    endTime: '8:10 PM',
+    title: 'Hackathon Rizz 101',
   },
   {
     id: 'hacking-begins',
     dayId: 'mar6',
     trackId: 'leep2',
     startTime: '8:00 PM',
-    endTime: '10:00 PM',
-    title: 'Hacking Begins',
+    title: 'Hacking Begins!',
   },
-  {
-    id: 'mini-event',
-    dayId: 'mar6',
-    trackId: 'leep2',
-    startTime: '10:00 PM',
-    endTime: '11:00 PM',
-    title: 'Fun Mini-Event',
-  },
-
+  // {
+  //   id: 'mini-event',
+  //   dayId: 'mar6',
+  //   trackId: 'leep2',
+  //   startTime: '10:00 PM',
+  //   endTime: '11:00 PM',
+  //   title: 'Fun Mini-Event',
+  // },
   {
     id: 'friday-midnight-snack',
     dayId: 'mar6',
@@ -109,6 +119,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '12:00 AM',
     endTime: '1:00 AM',
     title: 'Midnight Snack',
+    description: 'Taco Bell',
   },
   // ——— Sat Mar 7 ———
   {
@@ -118,6 +129,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '8:00 AM',
     endTime: '9:00 AM',
     title: 'Breakfast',
+    description: 'Taylor\'s Donuts',
   },
   {
     id: 'yoga-session',
@@ -128,36 +140,45 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     title: 'Morning Yoga',
   },
   {
+    id: 'mlh-workshop-2',
+    dayId: 'mar7',
+    trackId: 'eaton2',
+    startTime: '11:00 AM',
+    endTime: '12:00 PM',
+    title: 'MLH Workshop - Gemini AI Studio',
+  },
+  {
     id: 'saturday-lunch',
     dayId: 'mar7',
     trackId: 'leep2',
     startTime: '12:00 PM',
     endTime: '1:00 PM',
     title: 'Lunch',
+    description: 'Dillons Lunch Platters',
   },
   {
     id: 'therapy-dogs',
     dayId: 'mar7',
     trackId: 'other',
-    startTime: '1:00 PM',
-    endTime: '6:00 PM',
+    startTime: '3:00 PM',
+    endTime: '4:00 PM',
     title: 'Therapy Dogs',
   },
   {
-    id: 'workshop2',
+    id: 'basketball',
     dayId: 'mar7',
     trackId: 'eaton2',
-    startTime: '2:00 PM',
+    startTime: '1:00 PM',
     endTime: '4:00 PM',
-    title: 'Workshop #2',
+    title: 'KU / KState Watch Party',
   },
   {
-    id: 'workshop3',
+    id: 'alex-workshop',
     dayId: 'mar7',
     trackId: 'eaton2',
     startTime: '4:00 PM',
-    endTime: '6:00 PM',
-    title: 'Workshop #3',
+    endTime: '4:40 PM',
+    title: 'Case Competition Workshop',
   },
   {
     id: 'saturday-dinner',
@@ -166,6 +187,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '6:00 PM',
     endTime: '7:00 PM',
     title: 'Dinner',
+    description: 'Chettinad Indian',
   },
   {
     id: 'ping-pong-tournament',
@@ -174,6 +196,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '7:30 PM',
     endTime: '10:00 PM',
     title: 'Ping Pong Tournament!',
+    description: 'Registration will be sent out via Discord. Gift Card Prizes!',
   },
   {
     id: 'saturday-midnight-snack',
@@ -182,6 +205,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '12:00 AM',
     endTime: '1:00 AM',
     title: 'Midnight Snack',
+    description: 'Insomnia Cookies',
   },
   // ——— Sun Mar 8 ———
   {
@@ -191,14 +215,15 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '8:00 AM',
     endTime: '9:00 AM',
     title: 'Breakfast',
+    description: 'Dillons Breakfast Platters',
   },
   {
     id: 'hacking-ends',
     dayId: 'mar8',
     trackId: 'other',
     startTime: '8:00 AM',
-    endTime: '9:00 AM',
     title: 'Hacking Ends (submissions hard deadline)',
+    description: 'No submissions after this time will be accepted.',
   },
   {
     id: 'judging',
@@ -221,15 +246,16 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     dayId: 'mar8',
     trackId: 'eaton2',
     startTime: '12:00 PM',
-    endTime: '3:00 PM',
+    endTime: '2:30 PM',
     title: 'Closing Ceremony',
   },
   {
     id: 'event-ends',
     dayId: 'mar8',
     trackId: 'other',
-    startTime: '3:00 PM',
-    endTime: '4:00 PM',
+    startTime: '2:30 PM',
     title: 'End of the 2026 Midwest Block-a-thon!',
+    description: 'Thank you for participating in the 2026 Midwest Block-a-thon, come back next year!',
+    spanAllTracks: true,
   },
 ]
