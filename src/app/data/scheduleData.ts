@@ -65,14 +65,6 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     title: 'MLH Workshop - GitHub Copilot',
   },
   {
-    id: 'mentors-panel',
-    dayId: 'mar6',
-    trackId: 'eaton2',
-    startTime: '5:00 PM',
-    endTime: '6:00 PM',
-    title: 'Mentors Panel',
-  },
-  {
     id: 'opening-ceremony',
     dayId: 'mar6',
     trackId: 'eaton2',

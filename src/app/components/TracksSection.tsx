@@ -27,7 +27,7 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
     id: 'general',
     sponsorName: 'General Track',
     logo: '/ku-logo.png',
-    totalPrize: '$1,000',
+    totalPrize: '$1,500',
     tracks: [
       {
         id: 'general-dapp',
@@ -84,12 +84,12 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
     id: 'business',
     sponsorName: 'Case Competition',
     logo: '/ku-logo.png',
-    totalPrize: '$1,000',
+    totalPrize: '$1,500',
     tracks: [
       {
         id: 'case-competition',
         name: 'Case Competition',
-        prize: '$1,000',
+        prize: 'Top 3 teams $500 each',
         description: (
           <>
             <p>
@@ -105,7 +105,9 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
             <div className="mt-3">
               <p className="font-semibold">Prizes:</p>
               <ul className="list-none space-y-1">
-                <li>🥇 1st place - $1,000</li>
+                <li>🥇 1st place - $500</li>
+                <li>🥈 2nd place - $500</li>
+                <li>🥉 3rd place - $500</li>
               </ul>
             </div>
           </>
