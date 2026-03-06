@@ -193,6 +193,14 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
               full-stack applications, show what is possible when files are content-addressed.
             </p>
             <div className="mt-2">
+              <p className="font-semibold">OpenClaw for the hackathon:</p>
+              <p>
+                We have a new OpenClaw product that can be used for the hackathon at:{' '}
+                <a className="text-[#E89A7B] underline hover:text-[#F5C4A8]" href="https://agents.pinata.cloud" target="_blank" rel="noopener noreferrer">https://agents.pinata.cloud</a>.
+                It&apos;s a one-click deploy hosted OpenClaw instance. It requires a paid plan to use. Use code <span className="font-semibold text-[#E89A7B]">CLAW-BLOCKATHON</span> at checkout to get one month free.
+              </p>
+            </div>
+            <div className="mt-2">
               <p className="font-semibold">Judging focus:</p>
               <ul className="list-disc list-inside space-y-1">
                 <li>Using Pinata as an integral part of your product or architecture.</li>

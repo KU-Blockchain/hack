@@ -124,14 +124,6 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     description: 'Taylor\'s Donuts',
   },
   {
-    id: 'yoga-session',
-    dayId: 'mar7',
-    trackId: 'leep2',
-    startTime: '9:00 AM',
-    endTime: '10:00 AM',
-    title: 'Morning Yoga',
-  },
-  {
     id: 'mlh-workshop-2',
     dayId: 'mar7',
     trackId: 'eaton2',
