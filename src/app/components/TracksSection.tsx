@@ -476,7 +476,7 @@ export function TracksSection() {
           className="text-center mb-6"
         >
           <p className="p-10 text-xl text-white/70">
-            This year we our offering over $10,000 in prizes for our Hackathon, with an additional $1,000 for our Web3 focused case competition!
+            This year we our offering over $10,000 in prizes for our Hackathon, with an additional $1,500 for our Web3 focused case competition!
           </p>
         </motion.div>
 

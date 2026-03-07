@@ -174,13 +174,13 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     description: 'Chettinad Indian',
   },
   {
-    id: 'ping-pong-tournament',
+    id: 'cup-pong-tournament',
     dayId: 'mar7',
     trackId: 'leep2',
     startTime: '7:30 PM',
     endTime: '10:00 PM',
-    title: 'Ping Pong Tournament!',
-    description: 'Registration will be sent out via Discord. Gift Card Prizes!',
+    title: 'Cup Pong Tournament!',
+    description: 'Registration sent on Discord in announcements channel. Gift Card Prizes!',
   },
   {
     id: 'saturday-midnight-snack',
