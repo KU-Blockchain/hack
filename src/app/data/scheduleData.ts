@@ -85,8 +85,8 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     id: 'charlie-workshop',
     dayId: 'mar6',
     trackId: 'eaton2',
-    startTime: '7:30 PM',
-    endTime: '8:10 PM',
+    startTime: '8:00 PM',
+    endTime: '8:40 PM',
     title: 'Hackathon Rizz 101',
   },
   {
