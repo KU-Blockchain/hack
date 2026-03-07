@@ -97,6 +97,15 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
               work on a real-world case that connects blockchain concepts to strategy, operations,
               and go-to-market thinking.
             </p>
+            <p className="mt-2">
+              <a
+                href="/case-competition.zip"
+                download
+                className="inline-flex items-center gap-2 text-[#E89A7B] font-semibold underline hover:text-[#F5C4A8]"
+              >
+                Download case materials (ZIP)
+              </a>
+            </p>
             <ul className="mt-2 list-disc list-inside space-y-1">
               <li>The case is given during registration — the earlier you arrive, the earlier you can start.</li>
               <li>Final presentations at 9:00 AM Sunday, March 8th in the School of Engineering.</li>
