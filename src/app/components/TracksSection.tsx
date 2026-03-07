@@ -218,6 +218,158 @@ const SPONSOR_TRACKS: SponsorTrackGroup[] = [
       },
     ],
   },
+  {
+    id: 'mlh',
+    sponsorName: 'MLH',
+    logo: '/mlh.png',
+    totalPrize: 'Swag and Hardware',
+    tracks: [
+      {
+        id: 'mlh-google-antigravity',
+        name: 'Best Hack Built with Google Antigravity',
+        prize: 'Google Swag Kits',
+        description: (
+          <>
+            <p>
+              Google Antigravity is an agentic development platform, evolving the IDE into the agent-first era.
+            </p>
+            <p className="mt-2">
+              Google Antigravity&apos;s Editor view offers tab autocompletion, natural language code commands, and a configurable, context-aware agent.
+            </p>
+            <p className="mt-2">
+              We want you to leverage Google Antigravity to build your hack this weekend. Enjoy free usage of the latest models through a free for students Google AI Pro plan. Be sure to add a description of how you used Google Antigravity in your project submission for consideration in this prize category.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – Google Swag Kits</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'mlh-gemini',
+        name: 'Best Use of Gemini API',
+        prize: 'Google Swag Kits',
+        description: (
+          <>
+            <p>
+              It&apos;s time to push the boundaries of what&apos;s possible with AI using Google Gemini. Check out the Gemini API to build AI-powered apps that make your friends say WHOA.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">What can Gemini do for your hackathon project?</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Understand language like a human and build a chatbot that gives personalized advice</li>
+                <li>Analyze info like a supercomputer and create an app that summarizes complex research papers</li>
+                <li>Generate creative content like code, scripts, music, and more</li>
+              </ul>
+            </div>
+            <p className="mt-2">Think of the possibilities… what will you build with the Google Gemini API this weekend?</p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – Google Swag Kits</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'mlh-elevenlabs',
+        name: 'Best Use of ElevenLabs',
+        prize: 'Wireless Earbuds',
+        description: (
+          <>
+            <p>
+              Deploy natural, human-sounding audio with ElevenLabs. Create realistic, dynamic, and emotionally expressive voices for any project, from interactive AI companions to narrated stories and voice-enabled apps. ElevenLabs will empower you to build rich, immersive experiences without the need for actors or complex audio production, using simply the power of AI.
+            </p>
+            <p className="mt-2">
+              Integrate fully autonomous audio experiences into your hack with ElevenLabs and give your project a voice, along with giving your team the chance to win some wireless earbuds!
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – Wireless Earbuds</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'mlh-solana',
+        name: 'Best Use of Solana',
+        prize: 'Ledger Nano S Plus',
+        description: (
+          <>
+            <p>
+              The world of development is evolving fast and Solana is leading the charge with a network built to handle all of your infrastructure needs. Forget high fees and slow confirmations, it&apos;s time to build applications that are fast, efficient, and scalable.
+            </p>
+            <p className="mt-2">
+              Harness Solana&apos;s core advantages like blazing fast execution and near-zero transaction costs to make your hackathon ideas become real world projects. With Solana, the possibilities are endless.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Example directions:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li>Create a game, social app, or consumer product that relies on instant, high-frequency transactions.</li>
+                <li>Design a sophisticated trading, lending, or decentralized exchange (DEX).</li>
+                <li>Build a prototype for supply chain, identity, or payments that can handle massive, real-world volume.</li>
+              </ul>
+            </div>
+            <p className="mt-2">Show us how you can innovate with Solana for a chance to win some cool prizes for you and each member of your team!</p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – Ledger Nano S Plus</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'mlh-vultr',
+        name: 'Best Use of Vultr',
+        prize: 'Portable Screens',
+        description: (
+          <>
+            <p>
+              Vultr empowers hackers to bring their high-performance projects to life instantly; providing everything from the speed of one-click deployment and scalable cloud compute, to specialized Vultr Cloud GPUs that can power AI-driven applications. We want you to push the limits of what can be built when infrastructure is no longer the bottleneck!
+            </p>
+            <p className="mt-2">
+              Sign up for a Vultr account today and claim your free cloud credits! Take your next hack to the cloud with Vultr for a chance to win some awesome portable screens for you and your team!
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – Portable Screens</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+      {
+        id: 'mlh-mongodb',
+        name: 'Best Use of MongoDB Atlas',
+        prize: 'M5Stack IoT Kit',
+        description: (
+          <>
+            <p>
+              MongoDB Atlas takes the leading modern database and makes it accessible in the cloud! Get started with a $50 credit for students or sign up for the Atlas free forever tier (no credit card required). Along with a suite of services and functionalities, you&apos;ll have everything you need to manage all of your data, and you can get a headstart with free resources from MongoDB University!
+            </p>
+            <p className="mt-2">
+              Build a hack using MongoDB Atlas for a chance to win a M5Stack IoT Kit for you and each member of your group.
+            </p>
+            <div className="mt-2">
+              <p className="font-semibold">Prize:</p>
+              <ul className="list-none space-y-1">
+                <li>🥇 1 winner – M5Stack IoT Kit</li>
+              </ul>
+            </div>
+          </>
+        ),
+      },
+    ],
+  },
 ];
 
 const GENERAL_TRACK_IDS = ['general', 'business'];
