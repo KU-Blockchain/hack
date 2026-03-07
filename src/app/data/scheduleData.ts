@@ -138,7 +138,7 @@ export const SCHEDULE_EVENTS: ScheduleEvent[] = [
     startTime: '12:00 PM',
     endTime: '1:00 PM',
     title: 'Lunch',
-    description: 'Dillons Lunch Platters',
+    description: 'Twisted Fresh',
   },
   {
     id: 'therapy-dogs',
