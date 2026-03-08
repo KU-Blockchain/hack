@@ -138,24 +138,40 @@ export function CountdownSection({ onPrizesClick }: CountdownSectionProps) {
           </div>
         )}
 
-        <motion.button
-          whileHover={{ scale: 1.06 }}
-          whileTap={{ scale: 0.96 }}
-          type="button"
-          onClick={onPrizesClick}
-          className="group mt-4 inline-flex items-center gap-4 rounded-full border border-[#F5C4A8]/80 bg-[#041f16]/90 px-7 py-4 text-sm md:text-base font-semibold text-[#F5C4A8] shadow-xl shadow-black/60 hover:border-[#F5C4A8] hover:bg-[#073623]/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5C4A8]/80 cursor-pointer"
-        >
-          <span className="relative inline-flex items-center">
-            <span className="absolute -inset-1 rounded-full bg-[#F5C4A8]/20 blur-md group-hover:bg-[#F5C4A8]/30 transition-colors" />
-            <span className="relative bg-gradient-to-r from-[#FCE3D1] via-[#F5C4A8] to-[#E89A7B] bg-clip-text text-transparent text-2xl md:text-3xl font-extrabold tracking-tight">
-              $10,000+
+        <div className="mt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <motion.button
+            whileHover={{ scale: 1.06 }}
+            whileTap={{ scale: 0.96 }}
+            type="button"
+            onClick={onPrizesClick}
+            className="group inline-flex items-center gap-4 rounded-full border border-[#F5C4A8]/80 bg-[#041f16]/90 px-7 py-4 text-sm md:text-base font-semibold text-[#F5C4A8] shadow-xl shadow-black/60 hover:border-[#F5C4A8] hover:bg-[#073623]/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F5C4A8]/80 cursor-pointer"
+          >
+            <span className="relative inline-flex items-center">
+              <span className="absolute -inset-1 rounded-full bg-[#F5C4A8]/20 blur-md group-hover:bg-[#F5C4A8]/30 transition-colors" />
+              <span className="relative bg-gradient-to-r from-[#FCE3D1] via-[#F5C4A8] to-[#E89A7B] bg-clip-text text-transparent text-2xl md:text-3xl font-extrabold tracking-tight">
+                $10,000+
+              </span>
             </span>
-          </span>
-          <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#F5C4A8]/80 to-transparent group-hover:w-14 transition-all" />
-          <span className="text-[0.7rem] md:text-xs uppercase tracking-[0.25em] text-[#F5C4A8]/90">
-            in prizes · view tracks
-          </span>
-        </motion.button>
+            <span className="h-px w-10 bg-gradient-to-r from-transparent via-[#F5C4A8]/80 to-transparent group-hover:w-14 transition-all" />
+            <span className="text-[0.7rem] md:text-xs uppercase tracking-[0.25em] text-[#F5C4A8]/90">
+              in prizes · view tracks
+            </span>
+          </motion.button>
+          <a
+            href="https://the-midwest-blockathon.devpost.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <motion.button
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.96 }}
+              type="button"
+              className="inline-flex items-center gap-2 rounded-full border border-[#E89A7B]/80 bg-[#E89A7B]/20 px-7 py-4 text-sm md:text-base font-semibold text-[#F5C4A8] shadow-xl shadow-black/60 hover:border-[#E89A7B] hover:bg-[#E89A7B]/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#E89A7B]/80 cursor-pointer"
+            >
+              {phase === 'finished' ? 'View projects on Devpost' : 'Submit on Devpost'}
+            </motion.button>
+          </a>
+        </div>
       </motion.div>
     </>
   );
