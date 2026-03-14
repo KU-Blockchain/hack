@@ -1,0 +1,123 @@
+.app {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: #073623;
+  position: relative;
+}
+
+.content {
+  position: relative;
+  z-index: 10;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.logo {
+  width: 100%;
+  max-width: 28rem;
+  height: auto;
+  margin-bottom: 0.5rem;
+  flex-shrink: 1;
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 0.75rem;
+  }
+
+  .logo {
+    max-width: 18rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .finished-text {
+    font-size: 0.9rem;
+    margin: 0.15rem 0;
+  }
+
+  .devpost-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8125rem;
+  }
+
+  .footer {
+    padding: 0.75rem;
+  }
+
+  .footer-link {
+    font-size: 0.875rem;
+  }
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  background: linear-gradient(to right, #E89A7B, #F5C4A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.finished-text {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0.25rem 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.devpost-button {
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a3d3a;
+  background: linear-gradient(to right, #E89A7B, #F5C4A8);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.devpost-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(232, 154, 123, 0.4);
+}
+
+.footer {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  padding: 1rem;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #E89A7B;
+}
