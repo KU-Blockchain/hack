@@ -8,6 +8,60 @@
   position: relative;
 }
 
+.mlh-badge {
+  position: fixed;
+  right: 1rem;
+  top: 0;
+  z-index: 10000;
+  max-width: 100px;
+  min-width: 60px;
+  width: 10%;
+  transition: transform 0.2s;
+}
+
+.mlh-badge:hover {
+  transform: translateY(4px) scale(1.1);
+}
+
+.past-years {
+  position: fixed;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  pointer-events: auto;
+}
+
+.past-years-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 0.25rem 0;
+}
+
+.past-years-link {
+  display: inline-block;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a3d3a;
+  background: linear-gradient(to right, #E89A7B, #F5C4A8);
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.past-years-link:hover {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(232, 154, 123, 0.4);
+}
+
 .content {
   position: relative;
   z-index: 10;
@@ -50,8 +104,30 @@
     font-size: 0.8125rem;
   }
 
+  .past-years {
+    left: 0.5rem;
+    top: auto;
+    bottom: 4rem;
+    transform: none;
+  }
+
+  .past-years-title {
+    font-size: 0.6875rem;
+  }
+
+  .past-years-link {
+    font-size: 0.8125rem;
+    padding: 0.5rem 1rem;
+  }
+
   .footer {
     padding: 0.75rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-sep {
+    display: none;
   }
 
   .footer-link {
@@ -85,6 +161,7 @@
 }
 
 .devpost-button {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.75rem 1.5rem;
@@ -107,8 +184,18 @@
   z-index: 10;
   flex-shrink: 0;
   padding: 1rem;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-sep {
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0 0.25rem;
+  font-size: 0.75rem;
 }
 
 .footer-link {
