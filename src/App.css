@@ -52,7 +52,9 @@
   background: linear-gradient(to right, #E89A7B, #F5C4A8);
   padding: 0.6rem 1.25rem;
   border-radius: 9999px;
-  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
   transition: transform 0.2s, box-shadow 0.2s;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -60,6 +62,129 @@
 .past-years-link:hover {
   transform: scale(1.08);
   box-shadow: 0 4px 16px rgba(232, 154, 123, 0.4);
+}
+
+/* Year popup */
+.year-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.year-popup {
+  position: relative;
+  background: #073623;
+  border: 1px solid rgba(232, 154, 123, 0.3);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  max-width: 40rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.year-popup-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.year-popup-close:hover {
+  color: #E89A7B;
+}
+
+.year-popup-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #F5C4A8;
+  margin: 0 0 0.75rem 0;
+  padding-right: 2rem;
+}
+
+.year-popup-description {
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
+}
+
+.year-popup-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #000;
+}
+
+.year-popup-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.year-popup-devpost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1a3d3a;
+  background: linear-gradient(to right, #E89A7B, #F5C4A8);
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+  width: 100%;
+}
+
+.year-popup-devpost:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 16px rgba(232, 154, 123, 0.4);
+}
+
+@media (max-width: 480px) {
+  .year-popup-overlay {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .year-popup {
+    margin-top: 20vh;
+    padding: 1.25rem;
+    max-width: 85vw;
+  }
+
+  .year-popup-title {
+    font-size: 1.125rem;
+  }
+
+  .year-popup-description {
+    font-size: 0.875rem;
+  }
 }
 
 .content {

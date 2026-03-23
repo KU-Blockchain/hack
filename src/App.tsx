@@ -1,16 +1,21 @@
+import { useState } from 'react'
 import { StarField } from './components/StarField'
 import { MLHTrustBadge } from './components/MLHTrustBadge'
+import { YearPopup } from './components/YearPopup'
 import './App.css'
 
 function App() {
+  const [openYear, setOpenYear] = useState<2025 | 2026 | null>(null)
+
   return (
     <div className="app">
       <StarField />
       <MLHTrustBadge />
+      <YearPopup year={openYear} onClose={() => setOpenYear(null)} />
       <aside className="past-years">
         <h3 className="past-years-title">Past years</h3>
-        <a href="https://the-midwest-blockathon.devpost.com/" target="_blank" rel="noopener noreferrer" className="past-years-link">2026</a>
-        <a href="https://midwest.devpost.com" target="_blank" rel="noopener noreferrer" className="past-years-link">2025</a>
+        <button type="button" className="past-years-link" onClick={() => setOpenYear(2026)}>2026</button>
+        <button type="button" className="past-years-link" onClick={() => setOpenYear(2025)}>2025</button>
       </aside>
       <main className="content">
         <img
